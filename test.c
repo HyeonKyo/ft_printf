@@ -2,7 +2,8 @@
 
 int main()
 {
-	printf("%c %c %c\n", 'a', 'b', 'c', 'd');
+	char c = 'c';
+	printf("[%+10c]\n", c);
 
 	return (0);
 }

@@ -5,5 +5,9 @@
 
 typedef struct	s_opt
 {
-	//options
+	char	flag;
+	int		width;
+	int		prec;
+	char	length[3];
+	char	type;
 }				t_opt;
