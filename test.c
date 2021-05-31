@@ -2,8 +2,9 @@
 
 int main()
 {
-	char c = 'c';
-	printf("[%+10c]\n", c);
+	char c = 'a';
+	printf("[%.3c]\n", c);
+	printf("[%-10c]\n", c);
 
 	return (0);
 }

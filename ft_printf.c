@@ -1,75 +1,114 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeonkki <hyeonkki@student.42.kr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/31 13:55:49 by hyeonkki          #+#    #+#             */
+/*   Updated: 2021/05/31 18:52:41 by hyeonkki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int		find_flag(char c, t_opt *opts)
+void	find_flag(const char *str, t_opt *opts, size_t *i)
 {
-	if (c == '-' || c = '+' || c == ' ' || c == '0' ||
-	c == '\'' || c == '#')
+	char	c;
+
+	c = str[*i];
+	if (str[*i] == '-')
+		opts->fg.minus = 1;
+	else if (str[*i] = '+')
+		opts->fg.plus = 1;
+	else if (str[*i] == ' ')
+		opts->fg.space = 1;
+	else if (str[*i] == '0')
+		opts->fg.zero = 1;
+	else if (str[*i] == '\'')
+		opts->fg.apos = 1;
+	else if (str[*i] == '#')
+		opts->fg.hash = 1;
+	else
 	{
-		opts->flag = c;
-		return (1);
+		opts->fg.none = 1;
+		c = 0;
 	}
-	return (0);
+	while (str[*i] == c)
+		*(i++);
 }
 
-int		pf_atoi(const char *str, t_opt *opts)
+int		pf_atoi(const char *str, t_opt *opts, size_t *i)
 {
-	int	i;
-	int	j;
-	int	sign;
-	int	num;
+	unsigned long long	num;
 
-	i = 0;
-	j = 0;
 	sign = 1;
 	num = 0;
-	if (str[i] == '-')//width에 음수일 때 처리 방법 정하기
+	if (str[*i] == '-')//width or prec가 음수일 때 처리하는 방식이 똑같음.
 	{
-		sign = -1;
+		opts->width = 0;//prec이 음수일 경우 기존width를 무시함.
+		opts->fg.minus = 1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-		num = num * 10 + (str[i++] - '0');
-	opts->width = num;
-	//1. sign이 -일 경우 flag에 영향을 주므로 연결시키는 구성이 필요함.
+	while (ft_isdigit(str[*i]))
+		num = num * 10 + (str[*(i++)] - '0');
+	return ((int)num);
 	//2. 유효성 검사할 부분이 필요함.
-	return (i); //수정 필요
 }
 
-int		find_width(const char *str, t_opt *opts)
+void	find_width(const char *str, t_opt *opts, size_t *i)
 {
-	int	i;
-	//1. width가 *이면 가변인자에 정수값 있는지 확인 후 넣어줌
-	//2. width위치의 문자가 정수이면 atoi처럼 계속 정수를 받아서 int로 변환해서 저장.
-	//3. 유효성 검사해서 리턴 값 조정해야 함. (if (ft_isdigit)으로하면?)
-	i = pf_atoi(str, opts);
-	return (i);
-	return (0);
+	if (str[i] == '*')
+	{
+		opts->width = -1;
+		i++;
+	}
+	else
+		opts->width = pf_atoi(str, opts, i);
 }
 
-int		find_prec(char c, t_opt *opts)
+void	find_prec(const char *str, t_opt *opts, size_t *i)
 {
-	if (ft_isdigit(c))
+	if (str[i] == '*')
 	{
-		opts->prec = c - '0';
-		return (1);
+		opts->prec = -1;
+		i++;
 	}
-	return (0);
+	else if (str[*i] == '-')
+		opts->width = pf_atoi(str, opts, i);
+	else if (ft_isdigit(str[*i]))
+		opts->prec = pf_atoi(str, opts, i);
+	else
+		return ;
 }
 
-int		find_length(const char *str, t_opt *opts)
+void	find_length(const char *str, t_opt *opts, size_t *i)
 {
-	if ((*str == 'h' && *(str + 1) == 'h') || (*str == 'l' && *(str + 1) == 'l'))
+	if (str[i] == 'h' && str[i + 1] == 'h')
+		opts->ln.hh = 1;
+	else if (str[i] == 'l' && str[i + 1] == 'l')
+		opts->ln.ll = 1;
+	else if (str[i] == 'h')
+		opts->ln.h = 1;
+	else if (str[i] == 'l')
+		opts->ln.l = 1;
+	else if (str[i] == 'j')
+		opts->ln.j = 1;
+	else if (str[i] == 'z')
+		opts->ln.z = 1;
+	else if (str[i] == 't')
+		opts->ln.t = 1;
+	else if (str[i] == 'L')
+		opts->ln.L = 1;
+	else
 	{
-		ft_strlcpy(opts->length, str, 3);
-		return (2);
+		opts->ln.none = 1;
+		return ;
 	}
-	else if (*str == 'h' || *str == 'l' || *str == j || *str == z ||
-	*str == 't' || *str == 'L')
-	{
-		ft_strlcpy(opts->length, str, 2);
-		return (1);
-	}
-	return (0);
+	if (opts->ln.hh || opts->ln.ll)
+		i += 2;
+	else
+		i++;
 }
 
 int		find_type(char c, t_opt *opts)
@@ -85,40 +124,93 @@ int		find_type(char c, t_opt *opts)
 	return (0);
 }
 
-const char *get_opt(const char *str, t_opt *opts) //%뒤의 문자열 주소값을 넣어줌.
+int		get_opt(const char *str, t_opt *opts, size_t *i) //%뒤의 문자열 주소값을 넣어줌.
 {
 	//유효성 검사 어떻게 할 지?
-	int		i;
-
-	i = 0;
-	i += find_flag(str[i], opts);
-	i += find_width(str + i, opts);
+	find_flag(str, opts, &i);
+	find_width(str, opts, &i);
 	if (str[i] == '.')
-		i += find_prec(str[++i], opts);
-	i += find_length(str + i, opts);
-	i += find_type(str[i], opts);
-	return (str + i);
+		find_prec(str, opts, &(++i));
+	find_length(str, opts, &i);
+	if (!find_type(str[i], opts))
+		return (0);
+	return (1);
+}
+
+void	c_print(va_list ap, t_opt opts)
+{
+	char	c;
+
+	if (opts.ln.l == 1)
+		c = va_arg(ap, wint_t);
+	else
+		c = va_arg(ap, int);
+	if (opts.width == 0)
+	{
+		write (1, &c, sizeof(c)); //wint_t일 때도 char변수로 받아도 되는지?
+		cnt += sizeof(c); //sizeof(c)가 맞는지? int형으로 받았지만 char로 출력하니까?
+	if (opts.fg.minus == 1 && opts.width)
+	{
+		write (1, &c, 1);
+		*cnt += opts.width;
+	}
+	else
+	{
+		if (opts.width)
+			write (1, " ", opts.width - 1);
+		write (1, &c, 1);
+		*cnt += 1;
+	}
+}
+
+
+void	print_arg(va_list ap, t_opt opts, size_t *cnt)
+{
+	if (opts.type == 'c')
+		c_print(ap, opts, &cnt);
+	else if (opts.type == 'd')
+		d_print(ap, opts, &cnt);
+	//....
 }
 
 int		ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	t_opt	opts;
-	int		i;
-	int		cnt;
+	size_t	i;
+	size_t	cnt;
 
 	i = 0;
 	cnt = 0;
-	va_start(ap, str);//2번째 인자에 str넣는게 맞는지?
+	va_start(ap, str);
+	ft_memset(&opts, 0, sizeof(t_opt));
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
 			//구조체에 각 옵션 값들 넣어줌.
+			get_opt(str, &opts, &i);
 			//가변인자 하나씩 받아서 *인 곳 바꿔주기
-			if (opts->width == ??// = *일 떄 width에 넣어줄 값)
+			if (opts->width == -1) // = *일 떄 width에 넣어줄 값
+			{
 				opts->width = va_arg(ap, int); //음수일 경우도 고려해줘야함.
+				if (opts->width < 0)
+				{
+					opts.fg.minus = 1;
+					opts->width *= -1;
+				}
+			}
+			if (opts->prec == -1)
+			{
+				opts->prec = va_arg(ap, int);
+				if (opts->prec < 0)
+				{
+					opts.fg.minus = 1;
+					opts->prec *= -1;
+				}
+			}
 			//각 옵션의 조합 고려해서 출력
+			//printfuc(opts, ap??); // type에 맞는 자료형으로 va_arg를 통해 받아야함.
 			//cnt더해줌
 		}
 		else
