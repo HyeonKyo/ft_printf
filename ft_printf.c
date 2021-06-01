@@ -52,7 +52,7 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-void	find_flag(const char *str, t_opt *opts, size_t *i)
+int		find_flag(const char *str, t_opt *opts, size_t *i)
 {
 	char	c;
 
@@ -71,9 +71,11 @@ void	find_flag(const char *str, t_opt *opts, size_t *i)
 	else
 	{
 		opts->fg.none = 1;//flag가 없는 경우.
-		return ;
+		return (0);
 	}
-	(*i)++;
+	if (opts->fg.minus && opts->fg.zero)//경메가 뜨는 flag조합.
+		return (-1);
+	return (1);
 }
 
 int		pf_atoi(const char *str, t_opt *opts, size_t *i)
@@ -168,8 +170,12 @@ int		find_type(char c, t_opt *opts)
 
 int		get_opt(const char *str, t_opt *opts, size_t *i) //%뒤의 문자열 주소값을 넣어줌.
 {
+	int	ret;
 	//유효성 검사 어떻게 할 지?
-	find_flag(str, opts, i);
+	while ((ret = find_flag(str, opts, i)) > 0)
+		(*i)++;
+	if (ret == -1)
+		return (0); //flag가 -와 0이 있는 경우의 에러상황(기존 함수는 경고메시지 출력 후 0옵션 무시)
 	find_width(str, opts, i);
 	if (str[*i] == '.')
 	{
@@ -259,6 +265,8 @@ void	print_sign(t_opt opts, int n)
 {
 	if (opts.fg.plus && n > 0)
 		write(1, "+", 1);
+	else if (opts.fg.space && n > 0)
+		write(1, " ", 1);
 	else if (n < 0)
 		write(1, "-", 1);
 }
@@ -411,17 +419,13 @@ int main()
 {
 	int	cnt;
 
-	cnt = ft_printf("[%*d]\n", 10, 1000);
-	printf("cnt2 : %d\n", cnt);
-	printf("\n");
-	cnt = ft_printf("[%-10d]\n", 1000);
-	printf("cnt2 : %d\n", cnt);
-	printf("\n");
-	cnt = ft_printf("[%+*d]\n", 10, 1000);
-	printf("cnt2 : %d\n", cnt);
-	printf("\n");
-	cnt = ft_printf("[%+.*d]\n", 10, 1000);
-	printf("cnt2 : %d\n", cnt);
-	printf("\n");
+	ft_printf("[%- 3d]\n", 1000);
+	ft_printf("[%- 10d]\n", 1000);
+	ft_printf("------------\n");
+	ft_printf("[%d]\n", -42);
+	ft_printf("[%d]\n", -052);
+	ft_printf("[%d]\n", -0x2a);
+	ft_printf("[%d]\n", -0x2A);
+	ft_printf("------------\n");
 	return (0);
 }
