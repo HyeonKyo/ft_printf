@@ -2,6 +2,8 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <wctype.h>
 
 typedef struct	s_flag
 {
@@ -35,3 +37,5 @@ typedef struct	s_opt
 	t_length	ln;
 	char		type;
 }				t_opt;
+
+#endif

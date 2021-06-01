@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <locale.h>
 
 int main()
 {
-	char c = 'a';
-	printf("[%.3c]\n", c);
-	printf("[%-10c]\n", c);
+	int	i = 1000;
+
+	if (-1)
+		printf("[%010d]\n", i);
 
 	return (0);
 }
