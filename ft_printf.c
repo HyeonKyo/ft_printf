@@ -255,6 +255,14 @@ char		*pf_itoa(int n, t_opt opts)
 	return (buf);
 }
 
+void	print_sign(t_opt opts, int n)
+{
+	if (opts.fg.plus && n > 0)
+		write(1, "+", 1);
+	else if (n < 0)
+		write(1, "-", 1);
+}
+
 void	d_print(va_list ap, t_opt opts, size_t *cnt)
 {
 	int		i;
@@ -275,13 +283,6 @@ void	d_print(va_list ap, t_opt opts, size_t *cnt)
 	//length는 나중에 고려
 	buf = pf_itoa(n, opts);//itoa는 기호 제외하고 출력
 	len = ft_strlen(buf);
-	//기호 출력 부분 -> 우측정렬 & 기호 있는 경우는 공백 뒤 기호가 와야함.
-	if (opts.fg.plus && n > 0)
-		write(1, "+", 1);
-	else if (n < 0)
-		write(1, "-", 1);
-	else
-		sign = 0;
 	if (opts.prec > 0)
 		size = opts.prec;
 	else if (opts.width > 0)
@@ -289,6 +290,7 @@ void	d_print(va_list ap, t_opt opts, size_t *cnt)
 	if (len >= size) //width나 precision의 영향이 없는 경우
 	{
 		//정상출력
+		print_sign(opts, n);
 		write (1, buf, ft_strlen(buf));
 		*cnt += ft_strlen(buf);
 	}
@@ -298,6 +300,7 @@ void	d_print(va_list ap, t_opt opts, size_t *cnt)
 		if (opts.prec > 0)
 		{
 			// 0옵션에 관계없이 0이 기본옵션(-옵션있어도 무시)
+			print_sign(opts, n);
 			print_char('0', size - len);
 			write(1, buf, len);
 			*cnt += size;
@@ -306,21 +309,27 @@ void	d_print(va_list ap, t_opt opts, size_t *cnt)
 		}
 		else //1. width에 의한 출력
 		{
-			
-			//기호 고려
-			if (sign)
+			//기호 포함 len 조정
+			if (opts.fg.plus || n < 0)
 				len++;
 			if (opts.fg.minus)//좌측 정렬 시 0무시
 			{
+				print_sign(opts, n);
 				write(1, buf, ft_strlen(buf));
 				print_char(' ', size - len);
 			}
 			else
 			{
 				if (opts.fg.zero)
+				{
+					print_sign(opts, n);
 					print_char('0', size - len);
+				}
 				else
+				{
 					print_char(' ', size - len);
+					print_sign(opts, n);
+				}
 				write(1, buf, ft_strlen(buf));
 			}
 			*cnt += size;
