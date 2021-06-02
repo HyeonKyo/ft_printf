@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeonkki <hyeonkki@student.42.kr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/02 15:43:34 by hyeonkki          #+#    #+#             */
+/*   Updated: 2021/06/02 15:43:35 by hyeonkki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
@@ -38,4 +50,40 @@ typedef struct	s_opt
 	char		type;
 }				t_opt;
 
+//libft
+size_t	ft_strlen(const char *str);
+void	*ft_memset(void *ptr, int nue, size_t num);
+int	ft_isdigit(int c);
+
+//utils1
+int		print_char(char c, int len);
+int		pf_atoi(const char *str, t_opt *opts, size_t *i);
+int		get_size(long long n);
+size_t		absol_n(int n);
+char	*pf_itoa(long long n, t_opt opts);
+//utils2
+int		print_sign(t_opt opts, int n);
+//find_opt
+int		find_flag(const char *str, t_opt *opts, size_t *i);
+void	find_width(const char *str, t_opt *opts, size_t *i);
+void	find_prec(const char *str, t_opt *opts, size_t *i);
+void	find_length(const char *str, t_opt *opts, size_t *i);
+int		find_type(char c, t_opt *opts);
+//get_opt
+int		get_opt(const char *str, t_opt *opts, size_t *i);
+//d_print
+char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size);
+size_t	print_sign_buf(int n, char *buf, t_opt opts);
+size_t	d_print_case1(int n, int size, t_opt opts, char *buf);
+size_t	d_print_case2(int n, int size, t_opt opts, char *buf);
+void	d_print(va_list ap, t_opt opts, size_t *cnt);
+//u_print
+char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size);
+size_t	print_buf(int n, char *buf, t_opt opts);
+size_t	u_print_case(unsigned int n, int size, t_opt opts, char *buf);
+void	u_print(va_list ap, t_opt opts, size_t *cnt);
+//print
+void	c_print(va_list ap, t_opt opts, size_t *cnt);
+void	print_arg(va_list ap, t_opt opts, size_t *cnt);
+int		ft_printf(const char *str, ...);
 #endif
