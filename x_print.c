@@ -1,6 +1,29 @@
 #include "ft_printf.h"
 
-char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size)
+char	*pf_itoa_hex(long long n, t_opt opts)
+{
+	int		len;
+	char	*buf;
+	char	*hex;
+
+	len = get_size_based(n, 16);
+	buf = (char *)malloc((len + 1) * sizeof(char));
+	if (buf == 0)
+		return (0);
+	buf[len] = 0;
+	if (opts.type == 'x')
+		hex = "0123456789abcdef";
+	else
+		hex = "0123456789ABCDEF";
+	while (n)
+	{
+		buf[--len] = hex[n % 16];
+		n = n / 16;
+	}
+	return (buf);
+}
+
+char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size)
 {
 	//length고려 코드 추가해야함.
 	char	*buf;
@@ -17,52 +40,13 @@ char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size)
 		*size = opts->prec;
 	else if (opts->width > 0)
 		*size = opts->width;
-	buf = pf_itoa((long long)*n, *opts);//pf_itoa는 기호 제외하고 숫자만 출력
+	buf = pf_itoa_hex((long long)*n, *opts);
 	if (!buf)
 		return (0);
 	return (buf);
 }
 
-size_t	print_buf(int n, char *buf, t_opt opts)
-{
-	size_t	cnt;
-
-	cnt = 0;
-	write(1, buf, ft_strlen(buf));
-	cnt += ft_strlen(buf);
-	return (cnt);
-}
-
-size_t	u_print_case(unsigned int n, int size, t_opt opts, char *buf)
-{
-	size_t	cnt;
-	int		len;
-
-	cnt = 0;
-	len = size - ft_strlen(buf);
-	if (len > 0 && opts.fg.minus)
-	{
-		cnt += print_buf(n, buf, opts);
-		if (opts.prec > 0)
-			cnt += print_char('0', len);
-		else
-			cnt += print_char(' ', len);
-	}
-	else
-	{
-		if (len > 0)
-		{
-			if (opts.fg.zero || (opts.prec > 0))
-				cnt += print_char('0', len);
-			else
-				cnt += print_char(' ', len);
-		}
-		cnt += print_buf(n, buf, opts);
-	}
-	return (cnt);
-}
-
-void	u_print(va_list ap, t_opt opts, size_t *cnt)
+void	x_print(va_list ap, t_opt opts, size_t *cnt)
 {
 	unsigned int    n;
 	int		        size;
@@ -70,7 +54,7 @@ void	u_print(va_list ap, t_opt opts, size_t *cnt)
 
 	n = 0;
 	size = 0;
-	buf = u_pre_task(ap, &opts, &n, &size);
+	buf = x_pre_task(ap, &opts, &n, &size);
 	if (buf == 0)
 		return ;
 	*cnt = u_print_case(n, size, opts, buf);

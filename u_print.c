@@ -24,7 +24,7 @@ char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size)
 }
 //공백, 부호, 숫자 or 부호 숫자 공백
 
-size_t	print_buf(int n, char *buf, t_opt opts)
+size_t	print_buf(char *buf)
 {
 	size_t	cnt;
 

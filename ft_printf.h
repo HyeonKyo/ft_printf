@@ -12,6 +12,7 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+#include <stdio.h>
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -58,9 +59,9 @@ int	ft_isdigit(int c);
 //utils1
 int		print_char(char c, int len);
 int		pf_atoi(const char *str, t_opt *opts, size_t *i);
-int		get_size(long long n);
-size_t		absol_n(int n);
-char	*pf_itoa(long long n, t_opt opts);
+int		get_size_based(long long n, int base);
+size_t	absol_n(int n);
+char	*pf_itoa(long long n);
 //utils2
 int		print_sign(t_opt opts, int n);
 //find_opt
@@ -79,9 +80,13 @@ size_t	d_print_case2(int n, int size, t_opt opts, char *buf);
 void	d_print(va_list ap, t_opt opts, size_t *cnt);
 //u_print
 char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size);
-size_t	print_buf(int n, char *buf, t_opt opts);
+size_t	print_buf(char *buf);
 size_t	u_print_case(unsigned int n, int size, t_opt opts, char *buf);
 void	u_print(va_list ap, t_opt opts, size_t *cnt);
+//x_print
+char	*pf_itoa_hex(long long n, t_opt opts);
+char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size);
+void	x_print(va_list ap, t_opt opts, size_t *cnt);
 //print
 void	c_print(va_list ap, t_opt opts, size_t *cnt);
 void	print_arg(va_list ap, t_opt opts, size_t *cnt);

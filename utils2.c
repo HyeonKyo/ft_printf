@@ -24,3 +24,26 @@ int		print_sign(t_opt opts, int n)
 		return (0);
 	return (1);
 }
+
+char	*pf_itoa_hex(long long n, t_opt opts)
+{
+	int		len;
+	char	*buf;
+	char	*hex;
+
+	len = get_size_based(n, 16);
+	buf = (char *)malloc((len + 1) * sizeof(char));
+	if (buf == 0)
+		return (0);
+	buf[len] = 0;
+	if (opts.type == 'x')
+		hex = "0123456789abcdef";
+	else
+		hex = "0123456789ABCDEF";
+	while (n)
+	{
+		buf[--len] = hex[n % 16];
+		n = n / 16;
+	}
+	return (buf);
+}

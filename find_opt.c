@@ -14,8 +14,6 @@
 
 int		find_flag(const char *str, t_opt *opts, size_t *i)
 {
-	char	c;
-
 	if (str[*i] == '-')
 		opts->fg.minus = 1;
 	else if (str[*i] == '+')

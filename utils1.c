@@ -40,7 +40,7 @@ int		pf_atoi(const char *str, t_opt *opts, size_t *i)
 	//1. 유효성 검사할 부분이 필요함.
 }
 
-int		get_size(long long n)
+int		get_size_based(long long n, int base)
 {
 	int	size;
 
@@ -48,7 +48,7 @@ int		get_size(long long n)
 	while (n)
 	{
 		size++;
-		n = n / 10;
+		n = n / base;
 	}
 	return (size);
 }
@@ -60,12 +60,12 @@ size_t	absol_n(int n)
 	return (n);
 }
 
-char	*pf_itoa(long long n, t_opt opts)
+char	*pf_itoa(long long n)
 {
 	int		len;
 	char	*buf;
 
-	len = get_size(n);
+	len = get_size_based(n, 10);
 	buf = (char *)malloc((len + 1) * sizeof(char));
 	if (buf == 0)
 		return (0);

@@ -86,6 +86,10 @@ void	print_arg(va_list ap, t_opt opts, size_t *cnt)
 		d_print(ap, opts, cnt);
 	else if (opts.type == 'u')
 		u_print(ap, opts, cnt);
+	else if (opts.type == 'x')
+		x_print(ap, opts, cnt);
+	else if (opts.type == 'X')
+		x_print(ap, opts, cnt);
 	//....
 }
 
@@ -153,9 +157,29 @@ int main()
 {
 	int	cnt;
 
-	ft_printf("[%010.d]\n", 1000);
-	ft_printf("[%.100u]\n", -100);
-	ft_printf("------------\n");
+	ft_printf("[%x]\n", 1000);
+	ft_printf("[%-10x]\n", 1000);
+	ft_printf("[%010x]\n", 1000);
+	ft_printf("[%.10x]\n", 1000);
+	ft_printf("[%+10x]\n", 1000);
+	ft_printf("[%010x]\n", 1000);
+	ft_printf("[%.10x]\n", -100);
+	ft_printf("\n----------------\n\n");
+	ft_printf("[%X]\n", 1000);
+	ft_printf("[%-10X]\n", 1000);
+	ft_printf("[%010X]\n", 1000);
+	ft_printf("[%.10X]\n", 1000);
+	ft_printf("[%+10X]\n", 1000);
+	ft_printf("[%010X]\n", 1000);
+	ft_printf("[%.10X]\n", -100);
+	ft_printf("\n----------------\n\n");
+	printf("[%x]\n", 1000);
+	printf("[%-10x]\n", 1000);
+	printf("[%010x]\n", 1000);
+	printf("[%.10x]\n", 1000);
+	printf("[%+10x]\n", 1000);
+	printf("[%010x]\n", 1000);
+	printf("[%.10x]\n", -100);
 
 	return (0);
 }
