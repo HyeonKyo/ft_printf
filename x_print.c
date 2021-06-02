@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   x_print.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeonkki <hyeonkki@student.42.kr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/02 18:46:00 by hyeonkki          #+#    #+#             */
+/*   Updated: 2021/06/02 18:46:01 by hyeonkki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char	*pf_itoa_hex(long long n, t_opt opts)
@@ -57,5 +69,5 @@ void	x_print(va_list ap, t_opt opts, size_t *cnt)
 	buf = x_pre_task(ap, &opts, &n, &size);
 	if (buf == 0)
 		return ;
-	*cnt = u_print_case(n, size, opts, buf);
+	*cnt = u_print_case(size, opts, buf);
 }

@@ -2,8 +2,8 @@
 
 // int main()
 // {
-//     int i = 1000;
-//     printf("[%010.d]\n", 1000);
+//     char *s = "abcde";
+//     printf("[%10.3s]\n", s);
 
 //     return (0);
 // }

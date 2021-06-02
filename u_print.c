@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   u_print.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeonkki <hyeonkki@student.42.kr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/02 18:45:53 by hyeonkki          #+#    #+#             */
+/*   Updated: 2021/06/02 18:45:54 by hyeonkki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size)
@@ -17,24 +29,14 @@ char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size)
 		*size = opts->prec;
 	else if (opts->width > 0)
 		*size = opts->width;
-	buf = pf_itoa((long long)*n, *opts);//pf_itoa는 기호 제외하고 숫자만 출력
+	buf = pf_itoa((long long)*n);//pf_itoa는 기호 제외하고 숫자만 출력
 	if (!buf)
 		return (0);
 	return (buf);
 }
 //공백, 부호, 숫자 or 부호 숫자 공백
 
-size_t	print_buf(char *buf)
-{
-	size_t	cnt;
-
-	cnt = 0;
-	write(1, buf, ft_strlen(buf));
-	cnt += ft_strlen(buf);
-	return (cnt);
-}
-
-size_t	u_print_case(unsigned int n, int size, t_opt opts, char *buf)
+size_t	u_print_case(int size, t_opt opts, char *buf)
 {
 	size_t	cnt;
 	int		len;
@@ -43,7 +45,7 @@ size_t	u_print_case(unsigned int n, int size, t_opt opts, char *buf)
 	len = size - ft_strlen(buf);
 	if (len > 0 && opts.fg.minus)
 	{
-		cnt += print_buf(n, buf, opts);
+		cnt += print_str(buf, ft_strlen(buf));
 		if (opts.prec > 0)
 			cnt += print_char('0', len);
 		else
@@ -58,7 +60,7 @@ size_t	u_print_case(unsigned int n, int size, t_opt opts, char *buf)
 			else
 				cnt += print_char(' ', len);
 		}
-		cnt += print_buf(n, buf, opts);
+		cnt += print_str(buf, ft_strlen(buf));
 	}
 	return (cnt);
 }
@@ -74,5 +76,5 @@ void	u_print(va_list ap, t_opt opts, size_t *cnt)
 	buf = u_pre_task(ap, &opts, &n, &size);
 	if (buf == 0)
 		return ;
-	*cnt = u_print_case(n, size, opts, buf);
+	*cnt = u_print_case(size, opts, buf);
 }

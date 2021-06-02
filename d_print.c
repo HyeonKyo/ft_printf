@@ -26,7 +26,7 @@ char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
 		*size = opts->prec;
 	else if (opts->width > 0)
 		*size = opts->width;
-	buf = pf_itoa(*n, *opts);//pf_itoa는 기호 제외하고 숫자만 출력
+	buf = pf_itoa(*n);//pf_itoa는 기호 제외하고 숫자만 출력
 	if (!buf)
 		return (0);
 	return (buf);
