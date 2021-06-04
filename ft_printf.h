@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <wctype.h>
+# include "./libft/libft.h"
 
 typedef struct	s_flag
 {
@@ -51,11 +52,6 @@ typedef struct	s_opt
 	char		type;
 }				t_opt;
 
-//libft
-size_t	ft_strlen(const char *str);
-void	*ft_memset(void *ptr, int nue, size_t num);
-int	ft_isdigit(int c);
-
 //utils1
 int		print_char(char c, int len);
 int		pf_atoi(const char *str, t_opt *opts, size_t *i);
@@ -84,11 +80,16 @@ char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size);
 size_t	u_print_case(int size, t_opt opts, char *buf);
 void	u_print(va_list ap, t_opt opts, size_t *cnt);
 //x_print
-char	*pf_itoa_hex(long long n, t_opt opts);
+char	*pf_itoa_hex(unsigned long long n, t_opt opts);
 char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size);
 void	x_print(va_list ap, t_opt opts, size_t *cnt);
 //s_print
 void	s_print(va_list ap, t_opt opts, size_t *cnt);
+//p_print
+char	*p_pre_task(va_list ap, t_opt *opts, unsigned long long *n, int *size);
+size_t	print_hex_addr(char *buf);
+size_t	p_print_case(int print_size, t_opt opts, char *buf);
+void	p_print(va_list ap, t_opt opts, size_t *cnt);
 //print
 void	c_print(va_list ap, t_opt opts, size_t *cnt);
 void	print_arg(va_list ap, t_opt opts, size_t *cnt);

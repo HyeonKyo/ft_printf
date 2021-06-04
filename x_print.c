@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*pf_itoa_hex(long long n, t_opt opts)
+char	*pf_itoa_hex(unsigned long long n, t_opt opts)
 {
 	int		len;
 	char	*buf;
@@ -23,7 +23,7 @@ char	*pf_itoa_hex(long long n, t_opt opts)
 	if (buf == 0)
 		return (0);
 	buf[len] = 0;
-	if (opts.type == 'x')
+	if (opts.type == 'x' || opts.type == 'p')
 		hex = "0123456789abcdef";
 	else
 		hex = "0123456789ABCDEF";
@@ -52,7 +52,7 @@ char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size)
 		*size = opts->prec;
 	else if (opts->width > 0)
 		*size = opts->width;
-	buf = pf_itoa_hex((long long)*n, *opts);
+	buf = pf_itoa_hex((unsigned long long)*n, *opts);
 	if (!buf)
 		return (0);
 	return (buf);

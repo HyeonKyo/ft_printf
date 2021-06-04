@@ -92,6 +92,8 @@ void	print_arg(va_list ap, t_opt opts, size_t *cnt)
 		x_print(ap, opts, cnt);
 	else if (opts.type == 's')
 		s_print(ap, opts, cnt);
+	else if (opts.type == 'p')
+		p_print(ap, opts, cnt);
 	//....
 }
 
@@ -159,15 +161,17 @@ int main()
 {
 	char	*s = "abcde";
 
-	ft_printf("[%s]\n", s);
-	ft_printf("[%10s]\n", s);
-	ft_printf("[%.3s]\n", s);
-	ft_printf("[%10.3s]\n", s);
+	ft_printf("[%p]\n", s);
+	ft_printf("[%3p]\n", s);
+	ft_printf("[%20p]\n", s);
+	ft_printf("[%-20p]\n", s);
+	ft_printf("[%20.3p]\n", s);
 	ft_printf("\n----------------\n\n");
-	printf("[%s]\n", s);
-	printf("[%10s]\n", s);
-	printf("[%.3s]\n", s);
-	printf("[%10.3s]\n", s);
+	printf("[%p]\n", s);
+	printf("[%3p]\n", s);
+	printf("[%20p]\n", s);
+	printf("[%-20p]\n", s);
+	printf("[%20.3p]\n", s);
 
 	return (0);
 }
