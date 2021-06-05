@@ -6,7 +6,7 @@
 /*   By: hyeonkki <hyeonkki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:43:05 by hyeonkki          #+#    #+#             */
-/*   Updated: 2021/06/02 15:43:07 by hyeonkki         ###   ########.fr       */
+/*   Updated: 2021/06/05 15:20:54 by hyeonkki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,22 @@
 
 char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
 {
-	//length고려 코드 추가해야함.
 	char	*buf;
 
 	*n = va_arg(ap, int);
-	if (opts->fg.hash || (opts->prec == -3 && n == 0))//경메 출력 조건
+	if (opts->fg.hash || (opts->prec < 0  && *n == 0 && !opts->width))//경메 출력 조건
 		return (0);
-	if ((opts->fg.minus && opts->fg.zero) || opts->prec == -2)//0 flag 무시조건.
+	if ((opts->fg.minus && opts->fg.zero) || opts->prec != 0)//0 flag 무시조건.
 		opts->fg.zero = 0;
-	if (opts->prec > 0)
+	if (opts->prec == -2)
+		opts->fg.minus = 0;
+	if (opts->prec >= opts->width)
+	{
 		*size = opts->prec;
-	else if (opts->width > 0)
+		if (opts->fg.plus || opts->fg.space || n < 0)
+			(*size)++;
+	}
+	else if (opts->width > opts->prec)
 		*size = opts->width;
 	buf = pf_itoa(*n);//pf_itoa는 기호 제외하고 숫자만 출력
 	if (!buf)
@@ -32,71 +37,70 @@ char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
 	return (buf);
 }
 //공백, 부호, 숫자 or 부호 숫자 공백
-
-size_t	print_sign_buf(int n, char *buf, t_opt opts)
+size_t	print_prec_buf(int n, t_opt opts, char *buf)
 {
+	int		buf_len;
 	size_t	cnt;
 
 	cnt = 0;
-	cnt += print_sign(opts, n);
-	write(1, buf, ft_strlen(buf));
-	cnt += ft_strlen(buf);
+	buf_len = (int)ft_strlen(buf);
+	if (!opts.fg.zero)
+		cnt += print_sign(opts, n);
+	if (opts.prec > buf_len)
+		cnt += print_char('0', opts.prec - buf_len);
+	cnt += print_str(buf, buf_len);
 	return (cnt);
 }
 
-size_t	d_print_case1(int n, int size, t_opt opts, char *buf)
+size_t	d_print_case(int n, int size, t_opt opts, char *buf)//prec있는 경우 && prec > buf_len인 경우
 {
 	size_t	cnt;
-	int	len;
+	int		buf_len;
+	size_t	print_len;
 
 	cnt = 0;
-	len = size - ft_strlen(buf);
-	if (opts.fg.plus || n < 0)
-		len--;
-	if (len > 0 && opts.prec <= 0)
+	if (opts.prec < 0  && n == 0)
+	{
+		free(buf);
+		buf = 0;
+	}
+	buf_len = (int)ft_strlen(buf);
+	if (size > buf_len)
 	{
 		if (opts.fg.minus)
+			cnt += print_prec_buf(n, opts, buf);
+		if (opts.width > opts.prec)
 		{
-			cnt += print_sign_buf(n, buf, opts);
-			cnt += print_char(' ', len);
-		}
-		else
-		{
+			if (opts.prec > buf_len)
+				print_len = opts.width - opts.prec;
+			else
+				print_len = opts.width - buf_len;
+			if (opts.fg.plus || opts.fg.space || n < 0)//부호 출력 시
+				print_len--;
 			if (!opts.fg.zero)
+				print_char(' ', print_len);
+			else
 			{
-				cnt += print_char(' ', len);
-				cnt += print_sign_buf(n, buf, opts);
+				print_sign(opts, n);
+				print_char('0', print_len);
 			}
 		}
+		if (!opts.fg.minus)
+			cnt += print_prec_buf(n, opts, buf);
 	}
-	return (cnt);
-}
-
-size_t	d_print_case2(int n, int size, t_opt opts, char *buf)//정상 출력, 부호+0+숫자 출력
-{
-	size_t	cnt;
-	int	len;
-
-	cnt = 0;
-	len = size - ft_strlen(buf);
-	cnt += print_sign(opts, n);
-	if (len > 0)
+	else
 	{
-		if (opts.prec > 0)
-			cnt += print_char('0', len);
-		else
-		{
-			if (!opts.fg.minus && opts.fg.zero)
-			{
-				len--;
-				cnt += print_char('0', len);
-			}
-		}
+		cnt += print_sign(opts, n);
+		cnt += print_str(buf, ft_strlen(buf));
 	}
-	write(1, buf, ft_strlen(buf));
-	cnt += ft_strlen(buf);
 	return (cnt);
 }
+//1. prec or width가 buf의 길이보다 작은 경우는 buf정상 출력(flag만 고려)
+	//2. width만 있는 경우 buf_len, sign만큼 뺀 나머지 0 or 공백 출력(flag : zero minus plus)
+	//3. prec만 있는 경우 sign제외한 n - buf_len만큼 0을 채워주면서 출력
+	//3. prec > buf_len인 경우
+	//		=> 1. prec > width인 경우 -> width무시하고 prec만큼 0붙여서 출력(flag 정상출력 됨.)
+	//		=> 2. prec < width인 경우 -> width - (sign + prec)만큼 공백, 문자는 기호 + 0 + 숫자
 
 void	d_print(va_list ap, t_opt opts, size_t *cnt)
 {
@@ -109,6 +113,5 @@ void	d_print(va_list ap, t_opt opts, size_t *cnt)
 	buf = d_pre_task(ap, &opts, &n, &size);
 	if (buf == 0)
 		return ;
-	if (!(*cnt = d_print_case1(n, size, opts, buf)))
-		*cnt = d_print_case2(n, size, opts, buf);
+	*cnt = d_print_case(n, size, opts, buf);
 }

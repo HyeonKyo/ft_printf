@@ -51,6 +51,10 @@ typedef struct	s_opt
 	t_length	ln;
 	char		type;
 }				t_opt;
+//libft
+void				*ft_memset(void *ptr, int value, size_t num);
+size_t				ft_strlen(const char *str);
+int					ft_isdigit(int c);
 
 //utils1
 int		print_char(char c, int len);
@@ -71,17 +75,16 @@ int		find_type(char c, t_opt *opts);
 int		get_opt(const char *str, t_opt *opts, size_t *i);
 //d_print
 char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size);
-size_t	print_sign_buf(int n, char *buf, t_opt opts);
-size_t	d_print_case1(int n, int size, t_opt opts, char *buf);
-size_t	d_print_case2(int n, int size, t_opt opts, char *buf);
+size_t	print_prec_buf(int n, t_opt opts, char *buf);
+size_t	d_print_case(int n, int size, t_opt opts, char *buf);
 void	d_print(va_list ap, t_opt opts, size_t *cnt);
 //u_print
-char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size);
-size_t	u_print_case(int size, t_opt opts, char *buf);
+char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n);
+size_t	u_print_case(t_opt opts, char *buf);
 void	u_print(va_list ap, t_opt opts, size_t *cnt);
 //x_print
 char	*pf_itoa_hex(unsigned long long n, t_opt opts);
-char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n, int *size);
+char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n);
 void	x_print(va_list ap, t_opt opts, size_t *cnt);
 //s_print
 void	s_print(va_list ap, t_opt opts, size_t *cnt);

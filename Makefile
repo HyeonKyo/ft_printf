@@ -32,9 +32,10 @@ $(NAME)	:	$(OBJS)
 
 clean	:
 			$(RM) $(OBJS)
-			$(MAKE) -C $(LIB_DIR) fclean
+			$(MAKE) -C $(LIB_DIR) clean
 
 fclean	:	clean
+			$(RM) $(LIB_DIR)/libft.a
 			$(RM) $(NAME)
 
 re		:	fclean all

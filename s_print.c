@@ -15,29 +15,26 @@
 void	s_print(va_list ap, t_opt opts, size_t *cnt)
 {
 	char	*s;
-    size_t	print_len;
-    int		space_len;
+    int		print_len;
+	int		space_len;
 
 	s = va_arg(ap, char *);
-	if (opts.prec == -2)
+	if (s == 0)
+	{
+		s = (char *)malloc(sizeof(char));
+		s[0] = 0;
+	}
+	if (opts.prec < 0)
 		print_len = 0;
     else if (opts.prec > 0 && opts.prec < (int)ft_strlen(s))
         print_len = opts.prec;
     else
-        print_len = ft_strlen(s);
+		print_len = ft_strlen(s);
 	space_len = opts.width - print_len;
 	//출력부분
-	if (opts.width == 0 || space_len <= 0)
-		*cnt += print_str((char *)s, print_len);
-	//3. width가 있으면 minus옵션이 있는 경우와 없는 경우로 나뉨.
-	else if (opts.fg.minus)
-	{
-		*cnt += print_str((char *)s, print_len);
+	if (space_len > 0 && !opts.fg.minus)
+		*cnt += print_char(' ', space_len);
+	*cnt += print_str(s, print_len);
+	if (space_len > 0 && opts.fg.minus)
         *cnt += print_char(' ', space_len);
-	}
-	else
-	{
-        *cnt += print_char(' ', space_len);
-		*cnt += print_str((char *)s, print_len);
-	}
 }

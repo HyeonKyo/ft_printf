@@ -30,6 +30,8 @@ size_t	print_str(char *str, size_t len)
 	size_t	cnt;
 
 	cnt = 0;
+	if (str[0] == 0 && len == 0)
+	 	write(1, str, 1);
 	write(1, str, len);
 	cnt += len;
 	return (cnt);

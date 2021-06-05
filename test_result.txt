@@ -1,0 +1,2558 @@
+
+#########PFT##########
+Test   6 (pct_basic) : FAILED.$
+    First line of code: {return test("%%");}$
+      expected output : "%"$
+      your output     : ""$
+      expected (nonprintable as hex) : "%"$
+      actual   (nonprintable as hex) : ""$
+$
+Test   7 (pct_5w) : FAILED.$
+    First line of code: {return test("%5%");}$
+      expected output : "    %"$
+      your output     : ""$
+      expected (nonprintable as hex) : "    %"$
+      actual   (nonprintable as hex) : ""$
+$
+Test   8 (pct_5wlj) : FAILED.$
+    First line of code: {return test("%-5%");}$
+      expected output : "%    "$
+      your output     : ""$
+      expected (nonprintable as hex) : "%    "$
+      actual   (nonprintable as hex) : ""$
+$
+Test   9 (pct_5wzp) : FAILED.$
+    First line of code: {return test("%05%");}$
+      expected output : "0000%"$
+      your output     : ""$
+      expected (nonprintable as hex) : "0000%"$
+      actual   (nonprintable as hex) : ""$
+$
+Test  10 (pct_5wljzp) : FAILED.$
+    First line of code: {return test("%-05%");}$
+      expected output : "%    "$
+      your output     : "55"$
+      expected (nonprintable as hex) : "%    "$
+      actual   (nonprintable as hex) : "55"$
+$
+Test  16 (c_allprintable_combined) : FAILED.$
+    First line of code: {return test("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%      expected output : " !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~^?"$
+      your output     : " ^@^@^@!^@^@^@"^@^@^@#^@^@^@$^@^@^@%^@^@^@&^@^@^@'^@^@^@(^@^@^@)^@^@^@*^@^@^@+^@^@^@,^@^@^@-^@^@^@.^@^@^@/^@^@^@0^@^@^@1^@^@^@2^@^@^@3^@^@^@4^@^@^@5^@^@^@6^@^@^@7^@^@^@8^@^@^@9^@^@^@:^@^@^@;^@^@^@<^@^@^@=^@^@^@>^@^@^@?^@^@^@@^@^@^@A^@^@^@B^@^@^@C^@^@^@D^@^@^@E^@"$
+      expected (nonprintable as hex) : " !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~\x7f"$
+      actual   (nonprintable as hex) : " \x00\x00\x00!\x00\x00\x00"\x00\x00\x00#\x00\x00\x00$\x00\x00\x00%\x00\x00\x00&\x00\x00\x00'\x00\x00\x00(\x00\x00\x00)\x00\x00\x00*\x00\x00\x00+\x00\x00\x00,\x00\x00\x00-\x00\x00\x00.\x00\x00\x00/\x00\x00\x000\x00\x00\x001\x00\x00\x002\x00\x00\x003\x00\x00\x004\x00\x00\x005\x00\x00\x006\x00\x00\x007\x00\x00\x008\x00\x00\x009\x00\x00\x00:\x00\x00\x00;\x00\x00\x00<\x00\x00\x00=\x00\x00\x00>\x00\x00\x00?\x00\x00\x00@\x00\x00\x00A\x00\x00\x00B\x00\x00\x00C\x00\x00\x00D\x00\x00\x00E\x00"$
+$
+Test  17 (c_1_31_combined) : FAILED.$
+    First line of code: {return test("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",(char)1,(char)2,(char)3,(char)4,(char)5,(char)6      expected output : "^A^B^C^D^E^F^G^H	$
+^K^L^M^N^O^P^Q^R^S^T^U^V^W^X^Y^Z^[^\^]^^^_"$
+      your output     : "^A^@^@^@^B^@^@^@^C^@^@^@^D^@^@^@^E^@^@^@^F^@^@^@^G^@^@^@^H^@^@^@	^@^@^@$
+^@^@^@^K^@^@^@^L^@^@^@^M^@^@^@^N^@^@^@^O^@^@^@^P^@^@^@^Q^@^@^@^R^@^@^@^S^@^@^@^T^@^@^@^U^@^@^@^V^@^@^@^W^@^@^@^X^@^@^@^Y^@^@^@^Z^@^@^@^[^@^@^@^\^@^@^@^]^@^@^@^^^@^@^@^_^@^@^@"$
+      expected (nonprintable as hex) : "\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f"$
+      actual   (nonprintable as hex) : "\x01\x00\x00\x00\x02\x00\x00\x00\x03\x00\x00\x00\x04\x00\x00\x00\x05\x00\x00\x00\x06\x00\x00\x00\x07\x00\x00\x00\x08\x00\x00\x00\x09\x00\x00\x00\x0a\x00\x00\x00\x0b\x00\x00\x00\x0c\x00\x00\x00\x0d\x00\x00\x00\x0e\x00\x00\x00\x0f\x00\x00\x00\x10\x00\x00\x00\x11\x00\x00\x00\x12\x00\x00\x00\x13\x00\x00\x00\x14\x00\x00\x00\x15\x00\x00\x00\x16\x00\x00\x00\x17\x00\x00\x00\x18\x00\x00\x00\x19\x00\x00\x00\x1a\x00\x00\x00\x1b\x00\x00\x00\x1c\x00\x00\x00\x1d\x00\x00\x00\x1e\x00\x00\x00\x1f\x00\x00\x00"$
+$
+Test  18 (c_128_255_combined) : FAILED.$
+    First line of code: {return test("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%      expected output : "M-^@M-^AM-^BM-^CM-^DM-^EM-^FM-^GM-^HM-^IM-^JM-^KM-^LM-^MM-^NM-^OM-^PM-^QM-^RM-^SM-^TM-^UM-^VM-^WM-^XM-^YM-^ZM-^[M-^\M-^]M-^^M-^_ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"$
+      your output     : "M-^@ÿÿÿM-^AÿÿÿM-^BÿÿÿM-^CÿÿÿM-^DÿÿÿM-^EÿÿÿM-^FÿÿÿM-^GÿÿÿM-^HÿÿÿM-^IÿÿÿM-^JÿÿÿM-^KÿÿÿM-^LÿÿÿM-^MÿÿÿM-^NÿÿÿM-^OÿÿÿM-^PÿÿÿM-^QÿÿÿM-^RÿÿÿM-^SÿÿÿM-^TÿÿÿM-^UÿÿÿM-^VÿÿÿM-^WÿÿÿM-^XÿÿÿM-^YÿÿÿM-^ZÿÿÿM-^[ÿÿÿM-^\ÿÿÿM-^]ÿÿÿM-^^ÿÿÿM-^_ÿÿÿ ÿÿÿ¡ÿÿÿ¢ÿÿÿ£ÿÿÿ¤ÿÿÿ¥ÿ"$
+      expected (nonprintable as hex) : "\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff"$
+      actual   (nonprintable as hex) : "\x80\xff\xff\xff\x81\xff\xff\xff\x82\xff\xff\xff\x83\xff\xff\xff\x84\xff\xff\xff\x85\xff\xff\xff\x86\xff\xff\xff\x87\xff\xff\xff\x88\xff\xff\xff\x89\xff\xff\xff\x8a\xff\xff\xff\x8b\xff\xff\xff\x8c\xff\xff\xff\x8d\xff\xff\xff\x8e\xff\xff\xff\x8f\xff\xff\xff\x90\xff\xff\xff\x91\xff\xff\xff\x92\xff\xff\xff\x93\xff\xff\xff\x94\xff\xff\xff\x95\xff\xff\xff\x96\xff\xff\xff\x97\xff\xff\xff\x98\xff\xff\xff\x99\xff\xff\xff\x9a\xff\xff\xff\x9b\xff\xff\xff\x9c\xff\xff\xff\x9d\xff\xff\xff\x9e\xff\xff\xff\x9f\xff\xff\xff\xa0\xff\xff\xff\xa1\xff\xff\xff\xa2\xff\xff\xff\xa3\xff\xff\xff\xa4\xff\xff\xff\xa5\xff"$
+$
+Test  22 (c_allprintable_width_lj) : FAILED.$
+    First line of code: {return test("%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1      expected output : "  !  "   #$ %  &   '( )  *   +, -  .   /0 1  2   34 5  6   78 9  :   ;< =  >   ?@ A  B   CD E  F   GH I  J   KL M  N   OP Q  R   ST U  V   WX Y  Z   ["$
+      your output     : " ^@^@^@ !^@^@^@  "^@^@^@   #^@^@^@$^@^@^@ %^@^@^@  &^@^@^@   '^@^@^@(^@^@^@ )^@^@^@  *^@^@^@   +^@^@^@,^@^@^@ -^@^@^@  .^@^@^@   /^@^@^@0^@^@^@ 1^@^@^@  2^@^@^@   3^@^@^@4^@^@^@ 5^@^@^@  6^@^@^@   7^@^@^@8^@^@^@ 9^@^@^@  :^@^@^@   "$
+      expected (nonprintable as hex) : "  !  "   #$ %  &   '( )  *   +, -  .   /0 1  2   34 5  6   78 9  :   ;< =  >   ?@ A  B   CD E  F   GH I  J   KL M  N   OP Q  R   ST U  V   WX Y  Z   ["$
+      actual   (nonprintable as hex) : " \x00\x00\x00 !\x00\x00\x00  "\x00\x00\x00   #\x00\x00\x00$\x00\x00\x00 %\x00\x00\x00  &\x00\x00\x00   '\x00\x00\x00(\x00\x00\x00 )\x00\x00\x00  *\x00\x00\x00   +\x00\x00\x00,\x00\x00\x00 -\x00\x00\x00  .\x00\x00\x00   /\x00\x00\x000\x00\x00\x00 1\x00\x00\x00  2\x00\x00\x00   3\x00\x00\x004\x00\x00\x00 5\x00\x00\x00  6\x00\x00\x00   7\x00\x00\x008\x00\x00\x00 9\x00\x00\x00  :\x00\x00\x00   "$
+$
+Test  23 (c_1_31_width_lj) : FAILED.$
+    First line of code: {return test("%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1      expected output : "^A ^B  ^C   ^D^E ^F  ^G   ^H	 $
+  ^K   ^L^M ^N  ^O   ^P^Q ^R  ^S   ^T^U ^V  ^W   ^X^Y ^Z  ^[   ^\^] ^^  ^_   "$
+      your output     : "^A^@^@^@ ^B^@^@^@  ^C^@^@^@   ^D^@^@^@^E^@^@^@ ^F^@^@^@  ^G^@^@^@   ^H^@^@^@	^@^@^@ $
+^@^@^@  ^K^@^@^@   ^L^@^@^@^M^@^@^@ ^N^@^@^@  ^O^@^@^@   ^P^@^@^@^Q^@^@^@ ^R^@^@^@  ^S^@^@^@   ^T^@^@^@^U^@^@^@ ^V^@^@^@  ^W^@^@^@   ^X^@^@^@^Y^@^@^@ ^Z^@^@^@  ^[^@^@^@   "$
+      expected (nonprintable as hex) : "\x01 \x02  \x03   \x04\x05 \x06  \x07   \x08\x09 \x0a  \x0b   \x0c\x0d \x0e  \x0f   \x10\x11 \x12  \x13   \x14\x15 \x16  \x17   \x18\x19 \x1a  \x1b   \x1c\x1d \x1e  \x1f   "$
+      actual   (nonprintable as hex) : "\x01\x00\x00\x00 \x02\x00\x00\x00  \x03\x00\x00\x00   \x04\x00\x00\x00\x05\x00\x00\x00 \x06\x00\x00\x00  \x07\x00\x00\x00   \x08\x00\x00\x00\x09\x00\x00\x00 \x0a\x00\x00\x00  \x0b\x00\x00\x00   \x0c\x00\x00\x00\x0d\x00\x00\x00 \x0e\x00\x00\x00  \x0f\x00\x00\x00   \x10\x00\x00\x00\x11\x00\x00\x00 \x12\x00\x00\x00  \x13\x00\x00\x00   \x14\x00\x00\x00\x15\x00\x00\x00 \x16\x00\x00\x00  \x17\x00\x00\x00   \x18\x00\x00\x00\x19\x00\x00\x00 \x1a\x00\x00\x00  \x1b\x00\x00\x00   "$
+$
+Test  24 (c_128_255_width_lj) : FAILED.$
+    First line of code: {return test("%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4      expected output : "M-^@M-^A M-^B  M-^C   M-^DM-^E M-^F  M-^G   M-^HM-^I M-^J  M-^K   M-^LM-^M M-^N  M-^O   M-^PM-^Q M-^R  M-^S   M-^TM-^U M-^V  M-^W   M-^XM-^Y M-^Z  M-^[   M-^\M-^] M-^^  M-^_    ¡ ¢  £   ¤¥ ¦  §   ¨© ª  «   ¬­ ®  ¯   °± ²  ³   ´µ ¶  ·   ¸¹ º  »   "$
+      your output     : "M-^@ÿÿÿM-^Aÿÿÿ M-^Bÿÿÿ  M-^Cÿÿÿ   M-^DÿÿÿM-^Eÿÿÿ M-^Fÿÿÿ  M-^Gÿÿÿ   M-^HÿÿÿM-^Iÿÿÿ M-^Jÿÿÿ  M-^Kÿÿÿ   M-^LÿÿÿM-^Mÿÿÿ M-^Nÿÿÿ  M-^Oÿÿÿ   M-^PÿÿÿM-^Qÿÿÿ M-^Rÿÿÿ  M-^Sÿÿÿ   M-^TÿÿÿM-^Uÿÿÿ M-^Vÿÿÿ  M-^Wÿÿÿ   M-^XÿÿÿM-^Yÿÿÿ M-^Zÿÿÿ  M-^[ÿÿ"$
+      expected (nonprintable as hex) : "\x80\x81 \x82  \x83   \x84\x85 \x86  \x87   \x88\x89 \x8a  \x8b   \x8c\x8d \x8e  \x8f   \x90\x91 \x92  \x93   \x94\x95 \x96  \x97   \x98\x99 \x9a  \x9b   \x9c\x9d \x9e  \x9f   \xa0\xa1 \xa2  \xa3   \xa4\xa5 \xa6  \xa7   \xa8\xa9 \xaa  \xab   \xac\xad \xae  \xaf   \xb0\xb1 \xb2  \xb3   \xb4\xb5 \xb6  \xb7   \xb8\xb9 \xba  \xbb   "$
+      actual   (nonprintable as hex) : "\x80\xff\xff\xff\x81\xff\xff\xff \x82\xff\xff\xff  \x83\xff\xff\xff   \x84\xff\xff\xff\x85\xff\xff\xff \x86\xff\xff\xff  \x87\xff\xff\xff   \x88\xff\xff\xff\x89\xff\xff\xff \x8a\xff\xff\xff  \x8b\xff\xff\xff   \x8c\xff\xff\xff\x8d\xff\xff\xff \x8e\xff\xff\xff  \x8f\xff\xff\xff   \x90\xff\xff\xff\x91\xff\xff\xff \x92\xff\xff\xff  \x93\xff\xff\xff   \x94\xff\xff\xff\x95\xff\xff\xff \x96\xff\xff\xff  \x97\xff\xff\xff   \x98\xff\xff\xff\x99\xff\xff\xff \x9a\xff\xff\xff  \x9b\xff\xff"$
+$
+Test  25 (c_nullterm_basic) : FAILED.$
+    First line of code: {return test("%c", '$
+      expected output : "^@"$
+      your output     : "^@^@^@^@"$
+      expected (nonprintable as hex) : "\x00"$
+      actual   (nonprintable as hex) : "\x00\x00\x00\x00"$
+$
+Test  27 (c_nullterm_5wlj) : FAILED.$
+    First line of code: {return test("%-5c", '$
+      expected output : "^@    "$
+      your output     : "^@^@^@^@    "$
+      expected (nonprintable as hex) : "\x00    "$
+      actual   (nonprintable as hex) : "\x00\x00\x00\x00    "$
+$
+Test  32 (s_empty_string_expansion) : FAILED.$
+    First line of code: {return test("this %s is empty", "");}$
+      expected output : "this  is empty"$
+      your output     : "this ^@ is empty"$
+      expected (nonprintable as hex) : "this  is empty"$
+      actual   (nonprintable as hex) : "this \x00 is empty"$
+$
+Test  33 (s_full_then_empty_string) : FAILED.$
+    First line of code: {return test("this %s is %s", "hello", "");}$
+      expected output : "this hello is "$
+      your output     : "this hello is ^@"$
+      expected (nonprintable as hex) : "this hello is "$
+      actual   (nonprintable as hex) : "this hello is \x00"$
+$
+Test  34 (s_empty_then_full_string) : FAILED.$
+    First line of code: {return test("this %s is %s", "", "hello");}$
+      expected output : "this  is hello"$
+      your output     : "this ^@ is hello"$
+      expected (nonprintable as hex) : "this  is hello"$
+      actual   (nonprintable as hex) : "this \x00 is hello"$
+$
+Test  73 (s_null_basic_string_expansion) : FAILED.$
+    First line of code: {return test("hello, %s.", NULL);}$
+      expected output : "hello, (null)."$
+      your output     : "hello, ^@."$
+      expected (nonprintable as hex) : "hello, (null)."$
+      actual   (nonprintable as hex) : "hello, \x00."$
+$
+Test  74 (s_null_only_string_expansion) : FAILED.$
+    First line of code: {return test("%s", NULL);}$
+      expected output : "(null)"$
+      your output     : "^@"$
+      expected (nonprintable as hex) : "(null)"$
+      actual   (nonprintable as hex) : "\x00"$
+$
+Test  75 (s_null_space_padded_field_width) : FAILED.$
+    First line of code: {return test("%32s", NULL);}$
+      expected output : "                          (null)"$
+      your output     : "                                ^@"$
+      expected (nonprintable as hex) : "                          (null)"$
+      actual   (nonprintable as hex) : "                                \x00"$
+$
+Test  76 (s_null_space_padded_over_field_width) : FAILED.$
+    First line of code: {return test("%2s", NULL);}$
+      expected output : "(null)"$
+      your output     : "  ^@"$
+      expected (nonprintable as hex) : "(null)"$
+      actual   (nonprintable as hex) : "  \x00"$
+$
+Test  77 (s_null_space_padded_field_width_lj) : FAILED.$
+    First line of code: {return test("%-32s", NULL);}$
+      expected output : "(null)                          "$
+      your output     : "^@                                "$
+      expected (nonprintable as hex) : "(null)                          "$
+      actual   (nonprintable as hex) : "\x00                                "$
+$
+Test  78 (s_null_space_padded_field_width2_lj) : FAILED.$
+    First line of code: {return test("%-16s", NULL);}$
+      expected output : "(null)          "$
+      your output     : "^@                "$
+      expected (nonprintable as hex) : "(null)          "$
+      actual   (nonprintable as hex) : "\x00                "$
+$
+Test  79 (s_null_space_padded_over_field_width_lj) : FAILED.$
+    First line of code: {return test("%-3s", NULL);}$
+      expected output : "(null)"$
+      your output     : "^@   "$
+      expected (nonprintable as hex) : "(null)"$
+      actual   (nonprintable as hex) : "\x00   "$
+$
+Test  91 (s_prec_03_no_width_s_null) : FAILED.$
+    First line of code: {return test("%.03s", NULL);}$
+      expected output : "(nu"$
+      your output     : "^@"$
+      expected (nonprintable as hex) : "(nu"$
+      actual   (nonprintable as hex) : "\x00"$
+$
+Test  92 (s_prec_09_no_width_s_null) : FAILED.$
+    First line of code: {return test("%.09s", NULL);}$
+      expected output : "(null)"$
+      your output     : "^@"$
+      expected (nonprintable as hex) : "(null)"$
+      actual   (nonprintable as hex) : "\x00"$
+$
+Test  93 (s_prec_00_no_width_s_nullchar) : FAILED.$
+    First line of code: {return test("%.00s", "$
+      expected output : ""$
+      your output     : "^@"$
+      expected (nonprintable as hex) : ""$
+      actual   (nonprintable as hex) : "\x00"$
+$
+Test  94 (s_prec_01_no_width_s_nullchar) : FAILED.$
+    First line of code: {return test("%.01s", "$
+      expected output : ""$
+      your output     : "^@"$
+      expected (nonprintable as hex) : ""$
+      actual   (nonprintable as hex) : "\x00"$
+$
+Test  95 (s_prec_03_no_width_s_nullchar) : FAILED.$
+    First line of code: {return test("%.03s", "$
+      expected output : ""$
+      your output     : "^@"$
+      expected (nonprintable as hex) : ""$
+      actual   (nonprintable as hex) : "\x00"$
+$
+Test  96 (s_prec_09_no_width_s_nullchar) : FAILED.$
+    First line of code: {return test("%.09s", "$
+      expected output : ""$
+      your output     : "^@"$
+      expected (nonprintable as hex) : ""$
+      actual   (nonprintable as hex) : "\x00"$
+$
+Test  99 (s_prec_0_width_3_s_null) : FAILED.$
+    First line of code: {return test("%3.s", NULL);}$
+      expected output : "   "$
+      your output     : "   ^@"$
+      expected (nonprintable as hex) : "   "$
+      actual   (nonprintable as hex) : "   \x00"$
+$
+Test 100 (s_prec_0_width_10_s_null) : FAILED.$
+    First line of code: {return test("%10.s", NULL);}$
+      expected output : "          "$
+      your output     : "          ^@"$
+      expected (nonprintable as hex) : "          "$
+      actual   (nonprintable as hex) : "          \x00"$
+$
+Test 101 (s_prec_0_width_1_s_nullchar) : FAILED.$
+    First line of code: {return test("%1.s", "$
+      expected output : " "$
+      your output     : " ^@"$
+      expected (nonprintable as hex) : " "$
+      actual   (nonprintable as hex) : " \x00"$
+$
+Test 102 (s_prec_0_width_2_s_nullchar) : FAILED.$
+    First line of code: {return test("%2.s", "$
+      expected output : "  "$
+      your output     : "  ^@"$
+      expected (nonprintable as hex) : "  "$
+      actual   (nonprintable as hex) : "  \x00"$
+$
+Test 103 (s_prec_0_width_9_s_nullchar) : FAILED.$
+    First line of code: {return test("%9.s", "$
+      expected output : "         "$
+      your output     : "         ^@"$
+      expected (nonprintable as hex) : "         "$
+      actual   (nonprintable as hex) : "         \x00"$
+$
+Test 106 (s_prec_0_lj_width_3_s_null) : FAILED.$
+    First line of code: {return test("%-3.s", NULL);}$
+      expected output : "   "$
+      your output     : "^@   "$
+      expected (nonprintable as hex) : "   "$
+      actual   (nonprintable as hex) : "\x00   "$
+$
+Test 107 (s_prec_0_lj_width_8_s_null) : FAILED.$
+    First line of code: {return test("%-8.s", NULL);}$
+      expected output : "        "$
+      your output     : "^@        "$
+      expected (nonprintable as hex) : "        "$
+      actual   (nonprintable as hex) : "\x00        "$
+$
+Test 108 (s_prec_0_lj_width_1_s_nullchar) : FAILED.$
+    First line of code: {return test("%-1.s", "$
+      expected output : " "$
+      your output     : "^@ "$
+      expected (nonprintable as hex) : " "$
+      actual   (nonprintable as hex) : "\x00 "$
+$
+Test 109 (s_prec_0_lj_width_2_s_nullchar) : FAILED.$
+    First line of code: {return test("%-2.s", "$
+      expected output : "  "$
+      your output     : "^@  "$
+      expected (nonprintable as hex) : "  "$
+      actual   (nonprintable as hex) : "\x00  "$
+$
+Test 110 (s_prec_0_lj_width_6_s_nullchar) : FAILED.$
+    First line of code: {return test("%-6.s", "$
+      expected output : "      "$
+      your output     : "^@      "$
+      expected (nonprintable as hex) : "      "$
+      actual   (nonprintable as hex) : "\x00      "$
+$
+Test 113 (s_prec_1_width_3_s_null) : FAILED.$
+    First line of code: {return test("%3.1s", NULL);}$
+      expected output : "  ("$
+      your output     : "   ^@"$
+      expected (nonprintable as hex) : "  ("$
+      actual   (nonprintable as hex) : "   \x00"$
+$
+Test 114 (s_prec_1_width_9_s_null) : FAILED.$
+    First line of code: {return test("%9.1s", NULL);}$
+      expected output : "        ("$
+      your output     : "         ^@"$
+      expected (nonprintable as hex) : "        ("$
+      actual   (nonprintable as hex) : "         \x00"$
+$
+Test 117 (s_prec_1_lj_width_3_s_null) : FAILED.$
+    First line of code: {return test("%-3.1s", NULL);}$
+      expected output : "(  "$
+      your output     : "^@   "$
+      expected (nonprintable as hex) : "(  "$
+      actual   (nonprintable as hex) : "\x00   "$
+$
+Test 118 (s_prec_1_lj_width_9_s_null) : FAILED.$
+    First line of code: {return test("%-9.1s", NULL);}$
+      expected output : "(        "$
+      your output     : "^@         "$
+      expected (nonprintable as hex) : "(        "$
+      actual   (nonprintable as hex) : "\x00         "$
+$
+Test 119 (s_prec_1_lj_width_3_s_nullchar) : FAILED.$
+    First line of code: {return test("%-3.1s", "$
+      expected output : "   "$
+      your output     : "^@   "$
+      expected (nonprintable as hex) : "   "$
+      actual   (nonprintable as hex) : "\x00   "$
+$
+Test 120 (s_prec_1_lj_width_6_s_nullchar) : FAILED.$
+    First line of code: {return test("%-6.1s", "$
+      expected output : "      "$
+      your output     : "^@      "$
+      expected (nonprintable as hex) : "      "$
+      actual   (nonprintable as hex) : "\x00      "$
+$
+Test 123 (s_prec_perfect_width_3_s_null) : FAILED.$
+    First line of code: {return test("%3.6s", NULL);}$
+      expected output : "(null)"$
+      your output     : "   ^@"$
+      expected (nonprintable as hex) : "(null)"$
+      actual   (nonprintable as hex) : "   \x00"$
+$
+Test 124 (s_prec_perfect_width_20_s_null) : FAILED.$
+    First line of code: {return test("%20.6s", NULL);}$
+      expected output : "              (null)"$
+      your output     : "                    ^@"$
+      expected (nonprintable as hex) : "              (null)"$
+      actual   (nonprintable as hex) : "                    \x00"$
+$
+Test 125 (s_prec_perfect_width_3_s_nullchar) : FAILED.$
+    First line of code: {return test("%3.6s", "$
+      expected output : "   "$
+      your output     : "   ^@"$
+      expected (nonprintable as hex) : "   "$
+      actual   (nonprintable as hex) : "   \x00"$
+$
+Test 126 (s_prec_perfect_width_6_s_nullchar) : FAILED.$
+    First line of code: {return test("%6.6s", "$
+      expected output : "      "$
+      your output     : "      ^@"$
+      expected (nonprintable as hex) : "      "$
+      actual   (nonprintable as hex) : "      \x00"$
+$
+Test 131 (s_prec_8_lj_width_3_s_null) : FAILED.$
+    First line of code: {return test("%-3.8s", NULL);}$
+      expected output : "(null)"$
+      your output     : "^@   "$
+      expected (nonprintable as hex) : "(null)"$
+      actual   (nonprintable as hex) : "\x00   "$
+$
+Test 132 (s_prec_8_lj_width_10_s_null) : FAILED.$
+    First line of code: {return test("%-10.8s", NULL);}$
+      expected output : "(null)    "$
+      your output     : "^@          "$
+      expected (nonprintable as hex) : "(null)    "$
+      actual   (nonprintable as hex) : "\x00          "$
+$
+Test 252 (d_prec_width_ff_pos_lj_zp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5d", 34);}$
+      expected output : "00034   "$
+      your output     : "8.5d"$
+      expected (nonprintable as hex) : "00034   "$
+      actual   (nonprintable as hex) : "8.5d"$
+$
+Test 253 (d_prec_width_ff_neg_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-10.5d", -216);}$
+      expected output : "-00216    "$
+      your output     : "10.5d"$
+      expected (nonprintable as hex) : "-00216    "$
+      actual   (nonprintable as hex) : "10.5d"$
+$
+Test 254 (d_prec_width_ff_zero_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5d", 0);}$
+      expected output : "00000   "$
+      your output     : "8.5d"$
+      expected (nonprintable as hex) : "00000   "$
+      actual   (nonprintable as hex) : "8.5d"$
+$
+Test 255 (d_prec_width_nf_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.3d", 8375);}$
+      expected output : "8375    "$
+      your output     : "8.3d"$
+      expected (nonprintable as hex) : "8375    "$
+      actual   (nonprintable as hex) : "8.3d"$
+$
+Test 256 (d_prec_width_nf_neg_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.3d", -8473);}$
+      expected output : "-8473   "$
+      your output     : "8.3d"$
+      expected (nonprintable as hex) : "-8473   "$
+      actual   (nonprintable as hex) : "8.3d"$
+$
+Test 257 (d_prec_width_fn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.7d", 3267);}$
+      expected output : "0003267"$
+      your output     : "3.7d"$
+      expected (nonprintable as hex) : "0003267"$
+      actual   (nonprintable as hex) : "3.7d"$
+$
+Test 258 (d_prec_width_fn_neg_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.7d", -2375);}$
+      expected output : "-0002375"$
+      your output     : "3.7d"$
+      expected (nonprintable as hex) : "-0002375"$
+      actual   (nonprintable as hex) : "3.7d"$
+$
+Test 259 (d_prec_width_nn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.3d", 6983);}$
+      expected output : "6983"$
+      your output     : "3.3d"$
+      expected (nonprintable as hex) : "6983"$
+      actual   (nonprintable as hex) : "3.3d"$
+$
+Test 260 (d_prec_width_nn_neg_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.3d", -8462);}$
+      expected output : "-8462"$
+      your output     : "3.3d"$
+      expected (nonprintable as hex) : "-8462"$
+      actual   (nonprintable as hex) : "3.3d"$
+$
+Test 329 (i_prec_width_ff_pos_lj_zp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5i", 34);}$
+      expected output : "00034   "$
+      your output     : "8.5i"$
+      expected (nonprintable as hex) : "00034   "$
+      actual   (nonprintable as hex) : "8.5i"$
+$
+Test 330 (i_prec_width_ff_neg_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-10.5i", -216);}$
+      expected output : "-00216    "$
+      your output     : "10.5i"$
+      expected (nonprintable as hex) : "-00216    "$
+      actual   (nonprintable as hex) : "10.5i"$
+$
+Test 331 (i_prec_width_ff_zero_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5i", 0);}$
+      expected output : "00000   "$
+      your output     : "8.5i"$
+      expected (nonprintable as hex) : "00000   "$
+      actual   (nonprintable as hex) : "8.5i"$
+$
+Test 332 (i_prec_width_nf_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.3i", 8375);}$
+      expected output : "8375    "$
+      your output     : "8.3i"$
+      expected (nonprintable as hex) : "8375    "$
+      actual   (nonprintable as hex) : "8.3i"$
+$
+Test 333 (i_prec_width_nf_neg_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.3i", -8473);}$
+      expected output : "-8473   "$
+      your output     : "8.3i"$
+      expected (nonprintable as hex) : "-8473   "$
+      actual   (nonprintable as hex) : "8.3i"$
+$
+Test 334 (i_prec_width_fn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.7i", 3267);}$
+      expected output : "0003267"$
+      your output     : "3.7i"$
+      expected (nonprintable as hex) : "0003267"$
+      actual   (nonprintable as hex) : "3.7i"$
+$
+Test 335 (i_prec_width_fn_neg_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.7i", -2375);}$
+      expected output : "-0002375"$
+      your output     : "3.7i"$
+      expected (nonprintable as hex) : "-0002375"$
+      actual   (nonprintable as hex) : "3.7i"$
+$
+Test 336 (i_prec_width_nn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.3i", 6983);}$
+      expected output : "6983"$
+      your output     : "3.3i"$
+      expected (nonprintable as hex) : "6983"$
+      actual   (nonprintable as hex) : "3.3i"$
+$
+Test 337 (i_prec_width_nn_neg_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.3i", -8462);}$
+      expected output : "-8462"$
+      your output     : "3.3i"$
+      expected (nonprintable as hex) : "-8462"$
+      actual   (nonprintable as hex) : "3.3i"$
+$
+Test 368 (u_prec_width_fit_fit_pos_lj) : FAILED.$
+    First line of code: {return test("%-8.5u", 34);}$
+      expected output : "00034   "$
+      your output     : "   00034"$
+      expected (nonprintable as hex) : "00034   "$
+      actual   (nonprintable as hex) : "   00034"$
+$
+Test 369 (u_prec_width_fit_fit_zero_lj) : FAILED.$
+    First line of code: {return test("%-8.5u", 0);}$
+      expected output : "00000   "$
+      your output     : "   00000"$
+      expected (nonprintable as hex) : "00000   "$
+      actual   (nonprintable as hex) : "   00000"$
+$
+Test 370 (u_prec_width_nofit_fit_pos_lj) : FAILED.$
+    First line of code: {return test("%-8.3u", 8375);}$
+      expected output : "8375    "$
+      your output     : "    8375"$
+      expected (nonprintable as hex) : "8375    "$
+      actual   (nonprintable as hex) : "    8375"$
+$
+Test 378 (u_prec_width_ff_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5u", 34);}$
+      expected output : "00034   "$
+      your output     : "8.5u"$
+      expected (nonprintable as hex) : "00034   "$
+      actual   (nonprintable as hex) : "8.5u"$
+$
+Test 379 (u_prec_width_ff_zero_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5u", 0);}$
+      expected output : "00000   "$
+      your output     : "8.5u"$
+      expected (nonprintable as hex) : "00000   "$
+      actual   (nonprintable as hex) : "8.5u"$
+$
+Test 380 (u_prec_width_nf_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.3u", 8375);}$
+      expected output : "8375    "$
+      your output     : "8.3u"$
+      expected (nonprintable as hex) : "8375    "$
+      actual   (nonprintable as hex) : "8.3u"$
+$
+Test 381 (u_prec_width_fn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.7u", 3267);}$
+      expected output : "0003267"$
+      your output     : "3.7u"$
+      expected (nonprintable as hex) : "0003267"$
+      actual   (nonprintable as hex) : "3.7u"$
+$
+Test 382 (u_prec_width_nn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.3u", 6983);}$
+      expected output : "6983"$
+      your output     : "3.3u"$
+      expected (nonprintable as hex) : "6983"$
+      actual   (nonprintable as hex) : "3.3u"$
+$
+Test 413 (x_prec_width_fit_fit_pos_lj) : FAILED.$
+    First line of code: {return test("%-8.5x", 34);}$
+      expected output : "00022   "$
+      your output     : "   00022"$
+      expected (nonprintable as hex) : "00022   "$
+      actual   (nonprintable as hex) : "   00022"$
+$
+Test 414 (x_prec_width_fit_fit_zero_lj) : FAILED.$
+    First line of code: {return test("%-8.5x", 0);}$
+      expected output : "00000   "$
+      your output     : "   00000"$
+      expected (nonprintable as hex) : "00000   "$
+      actual   (nonprintable as hex) : "   00000"$
+$
+Test 415 (x_prec_width_nofit_fit_pos_lj) : FAILED.$
+    First line of code: {return test("%-8.3x", 8375);}$
+      expected output : "20b7    "$
+      your output     : "    20b7"$
+      expected (nonprintable as hex) : "20b7    "$
+      actual   (nonprintable as hex) : "    20b7"$
+$
+Test 423 (x_prec_width_ff_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5x", 34);}$
+      expected output : "00022   "$
+      your output     : "8.5x"$
+      expected (nonprintable as hex) : "00022   "$
+      actual   (nonprintable as hex) : "8.5x"$
+$
+Test 424 (x_prec_width_ff_zero_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5x", 0);}$
+      expected output : "00000   "$
+      your output     : "8.5x"$
+      expected (nonprintable as hex) : "00000   "$
+      actual   (nonprintable as hex) : "8.5x"$
+$
+Test 425 (x_prec_width_nf_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.3x", 8375);}$
+      expected output : "20b7    "$
+      your output     : "8.3x"$
+      expected (nonprintable as hex) : "20b7    "$
+      actual   (nonprintable as hex) : "8.3x"$
+$
+Test 426 (x_prec_width_fn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-2.7x", 3267);}$
+      expected output : "0000cc3"$
+      your output     : "2.7x"$
+      expected (nonprintable as hex) : "0000cc3"$
+      actual   (nonprintable as hex) : "2.7x"$
+$
+Test 427 (x_prec_width_nn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.3x", 6983);}$
+      expected output : "1b47"$
+      your output     : "3.3x"$
+      expected (nonprintable as hex) : "1b47"$
+      actual   (nonprintable as hex) : "3.3x"$
+$
+Test 458 (X_prec_width_fit_fit_pos_lj) : FAILED.$
+    First line of code: {return test("%-8.5X", 34);}$
+      expected output : "00022   "$
+      your output     : "   00022"$
+      expected (nonprintable as hex) : "00022   "$
+      actual   (nonprintable as hex) : "   00022"$
+$
+Test 459 (X_prec_width_fit_fit_zero_lj) : FAILED.$
+    First line of code: {return test("%-8.5X", 0);}$
+      expected output : "00000   "$
+      your output     : "   00000"$
+      expected (nonprintable as hex) : "00000   "$
+      actual   (nonprintable as hex) : "   00000"$
+$
+Test 460 (X_prec_width_nofit_fit_pos_lj) : FAILED.$
+    First line of code: {return test("%-8.3X", 8375);}$
+      expected output : "20B7    "$
+      your output     : "    20B7"$
+      expected (nonprintable as hex) : "20B7    "$
+      actual   (nonprintable as hex) : "    20B7"$
+$
+Test 468 (X_prec_width_ff_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5X", 34);}$
+      expected output : "00022   "$
+      your output     : "8.5X"$
+      expected (nonprintable as hex) : "00022   "$
+      actual   (nonprintable as hex) : "8.5X"$
+$
+Test 469 (X_prec_width_ff_zero_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.5X", 0);}$
+      expected output : "00000   "$
+      your output     : "8.5X"$
+      expected (nonprintable as hex) : "00000   "$
+      actual   (nonprintable as hex) : "8.5X"$
+$
+Test 470 (X_prec_width_nf_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-8.3X", 8375);}$
+      expected output : "20B7    "$
+      your output     : "8.3X"$
+      expected (nonprintable as hex) : "20B7    "$
+      actual   (nonprintable as hex) : "8.3X"$
+$
+Test 471 (X_prec_width_fn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-2.7X", 3267);}$
+      expected output : "0000CC3"$
+      your output     : "2.7X"$
+      expected (nonprintable as hex) : "0000CC3"$
+      actual   (nonprintable as hex) : "2.7X"$
+$
+Test 472 (X_prec_width_nn_pos_ljzp_ignoreflag) : FAILED.$
+    First line of code: {return test("%0-3.3X", 6983);}$
+      expected output : "1B47"$
+      your output     : "3.3X"$
+      expected (nonprintable as hex) : "1B47"$
+      actual   (nonprintable as hex) : "3.3X"$
+$
+Test 548 (moul_c_1) : FAILED.$
+    First line of code: {return test("%c", 42);}$
+      expected output : "*"$
+      your output     : "*^@^@^@"$
+      expected (nonprintable as hex) : "*"$
+      actual   (nonprintable as hex) : "*\x00\x00\x00"$
+$
+Test 549 (moul_c_2) : FAILED.$
+    First line of code: {return test("Kashim a %c histoires Ã  raconter", 1001);}$
+      expected output : "Kashim a é histoires Ã  raconter"$
+      your output     : "Kashim a é^C^@^@ histoires Ã  raconter"$
+      expected (nonprintable as hex) : "Kashim a \xe9 histoires \xc3\xa0 raconter"$
+      actual   (nonprintable as hex) : "Kashim a \xe9\x03\x00\x00 histoires \xc3\xa0 raconter"$
+$
+Test 550 (moul_c_3) : FAILED.$
+    First line of code: {return test("Il fait au moins %c$
+", -8000);}$
+      expected output : "Il fait au moins À$
+"$
+      your output     : "Il fait au moins Ààÿÿ$
+"$
+      expected (nonprintable as hex) : "Il fait au moins \xc0\x0a"$
+      actual   (nonprintable as hex) : "Il fait au moins \xc0\xe0\xff\xff\x0a"$
+$
+Test 551 (moul_c_4) : FAILED.$
+    First line of code: {return test("%c", -0);}$
+      expected output : "^@"$
+      your output     : "^@^@^@^@"$
+      expected (nonprintable as hex) : "\x00"$
+      actual   (nonprintable as hex) : "\x00\x00\x00\x00"$
+$
+Test 552 (moul_c_5) : FAILED.$
+    First line of code: {return test("%c", 0);}$
+      expected output : "^@"$
+      your output     : "^@^@^@^@"$
+      expected (nonprintable as hex) : "\x00"$
+      actual   (nonprintable as hex) : "\x00\x00\x00\x00"$
+$
+Test 553 (moul_c_5b) : FAILED.$
+    First line of code: {return test("%c$
+", INT_MAX);}$
+      expected output : "ÿ$
+"$
+      your output     : "ÿÿÿ^?$
+"$
+      expected (nonprintable as hex) : "\xff\x0a"$
+      actual   (nonprintable as hex) : "\xff\xff\xff\x7f\x0a"$
+$
+Test 554 (moul_c_6) : FAILED.$
+    First line of code: {return test("%c$
+", 'c');}$
+      expected output : "c$
+"$
+      your output     : "c^@^@^@$
+"$
+      expected (nonprintable as hex) : "c\x0a"$
+      actual   (nonprintable as hex) : "c\x00\x00\x00\x0a"$
+$
+Test 555 (moul_c_7) : FAILED.$
+    First line of code: {return test("%c$
+", '$
+');}$
+      expected output : "$
+$
+"$
+      your output     : "$
+^@^@^@$
+"$
+      expected (nonprintable as hex) : "\x0a\x0a"$
+      actual   (nonprintable as hex) : "\x0a\x00\x00\x00\x0a"$
+$
+Test 556 (moul_c_8) : FAILED.$
+    First line of code: {return test("%c", 'l');}$
+      expected output : "l"$
+      your output     : "l^@^@^@"$
+      expected (nonprintable as hex) : "l"$
+      actual   (nonprintable as hex) : "l\x00\x00\x00"$
+$
+Test 557 (moul_c_9) : FAILED.$
+    First line of code: {return test("%c", 'y');}$
+      expected output : "y"$
+      your output     : "y^@^@^@"$
+      expected (nonprintable as hex) : "y"$
+      actual   (nonprintable as hex) : "y\x00\x00\x00"$
+$
+Test 558 (moul_c_10) : FAILED.$
+    First line of code: {return test("%c", ' ');}$
+      expected output : " "$
+      your output     : " ^@^@^@"$
+      expected (nonprintable as hex) : " "$
+      actual   (nonprintable as hex) : " \x00\x00\x00"$
+$
+Test 559 (moul_c_11) : FAILED.$
+    First line of code: {return test("%c", 'e');}$
+      expected output : "e"$
+      your output     : "e^@^@^@"$
+      expected (nonprintable as hex) : "e"$
+      actual   (nonprintable as hex) : "e\x00\x00\x00"$
+$
+Test 560 (moul_c_12) : FAILED.$
+    First line of code: {return test("%c", 's');}$
+      expected output : "s"$
+      your output     : "s^@^@^@"$
+      expected (nonprintable as hex) : "s"$
+      actual   (nonprintable as hex) : "s\x00\x00\x00"$
+$
+Test 561 (moul_c_13) : FAILED.$
+    First line of code: {return test("%c", 't');}$
+      expected output : "t"$
+      your output     : "t^@^@^@"$
+      expected (nonprintable as hex) : "t"$
+      actual   (nonprintable as hex) : "t\x00\x00\x00"$
+$
+Test 562 (moul_c_14) : FAILED.$
+    First line of code: {return test("%c", ' ');}$
+      expected output : " "$
+      your output     : " ^@^@^@"$
+      expected (nonprintable as hex) : " "$
+      actual   (nonprintable as hex) : " \x00\x00\x00"$
+$
+Test 563 (moul_c_15) : FAILED.$
+    First line of code: {return test("%c", 'f');}$
+      expected output : "f"$
+      your output     : "f^@^@^@"$
+      expected (nonprintable as hex) : "f"$
+      actual   (nonprintable as hex) : "f\x00\x00\x00"$
+$
+Test 564 (moul_c_16) : FAILED.$
+    First line of code: {return test("%c", 'a');}$
+      expected output : "a"$
+      your output     : "a^@^@^@"$
+      expected (nonprintable as hex) : "a"$
+      actual   (nonprintable as hex) : "a\x00\x00\x00"$
+$
+Test 565 (moul_c_17) : FAILED.$
+    First line of code: {return test("%c", 'n');}$
+      expected output : "n"$
+      your output     : "n^@^@^@"$
+      expected (nonprintable as hex) : "n"$
+      actual   (nonprintable as hex) : "n\x00\x00\x00"$
+$
+Test 566 (moul_c_18) : FAILED.$
+    First line of code: {return test("%c", 't');}$
+      expected output : "t"$
+      your output     : "t^@^@^@"$
+      expected (nonprintable as hex) : "t"$
+      actual   (nonprintable as hex) : "t\x00\x00\x00"$
+$
+Test 567 (moul_c_19) : FAILED.$
+    First line of code: {return test("%c", 'a');}$
+      expected output : "a"$
+      your output     : "a^@^@^@"$
+      expected (nonprintable as hex) : "a"$
+      actual   (nonprintable as hex) : "a\x00\x00\x00"$
+$
+Test 568 (moul_c_20) : FAILED.$
+    First line of code: {return test("%c", 's');}$
+      expected output : "s"$
+      your output     : "s^@^@^@"$
+      expected (nonprintable as hex) : "s"$
+      actual   (nonprintable as hex) : "s\x00\x00\x00"$
+$
+Test 569 (moul_c_21) : FAILED.$
+    First line of code: {return test("%c", 't');}$
+      expected output : "t"$
+      your output     : "t^@^@^@"$
+      expected (nonprintable as hex) : "t"$
+      actual   (nonprintable as hex) : "t\x00\x00\x00"$
+$
+Test 570 (moul_c_22) : FAILED.$
+    First line of code: {return test("%c", 'i');}$
+      expected output : "i"$
+      your output     : "i^@^@^@"$
+      expected (nonprintable as hex) : "i"$
+      actual   (nonprintable as hex) : "i\x00\x00\x00"$
+$
+Test 571 (moul_c_23) : FAILED.$
+    First line of code: {return test("%c", 'q');}$
+      expected output : "q"$
+      your output     : "q^@^@^@"$
+      expected (nonprintable as hex) : "q"$
+      actual   (nonprintable as hex) : "q\x00\x00\x00"$
+$
+Test 572 (moul_c_24) : FAILED.$
+    First line of code: {return test("%c", 'u');}$
+      expected output : "u"$
+      your output     : "u^@^@^@"$
+      expected (nonprintable as hex) : "u"$
+      actual   (nonprintable as hex) : "u\x00\x00\x00"$
+$
+Test 573 (moul_c_25) : FAILED.$
+    First line of code: {return test("%c", 'e');}$
+      expected output : "e"$
+      your output     : "e^@^@^@"$
+      expected (nonprintable as hex) : "e"$
+      actual   (nonprintable as hex) : "e\x00\x00\x00"$
+$
+Test 574 (moul_c_26) : FAILED.$
+    First line of code: {return test("%c$
+", '!');}$
+      expected output : "!$
+"$
+      your output     : "!^@^@^@$
+"$
+      expected (nonprintable as hex) : "!\x0a"$
+      actual   (nonprintable as hex) : "!\x00\x00\x00\x0a"$
+$
+Test 575 (moul_c_27) : FAILED.$
+    First line of code: {return test("%c$
+", '^M');}$
+      expected output : "^M$
+"$
+      your output     : "^M^@^@^@$
+"$
+      expected (nonprintable as hex) : "\x0d\x0a"$
+      actual   (nonprintable as hex) : "\x0d\x00\x00\x00\x0a"$
+$
+Test 576 (moul_c_28) : FAILED.$
+    First line of code: {return test("%c$
+", '	');}$
+      expected output : "	$
+"$
+      your output     : "	^@^@^@$
+"$
+      expected (nonprintable as hex) : "\x09\x0a"$
+      actual   (nonprintable as hex) : "\x09\x00\x00\x00\x0a"$
+$
+Test 580 (moul_s_4) : FAILED.$
+    First line of code: {char *str = NULL; return test("%s!", str);}$
+      expected output : "(null)!"$
+      your output     : "^@!"$
+      expected (nonprintable as hex) : "(null)!"$
+      actual   (nonprintable as hex) : "\x00!"$
+$
+Test 591 (moul_d_10) : FAILED.$
+    First line of code: {return test("%%d 0000042 == |%d|$
+", 0000042);}$
+      expected output : "%d 0000042 == |34|$
+"$
+      your output     : "d 0000042 == |34|$
+"$
+      expected (nonprintable as hex) : "%d 0000042 == |34|\x0a"$
+      actual   (nonprintable as hex) : "d 0000042 == |34|\x0a"$
+$
+Test 592 (moul_d_11) : FAILED.$
+    First line of code: {return test("%%d 	 == |%d|$
+", '	');}$
+      expected output : "%d 	 == |9|$
+"$
+      your output     : "d 	 == |9|$
+"$
+      expected (nonprintable as hex) : "%d \x09 == |9|\x0a"$
+      actual   (nonprintable as hex) : "d \x09 == |9|\x0a"$
+$
+Test 593 (moul_d_12) : FAILED.$
+    First line of code: {return test("%%d Lydie == |%d|$
+", 'L'+'y'+'d'+'i'+'e');}$
+      expected output : "%d Lydie == |503|$
+"$
+      your output     : "d Lydie == |503|$
+"$
+      expected (nonprintable as hex) : "%d Lydie == |503|\x0a"$
+      actual   (nonprintable as hex) : "d Lydie == |503|\x0a"$
+$
+Test 594 (moul_mix_1) : FAILED.$
+    First line of code: {int r00 = 0; return test("Lalalala, %d%% des gens qui parlent Ã  Ly adorent %s. Ou Presque. %p", 100, "Ly", &r00);}$
+      expected output : "Lalalala, 100% des gens qui parlent Ã  Ly adorent Ly. Ou Presque. 0x7ffee202474c"$
+      your output     : "Lalalala, 100 des gens qui parlent Ã  Ly adorent Ly. Ou Presque. 0x7ffee202474c"$
+      expected (nonprintable as hex) : "Lalalala, 100% des gens qui parlent \xc3\xa0 Ly adorent Ly. Ou Presque. 0x7ffee202474c"$
+      actual   (nonprintable as hex) : "Lalalala, 100 des gens qui parlent \xc3\xa0 Ly adorent Ly. Ou Presque. 0x7ffee202474c"$
+$
+Test 604 (moul_i_10) : FAILED.$
+    First line of code: {return test("%%i 0000042 == |%i|$
+", 0000042);}$
+      expected output : "%i 0000042 == |34|$
+"$
+      your output     : "i 0000042 == |34|$
+"$
+      expected (nonprintable as hex) : "%i 0000042 == |34|\x0a"$
+      actual   (nonprintable as hex) : "i 0000042 == |34|\x0a"$
+$
+Test 605 (moul_i_11) : FAILED.$
+    First line of code: {return test("%%i 	 == |%i|$
+", '	');}$
+      expected output : "%i 	 == |9|$
+"$
+      your output     : "i 	 == |9|$
+"$
+      expected (nonprintable as hex) : "%i \x09 == |9|\x0a"$
+      actual   (nonprintable as hex) : "i \x09 == |9|\x0a"$
+$
+Test 606 (moul_i_12) : FAILED.$
+    First line of code: {return test("%%i Lydie == |%i|$
+", 'L'+'y'+'d'+'i'+'e');}$
+      expected output : "%i Lydie == |503|$
+"$
+      your output     : "i Lydie == |503|$
+"$
+      expected (nonprintable as hex) : "%i Lydie == |503|\x0a"$
+      actual   (nonprintable as hex) : "i Lydie == |503|\x0a"$
+$
+Test 616 (moul_u_10) : FAILED.$
+    First line of code: {return test("%%u 0000042 == |%u|$
+", 0000042);}$
+      expected output : "%u 0000042 == |34|$
+"$
+      your output     : "u 0000042 == |34|$
+"$
+      expected (nonprintable as hex) : "%u 0000042 == |34|\x0a"$
+      actual   (nonprintable as hex) : "u 0000042 == |34|\x0a"$
+$
+Test 617 (moul_u_11) : FAILED.$
+    First line of code: {return test("%%u 	 == |%u|$
+", '	');}$
+      expected output : "%u 	 == |9|$
+"$
+      your output     : "u 	 == |9|$
+"$
+      expected (nonprintable as hex) : "%u \x09 == |9|\x0a"$
+      actual   (nonprintable as hex) : "u \x09 == |9|\x0a"$
+$
+Test 618 (moul_u_12) : FAILED.$
+    First line of code: {return test("%%u Lydie == |%u|$
+", 'L'+'y'+'d'+'i'+'e');}$
+      expected output : "%u Lydie == |503|$
+"$
+      your output     : "u Lydie == |503|$
+"$
+      expected (nonprintable as hex) : "%u Lydie == |503|\x0a"$
+      actual   (nonprintable as hex) : "u Lydie == |503|\x0a"$
+$
+Test 628 (moul_x_10) : FAILED.$
+    First line of code: {return test("%%x 0000042 == |%x|$
+", 0000042);}$
+      expected output : "%x 0000042 == |22|$
+"$
+      your output     : "x 0000042 == |22|$
+"$
+      expected (nonprintable as hex) : "%x 0000042 == |22|\x0a"$
+      actual   (nonprintable as hex) : "x 0000042 == |22|\x0a"$
+$
+Test 629 (moul_x_11) : FAILED.$
+    First line of code: {return test("%%x 	 == |%x|$
+", '	');}$
+      expected output : "%x 	 == |9|$
+"$
+      your output     : "x 	 == |9|$
+"$
+      expected (nonprintable as hex) : "%x \x09 == |9|\x0a"$
+      actual   (nonprintable as hex) : "x \x09 == |9|\x0a"$
+$
+Test 630 (moul_x_12) : FAILED.$
+    First line of code: {return test("%%x Lydie == |%x|$
+", 'L'+'y'+'d'+'i'+'e');}$
+      expected output : "%x Lydie == |1f7|$
+"$
+      your output     : "x Lydie == |1f7|$
+"$
+      expected (nonprintable as hex) : "%x Lydie == |1f7|\x0a"$
+      actual   (nonprintable as hex) : "x Lydie == |1f7|\x0a"$
+$
+Test 631 (moul_prec_1) : FAILED.$
+    First line of code: {return test("%%-5.3s LYDI == |%-5.3s|$
+", "LYDI");}$
+      expected output : "%-5.3s LYDI == |LYD  |$
+"$
+      your output     : "-5.3s LYDI == |LYD  |$
+"$
+      expected (nonprintable as hex) : "%-5.3s LYDI == |LYD  |\x0a"$
+      actual   (nonprintable as hex) : "-5.3s LYDI == |LYD  |\x0a"$
+$
+Test 632 (moul_prec_3) : FAILED.$
+    First line of code: {return test("%%04.5i 42 == |%04.5i|$
+", 42);}$
+      expected output : "%04.5i 42 == |00042|$
+"$
+      your output     : "04.5i 42 == |00042|$
+"$
+      expected (nonprintable as hex) : "%04.5i 42 == |00042|\x0a"$
+      actual   (nonprintable as hex) : "04.5i 42 == |00042|\x0a"$
+$
+Test 633 (moul_prec_4) : FAILED.$
+    First line of code: {return test("%%04.3i 42 == |%04.3i|$
+", 42);}$
+      expected output : "%04.3i 42 == | 042|$
+"$
+      your output     : "04.3i 42 == | 042|$
+"$
+      expected (nonprintable as hex) : "%04.3i 42 == | 042|\x0a"$
+      actual   (nonprintable as hex) : "04.3i 42 == | 042|\x0a"$
+$
+Test 634 (moul_prec_5) : FAILED.$
+    First line of code: {return test("%%04.2i 42 == |%04.2i|$
+", 42);}$
+      expected output : "%04.2i 42 == |  42|$
+"$
+      your output     : "04.2i 42 == |  42|$
+"$
+      expected (nonprintable as hex) : "%04.2i 42 == |  42|\x0a"$
+      actual   (nonprintable as hex) : "04.2i 42 == |  42|\x0a"$
+$
+Test 635 (moul_zeropad_1) : FAILED.$
+    First line of code: {return test("%%04i 42 == |%04i|$
+", 42);}$
+      expected output : "%04i 42 == |0042|$
+"$
+      your output     : "04i 42 == |0042|$
+"$
+      expected (nonprintable as hex) : "%04i 42 == |0042|\x0a"$
+      actual   (nonprintable as hex) : "04i 42 == |0042|\x0a"$
+$
+Test 636 (moul_zeropad_2) : FAILED.$
+    First line of code: {return test("%%05i 42 == |%05i|$
+", 42);}$
+      expected output : "%05i 42 == |00042|$
+"$
+      your output     : "05i 42 == |00042|$
+"$
+      expected (nonprintable as hex) : "%05i 42 == |00042|\x0a"$
+      actual   (nonprintable as hex) : "05i 42 == |00042|\x0a"$
+$
+Test 637 (moul_zeropad_3) : FAILED.$
+    First line of code: {return test("%%0i 42 == |%0i|$
+", 42);}$
+      expected output : "%0i 42 == |42|$
+"$
+      your output     : "0i 42 == |42|$
+"$
+      expected (nonprintable as hex) : "%0i 42 == |42|\x0a"$
+      actual   (nonprintable as hex) : "0i 42 == |42|\x0a"$
+$
+Test 638 (moul_zeropad_4) : FAILED.$
+    First line of code: {return test("%%0d 0000042 == |%0d|$
+", 0000042);}$
+      expected output : "%0d 0000042 == |34|$
+"$
+      your output     : "0d 0000042 == |34|$
+"$
+      expected (nonprintable as hex) : "%0d 0000042 == |34|\x0a"$
+      actual   (nonprintable as hex) : "0d 0000042 == |34|\x0a"$
+$
+Test 639 (moul_leftjusty_1) : FAILED.$
+    First line of code: {return test("%%-i 42 == %-i$
+", 42);}$
+      expected output : "%-i 42 == 42$
+"$
+      your output     : "-i 42 == 42$
+"$
+      expected (nonprintable as hex) : "%-i 42 == 42\x0a"$
+      actual   (nonprintable as hex) : "-i 42 == 42\x0a"$
+$
+Test 640 (moul_leftjusty_2) : FAILED.$
+    First line of code: {return test("%%-d 42 == %-d$
+", INT_MIN);}$
+      expected output : "%-d 42 == -2147483648$
+"$
+      your output     : "-d 42 == -2147483648$
+"$
+      expected (nonprintable as hex) : "%-d 42 == -2147483648\x0a"$
+      actual   (nonprintable as hex) : "-d 42 == -2147483648\x0a"$
+$
+Test 641 (moul_leftjusty_3) : FAILED.$
+    First line of code: {return test("%%-i -42 == %-i$
+", -42);}$
+      expected output : "%-i -42 == -42$
+"$
+      your output     : "-i -42 == -42$
+"$
+      expected (nonprintable as hex) : "%-i -42 == -42\x0a"$
+      actual   (nonprintable as hex) : "-i -42 == -42\x0a"$
+$
+Test 642 (moul_leftjusty_4) : FAILED.$
+    First line of code: {return test("%%-4d 42 == |%-4d|$
+", 42);}$
+      expected output : "%-4d 42 == |42  |$
+"$
+      your output     : "-4d 42 == |42  |$
+"$
+      expected (nonprintable as hex) : "%-4d 42 == |42  |\x0a"$
+      actual   (nonprintable as hex) : "-4d 42 == |42  |\x0a"$
+$
+Test 643 (moul_leftjusty_5) : FAILED.$
+    First line of code: {return test("%%-5d -42 == |%-5d|$
+", -42);}$
+      expected output : "%-5d -42 == |-42  |$
+"$
+      your output     : "-5d -42 == |-42  |$
+"$
+      expected (nonprintable as hex) : "%-5d -42 == |-42  |\x0a"$
+      actual   (nonprintable as hex) : "-5d -42 == |-42  |\x0a"$
+$
+Test 645 (moul_leftjusty_7) : FAILED.$
+    First line of code: {return test("%%-4i 42 == |%-4i|$
+", 42);}$
+      expected output : "%-4i 42 == |42  |$
+"$
+      your output     : "-4i 42 == |42  |$
+"$
+      expected (nonprintable as hex) : "%-4i 42 == |42  |\x0a"$
+      actual   (nonprintable as hex) : "-4i 42 == |42  |\x0a"$
+$
+Test 646 (moul_star_1) : FAILED.$
+    First line of code: {return test("%%-*.3s LYDI == |%-*.3s|$
+", 5, "LYDI");}$
+      expected output : "%-*.3s LYDI == |LYD  |$
+"$
+      your output     : "-*.3s LYDI == |LYD  |$
+"$
+      expected (nonprintable as hex) : "%-*.3s LYDI == |LYD  |\x0a"$
+      actual   (nonprintable as hex) : "-*.3s LYDI == |LYD  |\x0a"$
+$
+Test 647 (moul_star_2) : FAILED.$
+    First line of code: {return test("%% *.5i 42 == |% *.5i|$
+", 4, 42);}$
+      expected output : "% *.5i 42 == | 00042|$
+"$
+      your output     : " *.5i 42 == | 00042|$
+"$
+      expected (nonprintable as hex) : "% *.5i 42 == | 00042|\x0a"$
+      actual   (nonprintable as hex) : " *.5i 42 == | 00042|\x0a"$
+$
+Test 648 (moul_star_3) : FAILED.$
+    First line of code: {return test("%%*i 42 == |%*i|$
+", 5, 42);}$
+      expected output : "%*i 42 == |   42|$
+"$
+      your output     : "*i 42 == |   42|$
+"$
+      expected (nonprintable as hex) : "%*i 42 == |   42|\x0a"$
+      actual   (nonprintable as hex) : "*i 42 == |   42|\x0a"$
+$
+Test 649 (moul_star_4) : FAILED.$
+    First line of code: {return test("%%*i 42 == |%*i|$
+", 3, 42);}$
+      expected output : "%*i 42 == | 42|$
+"$
+      your output     : "*i 42 == | 42|$
+"$
+      expected (nonprintable as hex) : "%*i 42 == | 42|\x0a"$
+      actual   (nonprintable as hex) : "*i 42 == | 42|\x0a"$
+$
+Test 650 (moul_star_5) : FAILED.$
+    First line of code: {return test("%%*i 42 == |%*i|$
+", 2, 42);}$
+      expected output : "%*i 42 == |42|$
+"$
+      your output     : "*i 42 == |42|$
+"$
+      expected (nonprintable as hex) : "%*i 42 == |42|\x0a"$
+      actual   (nonprintable as hex) : "*i 42 == |42|\x0a"$
+$
+Test 651 (mix_test_0) : FAILED.$
+    First line of code: {return test($
+      expected output : "  235    %    0x10dcb3310    eb    Hello, World!    42  "$
+      your output     : "  235        0x10dcb3310    eb    Hello, World!    42  "$
+      expected (nonprintable as hex) : "  235    %    0x10dcb3310    eb    Hello, World!    42  "$
+      actual   (nonprintable as hex) : "  235        0x10dcb3310    eb    Hello, World!    42  "$
+$
+Test 652 (mix_test_1) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    G    EB    Hello, World!    235    0x10dcb3310  "$
+      your output     : "  eb    G^@^@^@    EB    Hello, World!    235    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  eb    G    EB    Hello, World!    235    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  eb    G\x00\x00\x00    EB    Hello, World!    235    0x10dcb3310  "$
+$
+Test 653 (mix_test_2) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    42    EB    0x10dcb3310    G    Hello, World!  "$
+      your output     : "      42    EB    0x10dcb3310    G^@^@^@    Hello, World!  "$
+      expected (nonprintable as hex) : "  %    42    EB    0x10dcb3310    G    Hello, World!  "$
+      actual   (nonprintable as hex) : "      42    EB    0x10dcb3310    G\x00\x00\x00    Hello, World!  "$
+$
+Test 654 (mix_test_3) : FAILED.$
+    First line of code: {return test($
+      expected output : "  235    %    Hello, World!    G    eb    EB  "$
+      your output     : "  235        Hello, World!    G^@^@^@    eb    EB  "$
+      expected (nonprintable as hex) : "  235    %    Hello, World!    G    eb    EB  "$
+      actual   (nonprintable as hex) : "  235        Hello, World!    G\x00\x00\x00    eb    EB  "$
+$
+Test 655 (mix_test_4) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    G    eb    235    %    EB  "$
+      your output     : "  42    G^@^@^@    eb    235        EB  "$
+      expected (nonprintable as hex) : "  42    G    eb    235    %    EB  "$
+      actual   (nonprintable as hex) : "  42    G\x00\x00\x00    eb    235        EB  "$
+$
+Test 656 (mix_test_5) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    EB    42    %    Hello, World!    0x10dcb3310  "$
+      your output     : "  G^@^@^@    EB    42        Hello, World!    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  G    EB    42    %    Hello, World!    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00    EB    42        Hello, World!    0x10dcb3310  "$
+$
+Test 657 (mix_test_6) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    eb    42    G    Hello, World!    235  "$
+      your output     : "  0x10dcb3310    eb    42    G^@^@^@    Hello, World!    235  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    eb    42    G    Hello, World!    235  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310    eb    42    G\x00\x00\x00    Hello, World!    235  "$
+$
+Test 658 (mix_test_7) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    Hello, World!    %    235    G    eb  "$
+      your output     : "  42    Hello, World!        235    G^@^@^@    eb  "$
+      expected (nonprintable as hex) : "  42    Hello, World!    %    235    G    eb  "$
+      actual   (nonprintable as hex) : "  42    Hello, World!        235    G\x00\x00\x00    eb  "$
+$
+Test 659 (mix_test_8) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    0x10dcb3310    Hello, World!    %    235    eb  "$
+      your output     : "  EB    0x10dcb3310    Hello, World!        235    eb  "$
+      expected (nonprintable as hex) : "  EB    0x10dcb3310    Hello, World!    %    235    eb  "$
+      actual   (nonprintable as hex) : "  EB    0x10dcb3310    Hello, World!        235    eb  "$
+$
+Test 660 (mix_test_9) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    %    235    42    eb    EB  "$
+      your output     : "  G^@^@^@        235    42    eb    EB  "$
+      expected (nonprintable as hex) : "  G    %    235    42    eb    EB  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00        235    42    eb    EB  "$
+$
+Test 662 (mix_test_11) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    G    0x10dcb3310    eb    42    235  "$
+      your output     : "  EB    G^@^@^@    0x10dcb3310    eb    42    235  "$
+      expected (nonprintable as hex) : "  EB    G    0x10dcb3310    eb    42    235  "$
+      actual   (nonprintable as hex) : "  EB    G\x00\x00\x00    0x10dcb3310    eb    42    235  "$
+$
+Test 663 (mix_test_12) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    42    235    Hello, World!    G    EB  "$
+      your output     : "      42    235    Hello, World!    G^@^@^@    EB  "$
+      expected (nonprintable as hex) : "  %    42    235    Hello, World!    G    EB  "$
+      actual   (nonprintable as hex) : "      42    235    Hello, World!    G\x00\x00\x00    EB  "$
+$
+Test 664 (mix_test_13) : FAILED.$
+    First line of code: {return test($
+      expected output : "  235    G    eb    Hello, World!    EB    42  "$
+      your output     : "  235    G^@^@^@    eb    Hello, World!    EB    42  "$
+      expected (nonprintable as hex) : "  235    G    eb    Hello, World!    EB    42  "$
+      actual   (nonprintable as hex) : "  235    G\x00\x00\x00    eb    Hello, World!    EB    42  "$
+$
+Test 665 (mix_test_14) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    0x10dcb3310    EB    G    42    eb  "$
+      your output     : "  Hello, World!    0x10dcb3310    EB    G^@^@^@    42    eb  "$
+      expected (nonprintable as hex) : "  Hello, World!    0x10dcb3310    EB    G    42    eb  "$
+      actual   (nonprintable as hex) : "  Hello, World!    0x10dcb3310    EB    G\x00\x00\x00    42    eb  "$
+$
+Test 666 (mix_test_15) : FAILED.$
+    First line of code: {return test($
+      expected output : "  235    G    EB    eb    0x10dcb3310    Hello, World!  "$
+      your output     : "  235    G^@^@^@    EB    eb    0x10dcb3310    Hello, World!  "$
+      expected (nonprintable as hex) : "  235    G    EB    eb    0x10dcb3310    Hello, World!  "$
+      actual   (nonprintable as hex) : "  235    G\x00\x00\x00    EB    eb    0x10dcb3310    Hello, World!  "$
+$
+Test 667 (mix_test_16) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    %    42    EB    235    eb  "$
+      your output     : "  G^@^@^@        42    EB    235    eb  "$
+      expected (nonprintable as hex) : "  G    %    42    EB    235    eb  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00        42    EB    235    eb  "$
+$
+Test 668 (mix_test_17) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    %    eb    EB    G    235  "$
+      your output     : "  Hello, World!        eb    EB    G^@^@^@    235  "$
+      expected (nonprintable as hex) : "  Hello, World!    %    eb    EB    G    235  "$
+      actual   (nonprintable as hex) : "  Hello, World!        eb    EB    G\x00\x00\x00    235  "$
+$
+Test 669 (mix_test_18) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    Hello, World!    EB    %    0x10dcb3310    42  "$
+      your output     : "  eb    Hello, World!    EB        0x10dcb3310    42  "$
+      expected (nonprintable as hex) : "  eb    Hello, World!    EB    %    0x10dcb3310    42  "$
+      actual   (nonprintable as hex) : "  eb    Hello, World!    EB        0x10dcb3310    42  "$
+$
+Test 670 (mix_test_19) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    0x10dcb3310    42    G    eb    EB  "$
+      your output     : "      0x10dcb3310    42    G^@^@^@    eb    EB  "$
+      expected (nonprintable as hex) : "  %    0x10dcb3310    42    G    eb    EB  "$
+      actual   (nonprintable as hex) : "      0x10dcb3310    42    G\x00\x00\x00    eb    EB  "$
+$
+Test 671 (mix_test_20) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    Hello, World!    %    235    0x10dcb3310    eb  "$
+      your output     : "  G^@^@^@    Hello, World!        235    0x10dcb3310    eb  "$
+      expected (nonprintable as hex) : "  G    Hello, World!    %    235    0x10dcb3310    eb  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00    Hello, World!        235    0x10dcb3310    eb  "$
+$
+Test 672 (mix_test_21) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    42    235    Hello, World!    0x10dcb3310    eb  "$
+      your output     : "  G^@^@^@    42    235    Hello, World!    0x10dcb3310    eb  "$
+      expected (nonprintable as hex) : "  G    42    235    Hello, World!    0x10dcb3310    eb  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00    42    235    Hello, World!    0x10dcb3310    eb  "$
+$
+Test 673 (mix_test_22) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    eb    Hello, World!    G    42    235  "$
+      your output     : "  EB    eb    Hello, World!    G^@^@^@    42    235  "$
+      expected (nonprintable as hex) : "  EB    eb    Hello, World!    G    42    235  "$
+      actual   (nonprintable as hex) : "  EB    eb    Hello, World!    G\x00\x00\x00    42    235  "$
+$
+Test 674 (mix_test_23) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    G    EB    0x10dcb3310    Hello, World!    0x10dcb3310  "$
+      your output     : "  eb    G^@^@^@    EB    0x10dcb3310    Hello, World!    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  eb    G    EB    0x10dcb3310    Hello, World!    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  eb    G\x00\x00\x00    EB    0x10dcb3310    Hello, World!    0x10dcb3310  "$
+$
+Test 675 (mix_test_24) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    %    42    Hello, World!    0x10dcb3310    eb  "$
+      your output     : "  EB        42    Hello, World!    0x10dcb3310    eb  "$
+      expected (nonprintable as hex) : "  EB    %    42    Hello, World!    0x10dcb3310    eb  "$
+      actual   (nonprintable as hex) : "  EB        42    Hello, World!    0x10dcb3310    eb  "$
+$
+Test 676 (mix_test_25) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    0x10dcb3310    eb    G    EB    0x10dcb3310  "$
+      your output     : "  42    0x10dcb3310    eb    G^@^@^@    EB    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  42    0x10dcb3310    eb    G    EB    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  42    0x10dcb3310    eb    G\x00\x00\x00    EB    0x10dcb3310  "$
+$
+Test 677 (mix_test_26) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    G    42    235    eb    0x10dcb3310  "$
+      your output     : "  EB    G^@^@^@    42    235    eb    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  EB    G    42    235    eb    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  EB    G\x00\x00\x00    42    235    eb    0x10dcb3310  "$
+$
+Test 678 (mix_test_27) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    235    G    %    EB    0x10dcb3310  "$
+      your output     : "  42    235    G^@^@^@        EB    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  42    235    G    %    EB    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  42    235    G\x00\x00\x00        EB    0x10dcb3310  "$
+$
+Test 679 (mix_test_28) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    42    G    0x10dcb3310    eb    235  "$
+      your output     : "  Hello, World!    42    G^@^@^@    0x10dcb3310    eb    235  "$
+      expected (nonprintable as hex) : "  Hello, World!    42    G    0x10dcb3310    eb    235  "$
+      actual   (nonprintable as hex) : "  Hello, World!    42    G\x00\x00\x00    0x10dcb3310    eb    235  "$
+$
+Test 680 (mix_test_29) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    %    eb    EB    42    G  "$
+      your output     : "  0x10dcb3310        eb    EB    42    G^@^@^@  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    %    eb    EB    42    G  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310        eb    EB    42    G\x00\x00\x00  "$
+$
+Test 681 (mix_test_30) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    42    Hello, World!    %    235    0x10dcb3310  "$
+      your output     : "  EB    42    Hello, World!        235    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  EB    42    Hello, World!    %    235    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  EB    42    Hello, World!        235    0x10dcb3310  "$
+$
+Test 682 (mix_test_31) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    235    0x10dcb3310    42    EB    G  "$
+      your output     : "      235    0x10dcb3310    42    EB    G^@^@^@  "$
+      expected (nonprintable as hex) : "  %    235    0x10dcb3310    42    EB    G  "$
+      actual   (nonprintable as hex) : "      235    0x10dcb3310    42    EB    G\x00\x00\x00  "$
+$
+Test 683 (mix_test_32) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    EB    0x10dcb3310    Hello, World!    42    G  "$
+      your output     : "  eb    EB    0x10dcb3310    Hello, World!    42    G^@^@^@  "$
+      expected (nonprintable as hex) : "  eb    EB    0x10dcb3310    Hello, World!    42    G  "$
+      actual   (nonprintable as hex) : "  eb    EB    0x10dcb3310    Hello, World!    42    G\x00\x00\x00  "$
+$
+Test 684 (mix_test_33) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    %    Hello, World!    EB    eb    0x10dcb3310  "$
+      your output     : "  G^@^@^@        Hello, World!    EB    eb    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  G    %    Hello, World!    EB    eb    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00        Hello, World!    EB    eb    0x10dcb3310  "$
+$
+Test 686 (mix_test_35) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    235    Hello, World!    EB    G    0x10dcb3310  "$
+      your output     : "  0x10dcb3310    235    Hello, World!    EB    G^@^@^@    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    235    Hello, World!    EB    G    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310    235    Hello, World!    EB    G\x00\x00\x00    0x10dcb3310  "$
+$
+Test 687 (mix_test_36) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    Hello, World!    eb    0x10dcb3310    %    42  "$
+      your output     : "  EB    Hello, World!    eb    0x10dcb3310        42  "$
+      expected (nonprintable as hex) : "  EB    Hello, World!    eb    0x10dcb3310    %    42  "$
+      actual   (nonprintable as hex) : "  EB    Hello, World!    eb    0x10dcb3310        42  "$
+$
+Test 688 (mix_test_37) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    Hello, World!    %    0x10dcb3310    42    G  "$
+      your output     : "  eb    Hello, World!        0x10dcb3310    42    G^@^@^@  "$
+      expected (nonprintable as hex) : "  eb    Hello, World!    %    0x10dcb3310    42    G  "$
+      actual   (nonprintable as hex) : "  eb    Hello, World!        0x10dcb3310    42    G\x00\x00\x00  "$
+$
+Test 689 (mix_test_38) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    235    eb    %    42    G  "$
+      your output     : "  Hello, World!    235    eb        42    G^@^@^@  "$
+      expected (nonprintable as hex) : "  Hello, World!    235    eb    %    42    G  "$
+      actual   (nonprintable as hex) : "  Hello, World!    235    eb        42    G\x00\x00\x00  "$
+$
+Test 690 (mix_test_39) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    42    eb    %    235    EB  "$
+      your output     : "  0x10dcb3310    42    eb        235    EB  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    42    eb    %    235    EB  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310    42    eb        235    EB  "$
+$
+Test 691 (mix_test_40) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    G    EB    0x10dcb3310    235    eb  "$
+      your output     : "      G^@^@^@    EB    0x10dcb3310    235    eb  "$
+      expected (nonprintable as hex) : "  %    G    EB    0x10dcb3310    235    eb  "$
+      actual   (nonprintable as hex) : "      G\x00\x00\x00    EB    0x10dcb3310    235    eb  "$
+$
+Test 692 (mix_test_41) : FAILED.$
+    First line of code: {return test($
+      expected output : "  235    G    %    0x10dcb3310    42    Hello, World!  "$
+      your output     : "  235    G^@^@^@        0x10dcb3310    42    Hello, World!  "$
+      expected (nonprintable as hex) : "  235    G    %    0x10dcb3310    42    Hello, World!  "$
+      actual   (nonprintable as hex) : "  235    G\x00\x00\x00        0x10dcb3310    42    Hello, World!  "$
+$
+Test 693 (mix_test_42) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    42    Hello, World!    235    G    EB  "$
+      your output     : "      42    Hello, World!    235    G^@^@^@    EB  "$
+      expected (nonprintable as hex) : "  %    42    Hello, World!    235    G    EB  "$
+      actual   (nonprintable as hex) : "      42    Hello, World!    235    G\x00\x00\x00    EB  "$
+$
+Test 694 (mix_test_43) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    42    235    Hello, World!    EB    0x10dcb3310  "$
+      your output     : "      42    235    Hello, World!    EB    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  %    42    235    Hello, World!    EB    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "      42    235    Hello, World!    EB    0x10dcb3310  "$
+$
+Test 695 (mix_test_44) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    G    EB    %    42    0x10dcb3310  "$
+      your output     : "  Hello, World!    G^@^@^@    EB        42    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  Hello, World!    G    EB    %    42    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  Hello, World!    G\x00\x00\x00    EB        42    0x10dcb3310  "$
+$
+Test 696 (mix_test_45) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    EB    235    42    %    Hello, World!  "$
+      your output     : "  eb    EB    235    42        Hello, World!  "$
+      expected (nonprintable as hex) : "  eb    EB    235    42    %    Hello, World!  "$
+      actual   (nonprintable as hex) : "  eb    EB    235    42        Hello, World!  "$
+$
+Test 699 (mix_test_48) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    42    %    EB    0x10dcb3310    235  "$
+      your output     : "  G^@^@^@    42        EB    0x10dcb3310    235  "$
+      expected (nonprintable as hex) : "  G    42    %    EB    0x10dcb3310    235  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00    42        EB    0x10dcb3310    235  "$
+$
+Test 700 (mix_test_49) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    235    42    EB    %    G  "$
+      your output     : "  Hello, World!    235    42    EB        G^@^@^@  "$
+      expected (nonprintable as hex) : "  Hello, World!    235    42    EB    %    G  "$
+      actual   (nonprintable as hex) : "  Hello, World!    235    42    EB        G\x00\x00\x00  "$
+$
+Test 701 (mix_test_50) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    0x10dcb3310    EB    42    Hello, World!    eb  "$
+      your output     : "      0x10dcb3310    EB    42    Hello, World!    eb  "$
+      expected (nonprintable as hex) : "  %    0x10dcb3310    EB    42    Hello, World!    eb  "$
+      actual   (nonprintable as hex) : "      0x10dcb3310    EB    42    Hello, World!    eb  "$
+$
+Test 702 (mix_test_51) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    eb    0x10dcb3310    G    235    EB  "$
+      your output     : "  42    eb    0x10dcb3310    G^@^@^@    235    EB  "$
+      expected (nonprintable as hex) : "  42    eb    0x10dcb3310    G    235    EB  "$
+      actual   (nonprintable as hex) : "  42    eb    0x10dcb3310    G\x00\x00\x00    235    EB  "$
+$
+Test 703 (mix_test_52) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    G    %    42    eb    Hello, World!  "$
+      your output     : "  EB    G^@^@^@        42    eb    Hello, World!  "$
+      expected (nonprintable as hex) : "  EB    G    %    42    eb    Hello, World!  "$
+      actual   (nonprintable as hex) : "  EB    G\x00\x00\x00        42    eb    Hello, World!  "$
+$
+Test 704 (mix_test_53) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    G    235    EB    0x10dcb3310    0x10dcb3310  "$
+      your output     : "  eb    G^@^@^@    235    EB    0x10dcb3310    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  eb    G    235    EB    0x10dcb3310    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  eb    G\x00\x00\x00    235    EB    0x10dcb3310    0x10dcb3310  "$
+$
+Test 705 (mix_test_54) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    235    G    Hello, World!    42    0x10dcb3310  "$
+      your output     : "  0x10dcb3310    235    G^@^@^@    Hello, World!    42    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    235    G    Hello, World!    42    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310    235    G\x00\x00\x00    Hello, World!    42    0x10dcb3310  "$
+$
+Test 706 (mix_test_55) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    0x10dcb3310    Hello, World!    235    %    G  "$
+      your output     : "  eb    0x10dcb3310    Hello, World!    235        G^@^@^@  "$
+      expected (nonprintable as hex) : "  eb    0x10dcb3310    Hello, World!    235    %    G  "$
+      actual   (nonprintable as hex) : "  eb    0x10dcb3310    Hello, World!    235        G\x00\x00\x00  "$
+$
+Test 707 (mix_test_56) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    42    EB    0x10dcb3310    235    Hello, World!  "$
+      your output     : "      42    EB    0x10dcb3310    235    Hello, World!  "$
+      expected (nonprintable as hex) : "  %    42    EB    0x10dcb3310    235    Hello, World!  "$
+      actual   (nonprintable as hex) : "      42    EB    0x10dcb3310    235    Hello, World!  "$
+$
+Test 708 (mix_test_57) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    235    G    Hello, World!    42    eb  "$
+      your output     : "      235    G^@^@^@    Hello, World!    42    eb  "$
+      expected (nonprintable as hex) : "  %    235    G    Hello, World!    42    eb  "$
+      actual   (nonprintable as hex) : "      235    G\x00\x00\x00    Hello, World!    42    eb  "$
+$
+Test 709 (mix_test_58) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    42    235    eb    Hello, World!    0x10dcb3310  "$
+      your output     : "  G^@^@^@    42    235    eb    Hello, World!    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  G    42    235    eb    Hello, World!    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00    42    235    eb    Hello, World!    0x10dcb3310  "$
+$
+Test 710 (mix_test_59) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    42    Hello, World!    235    eb    0x10dcb3310  "$
+      your output     : "  G^@^@^@    42    Hello, World!    235    eb    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  G    42    Hello, World!    235    eb    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00    42    Hello, World!    235    eb    0x10dcb3310  "$
+$
+Test 711 (mix_test_60) : FAILED.$
+    First line of code: {return test($
+      expected output : "  235    %    eb    42    EB    G  "$
+      your output     : "  235        eb    42    EB    G^@^@^@  "$
+      expected (nonprintable as hex) : "  235    %    eb    42    EB    G  "$
+      actual   (nonprintable as hex) : "  235        eb    42    EB    G\x00\x00\x00  "$
+$
+Test 712 (mix_test_61) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    Hello, World!    235    42    G    EB  "$
+      your output     : "  eb    Hello, World!    235    42    G^@^@^@    EB  "$
+      expected (nonprintable as hex) : "  eb    Hello, World!    235    42    G    EB  "$
+      actual   (nonprintable as hex) : "  eb    Hello, World!    235    42    G\x00\x00\x00    EB  "$
+$
+Test 713 (mix_test_62) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    G    42    0x10dcb3310    Hello, World!    EB  "$
+      your output     : "      G^@^@^@    42    0x10dcb3310    Hello, World!    EB  "$
+      expected (nonprintable as hex) : "  %    G    42    0x10dcb3310    Hello, World!    EB  "$
+      actual   (nonprintable as hex) : "      G\x00\x00\x00    42    0x10dcb3310    Hello, World!    EB  "$
+$
+Test 714 (mix_test_63) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    eb    %    EB    42    G  "$
+      your output     : "  Hello, World!    eb        EB    42    G^@^@^@  "$
+      expected (nonprintable as hex) : "  Hello, World!    eb    %    EB    42    G  "$
+      actual   (nonprintable as hex) : "  Hello, World!    eb        EB    42    G\x00\x00\x00  "$
+$
+Test 715 (mix_test_64) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    EB    235    G    %    42  "$
+      your output     : "  eb    EB    235    G^@^@^@        42  "$
+      expected (nonprintable as hex) : "  eb    EB    235    G    %    42  "$
+      actual   (nonprintable as hex) : "  eb    EB    235    G\x00\x00\x00        42  "$
+$
+Test 716 (mix_test_65) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    %    42    0x10dcb3310    235    EB  "$
+      your output     : "  G^@^@^@        42    0x10dcb3310    235    EB  "$
+      expected (nonprintable as hex) : "  G    %    42    0x10dcb3310    235    EB  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00        42    0x10dcb3310    235    EB  "$
+$
+Test 717 (mix_test_66) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    G    %    235    EB    0x10dcb3310  "$
+      your output     : "  42    G^@^@^@        235    EB    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  42    G    %    235    EB    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  42    G\x00\x00\x00        235    EB    0x10dcb3310  "$
+$
+Test 718 (mix_test_67) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    42    eb    235    G    0x10dcb3310  "$
+      your output     : "  Hello, World!    42    eb    235    G^@^@^@    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  Hello, World!    42    eb    235    G    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  Hello, World!    42    eb    235    G\x00\x00\x00    0x10dcb3310  "$
+$
+Test 719 (mix_test_68) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    eb    G    0x10dcb3310    235    EB  "$
+      your output     : "  Hello, World!    eb    G^@^@^@    0x10dcb3310    235    EB  "$
+      expected (nonprintable as hex) : "  Hello, World!    eb    G    0x10dcb3310    235    EB  "$
+      actual   (nonprintable as hex) : "  Hello, World!    eb    G\x00\x00\x00    0x10dcb3310    235    EB  "$
+$
+Test 720 (mix_test_69) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    Hello, World!    0x10dcb3310    42    EB    G  "$
+      your output     : "      Hello, World!    0x10dcb3310    42    EB    G^@^@^@  "$
+      expected (nonprintable as hex) : "  %    Hello, World!    0x10dcb3310    42    EB    G  "$
+      actual   (nonprintable as hex) : "      Hello, World!    0x10dcb3310    42    EB    G\x00\x00\x00  "$
+$
+Test 721 (mix_test_70) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    EB    42    %    Hello, World!    235  "$
+      your output     : "  eb    EB    42        Hello, World!    235  "$
+      expected (nonprintable as hex) : "  eb    EB    42    %    Hello, World!    235  "$
+      actual   (nonprintable as hex) : "  eb    EB    42        Hello, World!    235  "$
+$
+Test 722 (mix_test_71) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    42    EB    G    %    0x10dcb3310  "$
+      your output     : "  Hello, World!    42    EB    G^@^@^@        0x10dcb3310  "$
+      expected (nonprintable as hex) : "  Hello, World!    42    EB    G    %    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  Hello, World!    42    EB    G\x00\x00\x00        0x10dcb3310  "$
+$
+Test 723 (mix_test_72) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    0x10dcb3310    G    Hello, World!    EB    235  "$
+      your output     : "  eb    0x10dcb3310    G^@^@^@    Hello, World!    EB    235  "$
+      expected (nonprintable as hex) : "  eb    0x10dcb3310    G    Hello, World!    EB    235  "$
+      actual   (nonprintable as hex) : "  eb    0x10dcb3310    G\x00\x00\x00    Hello, World!    EB    235  "$
+$
+Test 724 (mix_test_73) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    EB    235    eb    0x10dcb3310    G  "$
+      your output     : "      EB    235    eb    0x10dcb3310    G^@^@^@  "$
+      expected (nonprintable as hex) : "  %    EB    235    eb    0x10dcb3310    G  "$
+      actual   (nonprintable as hex) : "      EB    235    eb    0x10dcb3310    G\x00\x00\x00  "$
+$
+Test 725 (mix_test_74) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    G    Hello, World!    235    42    eb  "$
+      your output     : "  0x10dcb3310    G^@^@^@    Hello, World!    235    42    eb  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    G    Hello, World!    235    42    eb  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310    G\x00\x00\x00    Hello, World!    235    42    eb  "$
+$
+Test 726 (mix_test_75) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    G    %    0x10dcb3310    235    eb  "$
+      your output     : "  42    G^@^@^@        0x10dcb3310    235    eb  "$
+      expected (nonprintable as hex) : "  42    G    %    0x10dcb3310    235    eb  "$
+      actual   (nonprintable as hex) : "  42    G\x00\x00\x00        0x10dcb3310    235    eb  "$
+$
+Test 727 (mix_test_76) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    %    235    G    0x10dcb3310    Hello, World!  "$
+      your output     : "  EB        235    G^@^@^@    0x10dcb3310    Hello, World!  "$
+      expected (nonprintable as hex) : "  EB    %    235    G    0x10dcb3310    Hello, World!  "$
+      actual   (nonprintable as hex) : "  EB        235    G\x00\x00\x00    0x10dcb3310    Hello, World!  "$
+$
+Test 728 (mix_test_77) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    42    G    235    0x10dcb3310    Hello, World!  "$
+      your output     : "  EB    42    G^@^@^@    235    0x10dcb3310    Hello, World!  "$
+      expected (nonprintable as hex) : "  EB    42    G    235    0x10dcb3310    Hello, World!  "$
+      actual   (nonprintable as hex) : "  EB    42    G\x00\x00\x00    235    0x10dcb3310    Hello, World!  "$
+$
+Test 729 (mix_test_78) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    %    G    EB    235    42  "$
+      your output     : "  0x10dcb3310        G^@^@^@    EB    235    42  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    %    G    EB    235    42  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310        G\x00\x00\x00    EB    235    42  "$
+$
+Test 730 (mix_test_79) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    G    42    %    0x10dcb3310    EB  "$
+      your output     : "  Hello, World!    G^@^@^@    42        0x10dcb3310    EB  "$
+      expected (nonprintable as hex) : "  Hello, World!    G    42    %    0x10dcb3310    EB  "$
+      actual   (nonprintable as hex) : "  Hello, World!    G\x00\x00\x00    42        0x10dcb3310    EB  "$
+$
+Test 731 (mix_test_80) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    %    G    235    Hello, World!    EB  "$
+      your output     : "  0x10dcb3310        G^@^@^@    235    Hello, World!    EB  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    %    G    235    Hello, World!    EB  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310        G\x00\x00\x00    235    Hello, World!    EB  "$
+$
+Test 732 (mix_test_81) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    G    %    Hello, World!    EB    42  "$
+      your output     : "  eb    G^@^@^@        Hello, World!    EB    42  "$
+      expected (nonprintable as hex) : "  eb    G    %    Hello, World!    EB    42  "$
+      actual   (nonprintable as hex) : "  eb    G\x00\x00\x00        Hello, World!    EB    42  "$
+$
+Test 733 (mix_test_82) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    G    42    EB    Hello, World!    eb  "$
+      your output     : "      G^@^@^@    42    EB    Hello, World!    eb  "$
+      expected (nonprintable as hex) : "  %    G    42    EB    Hello, World!    eb  "$
+      actual   (nonprintable as hex) : "      G\x00\x00\x00    42    EB    Hello, World!    eb  "$
+$
+Test 734 (mix_test_83) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    EB    %    G    235    Hello, World!  "$
+      your output     : "  42    EB        G^@^@^@    235    Hello, World!  "$
+      expected (nonprintable as hex) : "  42    EB    %    G    235    Hello, World!  "$
+      actual   (nonprintable as hex) : "  42    EB        G\x00\x00\x00    235    Hello, World!  "$
+$
+Test 735 (mix_test_84) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    eb    G    Hello, World!    235    0x10dcb3310  "$
+      your output     : "  0x10dcb3310    eb    G^@^@^@    Hello, World!    235    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    eb    G    Hello, World!    235    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310    eb    G\x00\x00\x00    Hello, World!    235    0x10dcb3310  "$
+$
+Test 736 (mix_test_85) : FAILED.$
+    First line of code: {return test($
+      expected output : "  235    0x10dcb3310    G    EB    Hello, World!    0x10dcb3310  "$
+      your output     : "  235    0x10dcb3310    G^@^@^@    EB    Hello, World!    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  235    0x10dcb3310    G    EB    Hello, World!    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  235    0x10dcb3310    G\x00\x00\x00    EB    Hello, World!    0x10dcb3310  "$
+$
+Test 737 (mix_test_86) : FAILED.$
+    First line of code: {return test($
+      expected output : "  0x10dcb3310    G    235    EB    Hello, World!    0x10dcb3310  "$
+      your output     : "  0x10dcb3310    G^@^@^@    235    EB    Hello, World!    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  0x10dcb3310    G    235    EB    Hello, World!    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  0x10dcb3310    G\x00\x00\x00    235    EB    Hello, World!    0x10dcb3310  "$
+$
+Test 738 (mix_test_87) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    235    EB    0x10dcb3310    G    0x10dcb3310  "$
+      your output     : "  42    235    EB    0x10dcb3310    G^@^@^@    0x10dcb3310  "$
+      expected (nonprintable as hex) : "  42    235    EB    0x10dcb3310    G    0x10dcb3310  "$
+      actual   (nonprintable as hex) : "  42    235    EB    0x10dcb3310    G\x00\x00\x00    0x10dcb3310  "$
+$
+Test 739 (mix_test_88) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    G    0x10dcb3310    %    EB    235  "$
+      your output     : "  42    G^@^@^@    0x10dcb3310        EB    235  "$
+      expected (nonprintable as hex) : "  42    G    0x10dcb3310    %    EB    235  "$
+      actual   (nonprintable as hex) : "  42    G\x00\x00\x00    0x10dcb3310        EB    235  "$
+$
+Test 740 (mix_test_89) : FAILED.$
+    First line of code: {return test($
+      expected output : "  Hello, World!    G    42    eb    0x10dcb3310    235  "$
+      your output     : "  Hello, World!    G^@^@^@    42    eb    0x10dcb3310    235  "$
+      expected (nonprintable as hex) : "  Hello, World!    G    42    eb    0x10dcb3310    235  "$
+      actual   (nonprintable as hex) : "  Hello, World!    G\x00\x00\x00    42    eb    0x10dcb3310    235  "$
+$
+Test 741 (mix_test_90) : FAILED.$
+    First line of code: {return test($
+      expected output : "  235    Hello, World!    eb    0x10dcb3310    42    G  "$
+      your output     : "  235    Hello, World!    eb    0x10dcb3310    42    G^@^@^@  "$
+      expected (nonprintable as hex) : "  235    Hello, World!    eb    0x10dcb3310    42    G  "$
+      actual   (nonprintable as hex) : "  235    Hello, World!    eb    0x10dcb3310    42    G\x00\x00\x00  "$
+$
+Test 742 (mix_test_91) : FAILED.$
+    First line of code: {return test($
+      expected output : "  235    0x10dcb3310    EB    G    %    eb  "$
+      your output     : "  235    0x10dcb3310    EB    G^@^@^@        eb  "$
+      expected (nonprintable as hex) : "  235    0x10dcb3310    EB    G    %    eb  "$
+      actual   (nonprintable as hex) : "  235    0x10dcb3310    EB    G\x00\x00\x00        eb  "$
+$
+Test 743 (mix_test_92) : FAILED.$
+    First line of code: {return test($
+      expected output : "  G    0x10dcb3310    EB    eb    %    Hello, World!  "$
+      your output     : "  G^@^@^@    0x10dcb3310    EB    eb        Hello, World!  "$
+      expected (nonprintable as hex) : "  G    0x10dcb3310    EB    eb    %    Hello, World!  "$
+      actual   (nonprintable as hex) : "  G\x00\x00\x00    0x10dcb3310    EB    eb        Hello, World!  "$
+$
+Test 744 (mix_test_93) : FAILED.$
+    First line of code: {return test($
+      expected output : "  eb    G    Hello, World!    0x10dcb3310    235    42  "$
+      your output     : "  eb    G^@^@^@    Hello, World!    0x10dcb3310    235    42  "$
+      expected (nonprintable as hex) : "  eb    G    Hello, World!    0x10dcb3310    235    42  "$
+      actual   (nonprintable as hex) : "  eb    G\x00\x00\x00    Hello, World!    0x10dcb3310    235    42  "$
+$
+Test 745 (mix_test_94) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    0x10dcb3310    G    %    235    42  "$
+      your output     : "  EB    0x10dcb3310    G^@^@^@        235    42  "$
+      expected (nonprintable as hex) : "  EB    0x10dcb3310    G    %    235    42  "$
+      actual   (nonprintable as hex) : "  EB    0x10dcb3310    G\x00\x00\x00        235    42  "$
+$
+Test 746 (mix_test_95) : FAILED.$
+    First line of code: {return test($
+      expected output : "  %    42    eb    0x10dcb3310    G    Hello, World!  "$
+      your output     : "      42    eb    0x10dcb3310    G^@^@^@    Hello, World!  "$
+      expected (nonprintable as hex) : "  %    42    eb    0x10dcb3310    G    Hello, World!  "$
+      actual   (nonprintable as hex) : "      42    eb    0x10dcb3310    G\x00\x00\x00    Hello, World!  "$
+$
+Test 747 (mix_test_96) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    0x10dcb3310    G    Hello, World!    42    235  "$
+      your output     : "  EB    0x10dcb3310    G^@^@^@    Hello, World!    42    235  "$
+      expected (nonprintable as hex) : "  EB    0x10dcb3310    G    Hello, World!    42    235  "$
+      actual   (nonprintable as hex) : "  EB    0x10dcb3310    G\x00\x00\x00    Hello, World!    42    235  "$
+$
+Test 749 (mix_test_98) : FAILED.$
+    First line of code: {return test($
+      expected output : "  42    Hello, World!    %    0x10dcb3310    EB    G  "$
+      your output     : "  42    Hello, World!        0x10dcb3310    EB    G^@^@^@  "$
+      expected (nonprintable as hex) : "  42    Hello, World!    %    0x10dcb3310    EB    G  "$
+      actual   (nonprintable as hex) : "  42    Hello, World!        0x10dcb3310    EB    G\x00\x00\x00  "$
+$
+Test 750 (mix_test_99) : FAILED.$
+    First line of code: {return test($
+      expected output : "  EB    0x10dcb3310    G    235    eb    42  "$
+      your output     : "  EB    0x10dcb3310    G^@^@^@    235    eb    42  "$
+      expected (nonprintable as hex) : "  EB    0x10dcb3310    G    235    eb    42  "$
+      actual   (nonprintable as hex) : "  EB    0x10dcb3310    G\x00\x00\x00    235    eb    42  "$
+$
+Test 751 (mix_successive_0) : FAILED.$
+    First line of code: {return ( test("%c", mx_c) + test("%u", mx_u));}$
+      expected output : "G235"$
+      your output     : "G^@^@^@235"$
+      expected (nonprintable as hex) : "G235"$
+      actual   (nonprintable as hex) : "G\x00\x00\x00235"$
+$
+Test 753 (mix_successive_6) : FAILED.$
+    First line of code: {return ( test("%s", mx_s) + test("%c", mx_c));}$
+      expected output : "Hello, World!G"$
+      your output     : "Hello, World!G^@^@^@"$
+      expected (nonprintable as hex) : "Hello, World!G"$
+      actual   (nonprintable as hex) : "Hello, World!G\x00\x00\x00"$
+$
+Test 760 (mix_successive_31) : FAILED.$
+    First line of code: {return ( test("%X", mx_u) + test("%c", mx_c));}$
+      expected output : "EBG"$
+      your output     : "EBG^@^@^@"$
+      expected (nonprintable as hex) : "EBG"$
+      actual   (nonprintable as hex) : "EBG\x00\x00\x00"$
+$
+Test 762 (mix_successive_39) : FAILED.$
+    First line of code: {return ( test("%i", mx_i) + test("%c", mx_c));}$
+      expected output : "42G"$
+      your output     : "42G^@^@^@"$
+      expected (nonprintable as hex) : "42G"$
+      actual   (nonprintable as hex) : "42G\x00\x00\x00"$
+$
+Test 763 (mix_successive_40) : FAILED.$
+    First line of code: {return ( test("%c", mx_c) + test("%x", mx_u));}$
+      expected output : "Geb"$
+      your output     : "G^@^@^@eb"$
+      expected (nonprintable as hex) : "Geb"$
+      actual   (nonprintable as hex) : "G\x00\x00\x00eb"$
+$
+Test 766 (mix_successive_45) : FAILED.$
+    First line of code: {return ( test("%s", mx_s) + test("%c", mx_c));}$
+      expected output : "Hello, World!G"$
+      your output     : "Hello, World!G^@^@^@"$
+      expected (nonprintable as hex) : "Hello, World!G"$
+      actual   (nonprintable as hex) : "Hello, World!G\x00\x00\x00"$
+$
+Test 768 (mix_successive_61) : FAILED.$
+    First line of code: {return ( test("%p", &mx_i) + test("%c", mx_c));}$
+      expected output : "0x10dcb3310G"$
+      your output     : "0x10dcb3310G^@^@^@"$
+      expected (nonprintable as hex) : "0x10dcb3310G"$
+      actual   (nonprintable as hex) : "0x10dcb3310G\x00\x00\x00"$
+$
+Test 769 (mix_successive_64) : FAILED.$
+    First line of code: {return ( test("%s", mx_s) + test("%c", mx_c));}$
+      expected output : "Hello, World!G"$
+      your output     : "Hello, World!G^@^@^@"$
+      expected (nonprintable as hex) : "Hello, World!G"$
+      actual   (nonprintable as hex) : "Hello, World!G\x00\x00\x00"$
+$
+Test 4192 (notintsubject_o_neg_prec_star_01) : FAILED.$
+    First line of code: {return test("%.*o", -3, 12345);}$
+      expected output : "30071"$
+      your output     : ""$
+      expected (nonprintable as hex) : "30071"$
+      actual   (nonprintable as hex) : ""$
+$
+Test 4193 (notintsubject_o_neg_prec_star_02) : FAILED.$
+    First line of code: {return test("%.*o", -1, 12345);}$
+      expected output : "30071"$
+      your output     : ""$
+      expected (nonprintable as hex) : "30071"$
+      actual   (nonprintable as hex) : ""$
+$
+Test 4194 (notintsubject_o_neg_prec_star_03) : FAILED.$
+    First line of code: {return test("%.*o", -1, 0);}$
+      expected output : "0"$
+      your output     : ""$
+      expected (nonprintable as hex) : "0"$
+      actual   (nonprintable as hex) : ""$
+$
+Test 4201 (s_neg_prec_star_01) : FAILED.$
+    First line of code: {return test("%.*s", -3, 0);}$
+      expected output : "(null)"$
+      your output     : "^@"$
+      expected (nonprintable as hex) : "(null)"$
+      actual   (nonprintable as hex) : "\x00"$
+$
+Test 4202 (s_neg_prec_star_02) : FAILED.$
+    First line of code: {return test("%.*s", -1, 0);}$
+      expected output : "(null)"$
+      your output     : "^@"$
+      expected (nonprintable as hex) : "(null)"$
+      actual   (nonprintable as hex) : "\x00"$
+$
+######### printf_lover_v2 ##########
+######### printf-tester ##########
+######### ft_printf_test ##########
+- [OUTPUT] ft_printf("%%")
+   expected: "%"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%5%")
+   expected: "    %"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-5%")
+   expected: "%    "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%05%")
+   expected: "0000%"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-05%")
+   expected: "%    "
+   actual:   "5"5"
+
+- [OUTPUT] ft_printf("%.p", &ncm_p)
+   expected: "0x10257f0d8"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-s", NULL)
+   expected: "(null)"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%23s", NULL)
+   expected: "                 (null)"
+   actual:   "                       "
+
+- [OUTPUT] ft_printf("%s", NULL)
+   expected: "(null)"
+   actual:   ""
+
+- [OUTPUT] ft_printf("this %s is empty", "")
+   expected: "this  is empty"
+   actual:   "this "
+
+- [OUTPUT] ft_printf("this %s is %s", "", "hello")
+   expected: "this  is hello"
+   actual:   "this "
+
+- [OUTPUT] ft_printf("hello, %s.", NULL)
+   expected: "hello, (null)."
+   actual:   "hello, "
+
+- [OUTPUT] ft_printf("%s", NULL)
+   expected: "(null)"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%32s", NULL)
+   expected: "                          (null)"
+   actual:   "                                "
+
+- [OUTPUT] ft_printf("%2s", NULL)
+   expected: "(null)"
+   actual:   "  "
+
+- [OUTPUT] ft_printf("%-32s", NULL)
+   expected: "(null)                          "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-16s", NULL)
+   expected: "(null)          "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-3s", NULL)
+   expected: "(null)"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%.03s", NULL)
+   expected: "(nu"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%.09s", NULL)
+   expected: "(null)"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-3.s", NULL)
+   expected: "   "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-8.s", NULL)
+   expected: "        "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-1.s", "\0")
+   expected: " "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-2.s", "\0")
+   expected: "  "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-6.s", "\0")
+   expected: "      "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%3.1s", NULL)
+   expected: "  ("
+   actual:   "   "
+
+- [OUTPUT] ft_printf("%9.1s", NULL)
+   expected: "        ("
+   actual:   "         "
+
+- [OUTPUT] ft_printf("%-3.1s", NULL)
+   expected: "(  "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-9.1s", NULL)
+   expected: "(        "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-3.1s", "\0")
+   expected: "   "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-6.1s", "\0")
+   expected: "      "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%3.6s", NULL)
+   expected: "(null)"
+   actual:   "   "
+
+- [OUTPUT] ft_printf("%20.6s", NULL)
+   expected: "              (null)"
+   actual:   "                    "
+
+- [OUTPUT] ft_printf("%-3.8s", NULL)
+   expected: "(null)"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-10.8s", NULL)
+   expected: "(null)    "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-8.5u", 34)
+   expected: "00034   "
+   actual:   "   00034"
+
+- [OUTPUT] ft_printf("%-8.5u", 0)
+   expected: "00000   "
+   actual:   "   00000"
+
+- [OUTPUT] ft_printf("%-8.3u", 8375)
+   expected: "8375    "
+   actual:   "    8375"
+
+- [OUTPUT] ft_printf("%-8.5x", 34)
+   expected: "00022   "
+   actual:   "   00022"
+
+- [OUTPUT] ft_printf("%-8.5x", 0)
+   expected: "00000   "
+   actual:   "   00000"
+
+- [OUTPUT] ft_printf("%-8.3x", 8375)
+   expected: "20b7    "
+   actual:   "    20b7"
+
+- [OUTPUT] ft_printf("%-8.5x", 34)
+   expected: "00022   "
+   actual:   "   00022"
+
+- [OUTPUT] ft_printf("%-8.5x", 0)
+   expected: "00000   "
+   actual:   "   00000"
+
+- [OUTPUT] ft_printf("%-8.3x", 8375)
+   expected: "20b7    "
+   actual:   "    20b7"
+
+- [OUTPUT] ft_printf("%-8.5X", 34)
+   expected: "00022   "
+   actual:   "   00022"
+
+- [OUTPUT] ft_printf("%-8.5X", 0)
+   expected: "00000   "
+   actual:   "   00000"
+
+- [OUTPUT] ft_printf("%-8.3X", 8375)
+   expected: "20B7    "
+   actual:   "    20B7"
+
+- [OUTPUT] ft_printf("%-8.5X", 34)
+   expected: "00022   "
+   actual:   "   00022"
+
+- [OUTPUT] ft_printf("%-8.5X", 0)
+   expected: "00000   "
+   actual:   "   00000"
+
+- [OUTPUT] ft_printf("%-8.3X", 8375)
+   expected: "20B7    "
+   actual:   "    20B7"
+
+- [OUTPUT] ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",' ','!','"','#','$','%','&','\'','(',')','*','+',',', '-','.','/','0','1','2','3','4','5','6','7','8','9',':',';', '<','=','>','?','@','A','B', 'C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y', 'Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h', 'i','j','k','l','m','n','o', 'p','q','r','s','t','u','v','w','x','y','z','{','|','~')
+   expected: " !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|~"
+   actual:   " "
+
+- [OUTPUT] ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", (char)1,(char)2,(char)3,(char)4,(char)5,(char)6,(char)7,(char)8,(char) 9, (char)10,(char)11,(char)12,(char)13,(char)14,(char)15,(char)16,(char)17, (char)18,(char)19,(char)20,(char)21,(char)22,(char)23,(char)24,(char)25, (char)26,(char)27,(char)28,(char)29 ,(char)30,(char)31)
+   expected: "\01\02\03\04\05\06\07\08\t\n\v\0c\r\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f"
+   actual:   "\01"
+
+- [OUTPUT] ft_printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c", (char)128,(char)129,(char)130,(char)131,(char)132,(char)133,(char)134,(char)135,(char)136, (char)137,(char)138,(char)139,(char)140,(char)141,(char)142,(char)143,(char)144,(char)145, (char)146,(char)147,(char)148,(char)149,(char)150,(char)151,(char)152,(char)153,(char)154, (char)155,(char)156,(char)157,(char)158,(char)159,(char)160,(char)161,(char)162,(char)163, (char)164,(char)165,(char)166,(char)167,(char)168,(char)169,(char)170,(char)171,(char)172, (char)173,(char)174,(char)175,(char)176,(char)177,(char)178,(char)179,(char)180,(char)181, (char)182,(char)183,(char)184,(char)185,(char)186,(char)187,(char)188,(char)189,(char)190, (char)191,(char)192,(char)193,(char)194,(char)195,(char)196,(char)197,(char)198,(char)199, (char)200,(char)201,(char)202,(char)203,(char)204,(char)205,(char)206,(char)207,(char)208, (char)209,(char)210,(char)211,(char)212,(char)213,(char)214,(char)215,(char)216,(char)217, (char)218,(char)219,(char)220,(char)221,(char)222,(char)223,(char)224,(char)225,(char)226, (char)227,(char)228,(char)229,(char)230,(char)231,(char)232,(char)233,(char)234,(char)235, (char)236,(char)237,(char)238,(char)239,(char)240,(char)241,(char)242,(char)243,(char)244, (char)245,(char)246,(char)247,(char)248,(char)249,(char)250,(char)251,(char)252,(char)253,(char)254,(char)255)
+   expected: "\80\81\82\83\84\85\86\87\88\89\8a\8b\8c\8d\8e\8f\90\91\92\93\94\95\96\97\98\99\9a\9b\9c\9d\9e\9f\a0\a1\a2\a3\a4\a5\a6\a7\a8\a9\aa\ab\ac\ad\ae\af\b0\b1\b2\b3\b4\b5\b6\b7\b8\b9\ba\bb\bc\bd\be\bf\c0\c1\c2\c3\c4\c5\c6\c7\c8\c9\ca\cb\cc\cd\ce\cf\d0\d1\d2\d3\d4\d5\d6\d7\d8\d9\da\db\dc\dd\de\df\e0\e1\e2\e3\e4\e5\e6\e7\e8\e9\ea\eb\ec\ed\ee\ef\f0\f1\f2\f3\f4\f5\f6\f7\f8\f9\fa\fb\fc\fd\fe\ff"
+   actual:   "\80\ff\ff\ff\81\ff\ff\ff\82\ff\ff\ff\83\ff\ff\ff\84\ff\ff\ff\85\ff\ff\ff\86\ff\ff\ff\87\ff\ff\ff\88\ff\ff\ff\89\ff\ff\ff\8a\ff\ff\ff\8b\ff\ff\ff\8c\ff\ff\ff\8d\ff\ff\ff\8e\ff\ff\ff\8f\ff\ff\ff\90\ff\ff\ff\91\ff\ff\ff\92\ff\ff\ff\93\ff\ff\ff\94\ff\ff\ff\95\ff\ff\ff\96\ff\ff\ff\97\ff\ff\ff\98\ff\ff\ff\99\ff\ff\ff\9a\ff\ff\ff\9b\ff\ff\ff\9c\ff\ff\ff\9d\ff\ff\ff\9e\ff\ff\ff\9f\ff\ff\ff\a0\ff\ff\ff\a1\ff\ff\ff\a2\ff\ff\ff\a3\ff\ff\ff\a4\ff\ff\ff\a5\ff\ff\ff\a6\ff\ff\ff\a7\ff\ff\ff\a8\ff\ff\ff\a9\ff\ff\ff\aa\ff\ff\ff\ab\ff\ff\ff\ac\ff\ff\ff\ad\ff\ff\ff\ae\ff\ff\ff\af\ff\ff\ff\b0\ff\ff\ff\b1\ff\ff\ff\b2\ff\ff\ff\b3\ff\ff\ff\b4\ff\ff\ff\b5\ff\ff\ff\b6\ff\ff\ff\b7\ff\ff\ff\b8\ff\ff\ff\b9\ff\ff\ff\ba\ff\ff\ff\bb\ff\ff\ff\bc\ff\ff\ff\bd\ff\ff\ff\be\ff\ff\ff\bf\ff\ff\ff\c0\ff\ff\ff\c1\ff\ff\ff\c2\ff\ff\ff\c3\ff\ff\ff\c4\ff\ff\ff\c5\ff\ff\ff\c6\ff\ff\ff\c7\ff\ff\ff\c8\ff\ff\ff\c9\ff\ff\ff\ca\ff\ff\ff\cb\ff\ff\ff\cc\ff\ff\ff\cd\ff\ff\ff\ce\ff\ff\ff\cf\ff\ff\ff\d0\ff\ff\ff\d1\ff\ff\ff\d2\ff\ff\ff\d3\ff\ff\ff\d4\ff\ff\ff\d5\ff\ff\ff\d6\ff\ff\ff\d7\ff\ff\ff\d8\ff\ff\ff\d9\ff\ff\ff\da\ff\ff\ff\db\ff\ff\ff\dc\ff\ff\ff\dd\ff\ff\ff\de\ff\ff\ff\df\ff\ff\ff\e0\ff\ff\ff\e1\ff\ff\ff\e2\ff\ff\ff\e3\ff\ff\ff\e4\ff\ff\ff\e5\ff\ff\ff\e6\ff\ff\ff\e7\ff\ff\ff\e8\ff\ff\ff\e9\ff\ff\ff\ea\ff\ff\ff\eb\ff\ff\ff\ec\ff\ff\ff\ed\ff\ff\ff\ee\ff\ff\ff\ef\ff\ff\ff\f0\ff\ff\ff\f1\ff\ff\ff\f2\ff\ff\ff\f3\ff\ff\ff\f4\ff\ff\ff\f5\ff\ff\ff\f6\ff\ff\ff\f7\ff\ff\ff\f8\ff\ff\ff\f9\ff\ff\ff\fa\ff\ff\ff\fb\ff\ff\ff\fc\ff\ff\ff\fd\ff\ff\ff\fe\ff\ff\ff\ff\ff\ff\ff"
+
+- [OUTPUT] ft_printf("%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c//%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c", ' ','!','"','#','$','%','&','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<', '=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y', 'Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u', 'v','w','x','y','z','{','|','~')
+   expected: "  !  "   #$ %  &   '( )  *   +, -  .   /0 1  2   34 5  6   78 9  :   ;< =  >   ?@ A  B   CD E  F   GH I  J   KL M  N   OP Q  R   ST U  V   WX Y  Z   [\ ]  ^   _` a  b   cd e  f   gh i  j   kl m  n   o//p q  r   st u  v   wx y  z   {| ~  "
+   actual:   " "
+
+- [OUTPUT] ft_printf("%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c",(char)1,(char)2,(char)3,(char)4,(char)5,(char)6,(char)7,(char)8,(char)9,(char)10,(char)11, (char)12,(char)13,(char)14,(char)15,(char)16,(char)17,(char)18,(char)19,(char)20,(char)21,(char)22,(char)23,(char)24, (char)25,(char)26,(char)27,(char)28,(char)29,(char)30,(char)31)
+   expected: "                                                \01\02\03\04\05\06\07\08\t\n\v\0c\r\0e\0f\10\11\12\13\14\15\16\17\18\19\1a\1b\1c\1d\1e\1f"
+   actual:   "\01"
+
+- [OUTPUT] ft_printf("%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c",(char)128,(char)129,(char)130, (char)131,(char)132,(char)133,(char)134,(char)135,(char)136,(char)137,(char)138,(char)139,(char)140,(char)141, (char)142,(char)143,(char)144,(char)145,(char)146,(char)147,(char)148,(char)149,(char)150,(char)151,(char)152, (char)153,(char)154,(char)155,(char)156,(char)157,(char)158,(char)159,(char)160,(char)161,(char)162,(char)163, (char)164,(char)165,(char)166,(char)167,(char)168,(char)169,(char)170,(char)171,(char)172,(char)173,(char)174, (char)175,(char)176,(char)177,(char)178,(char)179,(char)180,(char)181,(char)182,(char)183,(char)184,(char)185, (char)186,(char)187,(char)188,(char)189,(char)190,(char)191,(char)192,(char)193,(char)194,(char)195,(char)196, (char)197,(char)198,(char)199,(char)200,(char)201,(char)202,(char)203,(char)204,(char)205,(char)206,(char)207, (char)208,(char)209,(char)210,(char)211,(char)212,(char)213,(char)214,(char)215,(char)216,(char)217,(char)218, (char)219,(char)220,(char)221,(char)222,(char)223,(char)224,(char)225,(char)226,(char)227,(char)228,(char)229, (char)230,(char)231,(char)232,(char)233,(char)234,(char)235,(char)236,(char)237,(char)238,(char)239,(char)240, (char)241,(char)242,(char)243,(char)244,(char)245,(char)246,(char)247,(char)248,(char)249,(char)250,(char)251, (char)252,(char)253,(char)254,(char)255)
+   expected: "                                                                                                                                                                                                \80\81\82\83\84\85\86\87\88\89\8a\8b\8c\8d\8e\8f\90\91\92\93\94\95\96\97\98\99\9a\9b\9c\9d\9e\9f\a0\a1\a2\a3\a4\a5\a6\a7\a8\a9\aa\ab\ac\ad\ae\af\b0\b1\b2\b3\b4\b5\b6\b7\b8\b9\ba\bb\bc\bd\be\bf\c0\c1\c2\c3\c4\c5\c6\c7\c8\c9\ca\cb\cc\cd\ce\cf\d0\d1\d2\d3\d4\d5\d6\d7\d8\d9\da\db\dc\dd\de\df\e0\e1\e2\e3\e4\e5\e6\e7\e8\e9\ea\eb\ec\ed\ee\ef\f0\f1\f2\f3\f4\f5\f6\f7\f8\f9\fa\fb\fc\fd\fe\ff"
+   actual:   "                                                                                                                                                                                                \80\ff\ff\ff\81\ff\ff\ff\82\ff\ff\ff\83\ff\ff\ff\84\ff\ff\ff\85\ff\ff\ff\86\ff\ff\ff\87\ff\ff\ff\88\ff\ff\ff\89\ff\ff\ff\8a\ff\ff\ff\8b\ff\ff\ff\8c\ff\ff\ff\8d\ff\ff\ff\8e\ff\ff\ff\8f\ff\ff\ff\90\ff\ff\ff\91\ff\ff\ff\92\ff\ff\ff\93\ff\ff\ff\94\ff\ff\ff\95\ff\ff\ff\96\ff\ff\ff\97\ff\ff\ff\98\ff\ff\ff\99\ff\ff\ff\9a\ff\ff\ff\9b\ff\ff\ff\9c\ff\ff\ff\9d\ff\ff\ff\9e\ff\ff\ff\9f\ff\ff\ff\a0\ff\ff\ff\a1\ff\ff\ff\a2\ff\ff\ff\a3\ff\ff\ff\a4\ff\ff\ff\a5\ff\ff\ff\a6\ff\ff\ff\a7\ff\ff\ff\a8\ff\ff\ff\a9\ff\ff\ff\aa\ff\ff\ff\ab\ff\ff\ff\ac\ff\ff\ff\ad\ff\ff\ff\ae\ff\ff\ff\af\ff\ff\ff\b0\ff\ff\ff\b1\ff\ff\ff\b2\ff\ff\ff\b3\ff\ff\ff\b4\ff\ff\ff\b5\ff\ff\ff\b6\ff\ff\ff\b7\ff\ff\ff\b8\ff\ff\ff\b9\ff\ff\ff\ba\ff\ff\ff\bb\ff\ff\ff\bc\ff\ff\ff\bd\ff\ff\ff\be\ff\ff\ff\bf\ff\ff\ff\c0\ff\ff\ff\c1\ff\ff\ff\c2\ff\ff\ff\c3\ff\ff\ff\c4\ff\ff\ff\c5\ff\ff\ff\c6\ff\ff\ff\c7\ff\ff\ff\c8\ff\ff\ff\c9\ff\ff\ff\ca\ff\ff\ff\cb\ff\ff\ff\cc\ff\ff\ff\cd\ff\ff\ff\ce\ff\ff\ff\cf\ff\ff\ff\d0\ff\ff\ff\d1\ff\ff\ff\d2\ff\ff\ff\d3\ff\ff\ff\d4\ff\ff\ff\d5\ff\ff\ff\d6\ff\ff\ff\d7\ff\ff\ff\d8\ff\ff\ff\d9\ff\ff\ff\da\ff\ff\ff\db\ff\ff\ff\dc\ff\ff\ff\dd\ff\ff\ff\de\ff\ff\ff\df\ff\ff\ff\e0\ff\ff\ff\e1\ff\ff\ff\e2\ff\ff\ff\e3\ff\ff\ff\e4\ff\ff\ff\e5\ff\ff\ff\e6\ff\ff\ff\e7\ff\ff\ff\e8\ff\ff\ff\e9\ff\ff\ff\ea\ff\ff\ff\eb\ff\ff\ff\ec\ff\ff\ff\ed\ff\ff\ff\ee\ff\ff\ff\ef\ff\ff\ff\f0\ff\ff\ff\f1\ff\ff\ff\f2\ff\ff\ff\f3\ff\ff\ff\f4\ff\ff\ff\f5\ff\ff\ff\f6\ff\ff\ff\f7\ff\ff\ff\f8\ff\ff\ff\f9\ff\ff\ff\fa\ff\ff\ff\fb\ff\ff\ff\fc\ff\ff\ff\fd\ff\ff\ff\fe\ff\ff\ff\ff\ff\ff\ff"
+
+- [OUTPUT] ft_printf("{%s}", "")
+   expected: "{}"
+   actual:   "{"
+
+- [OUTPUT] ft_printf("%%")
+   expected: "%"
+   actual:   ""
+
+- [OUTPUT] ft_printf("aa%%bb")
+   expected: "aa%bb"
+   actual:   "aabb"
+
+- [OUTPUT] ft_printf("%%%%%%%%%%")
+   expected: "%%%%%"
+   actual:   ""
+
+- [OUTPUT] ft_printf(".%%.%%.%%.%%.%%.%%.%%.%%.")
+   expected: ".%.%.%.%.%.%.%.%."
+   actual:   "........."
+
+- [OUTPUT] ft_printf("%c%c", '4', '2')
+   expected: "42"
+   actual:   "4"
+
+- [OUTPUT] ft_printf("%s %d %p %% %x", "bonjour ", 42, &free, 42)
+   expected: "bonjour  42 0x7fff6a13f9b1 % 2a"
+   actual:   "bonjour  42 0x7fff6a13f9b1  2a"
+
+- [OUTPUT] ft_printf("p3 %.4s\n", NULL)
+   expected: "p3 (nul\n"
+   actual:   "p3 "
+
+- [OUTPUT] ft_printf("%%\n")
+   expected: "%\n"
+   actual:   "\n"
+
+- [OUTPUT] ft_printf("Hello 42 school! %s", NULL)
+   expected: "Hello 42 school! (null)"
+   actual:   "Hello 42 school! "
+
+- [OUTPUT] ft_printf("%010%")
+   expected: "000000000%"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%50.2s", NULL)
+   expected: "                                                (n"
+   actual:   "                                                  "
+
+- [OUTPUT] ft_printf("%10s", NULL)
+   expected: "    (null)"
+   actual:   "          "
+
+- [OUTPUT] ft_printf("1caractere 1 %c caractere 2 %c\n\n", 'a', 'c')
+   expected: "1caractere 1 a caractere 2 c\n\n"
+   actual:   "1caractere 1 a"
+
+- [OUTPUT] ft_printf("percent 1 %012%")
+   expected: "percent 1 00000000000%"
+   actual:   "percent 1 "
+
+- [OUTPUT] ft_printf("percent 2 %12%")
+   expected: "percent 2            %"
+   actual:   "percent 2 "
+
+- [OUTPUT] ft_printf("percent 3 %-12%")
+   expected: "percent 3 %           "
+   actual:   "percent 3 "
+
+- [OUTPUT] ft_printf("percent 4 %0%")
+   expected: "percent 4 %"
+   actual:   "percent 4 "
+
+- [OUTPUT] ft_printf("neg3 %*s\n", -9, NULL)
+   expected: "neg3 (null)   \n"
+   actual:   "neg3 "
+
+- [OUTPUT] ft_printf("%%")
+   expected: "%"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%-20c", 'x')
+   expected: "x                   "
+   actual:   "x"
+
+- [OUTPUT] ft_printf("%--194.54X" ,3852169892u)
+   expected: "0000000000000000000000000000000000000000000000E59B72A4                                                                                                                                            "
+   actual:   "                                                                                                                                            0000000000000000000000000000000000000000000000E59B72A4"
+
+- [OUTPUT] ft_printf("%-192.131%")
+   expected: "%                                                                                                                                                                                               "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%--198c" ,35)
+   expected: "#                                                                                                                                                                                                     "
+   actual:   "#"
+
+- [OUTPUT] ft_printf("%-171.108s%0022.*u%-93.114u%*c" ,"r>KM,cWZ,k7U",-75,1057557429u,580880397u,-25,-80)
+   expected: "r>KM,cWZ,k7U                                                                                                                                                               0000000000001057557429000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000580880397                        \b0"
+   actual:   "r>KM,cWZ,k7U                                                                                                                                                               0000000000001057557429000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000580880397                        \b0\ff\ff\ff"
+
+- [OUTPUT] ft_printf("%0176.18i%0131.59i%-86X%---45.36X" ,-1748967713,-1568187420,124888334u,2293430389u)
+   expected: "                                                                                                                                                             -000000001748967713                                                                       -00000000000000000000000000000000000000000000000001568187420771A50E                                                                               000000000000000000000000000088B2F875         "
+   actual:   "                                                                                                                                                             -000000001748967713                                                                       -00000000000000000000000000000000000000000000000001568187420771A50E                                                                                        000000000000000000000000000088B2F875"
+
+- [OUTPUT] ft_printf("%--40.183X%-178.81X%036.192u%-119.27s" ,2684215029u,410939004u,2169426684u,"!ufvJeVr`+BF#EV")
+   expected: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009FFDDEF50000000000000000000000000000000000000000000000000000000000000000000000000187E6E7C                                                                                                 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002169426684!ufvJeVr`+BF#EV                                                                                                        "
+   actual:   "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009FFDDEF5                                                                                                 0000000000000000000000000000000000000000000000000000000000000000000000000187E6E7C000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002169426684!ufvJeVr`+BF#EV                                                                                                        "
+
+- [OUTPUT] ft_printf("%-48p%-164c" ,(void*)9888845855039847185lu,114)
+   expected: "0x893c3ce96c3e7b11                              r                                                                                                                                                                   "
+   actual:   "0x893c3ce96c3e7b11                              r"
+
+- [OUTPUT] ft_printf("%-70.193x%-140c%168c%026.51%%0125.119X" ,1102840003u,-50,-17,3721437512u)
+   expected: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000041bc00c3                                                                                                                                                                                                                                                                                                                  0000000000000000000000000%      000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000DDD0A148\ce\ef"
+   actual:   "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000041bc00c3                                                                                                                                                                                                                                                                                                                        000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000DDD0A148\ce\ff\ff\ff\ef"
+
+- [OUTPUT] ft_printf("%-*.98u%-124i%-192.2d" ,117,4198534266u,1421101220,-12188465)
+   expected: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000004198534266                   1421101220                                                                                                                  -12188465                                                                                                                                                                                       "
+   actual:   "                   000000000000000000000000000000000000000000000000000000000000000000000000000000000000000041985342661421101220                                                                                                                  -12188465                                                                                                                                                                                       "
+
+- [OUTPUT] ft_printf("%131p%--.42u%65c%-68c%-7c" ,(void*)14631880201060661778lu,1668628755u,110,-16,-32)
+   expected: "                                                                                                                 0xcb0ee185144aba12000000000000000000000000000000001668628755                                                                n                                                                         \f0\e0"
+   actual:   "                                                                                                                 0xcb0ee185144aba12000000000000000000000000000000001668628755                                                                n                                                                         \f0\ff\ff\ff\e0\ff\ff\ff"
+
+- [OUTPUT] ft_printf("%---137.49s%-127.121X" ,"!^3W]E;3T;FBR(KBN|03|!us3&sT[",2181790462u)
+   expected: "!^3W]E;3T;FBR(KBN|03|!us3&sT[                                                                                                            00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000820B7AFE      "
+   actual:   "!^3W]E;3T;FBR(KBN|03|!us3&sT[                                                                                                                  00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000820B7AFE"
+
+- [OUTPUT] ft_printf("%--122.24X" ,3986554129u)
+   expected: "0000000000000000ED9DFD11                                                                                                  "
+   actual:   "                                                                                                  0000000000000000ED9DFD11"
+
+- [OUTPUT] ft_printf("%10c%0036.99%" ,9)
+   expected: "         00000000000000000000000000000000000%\t"
+   actual:   "         \t"
+
+- [OUTPUT] ft_printf("%-89c%20p%-33.16X%--11.*s%--25.85u" ,10,(void*)1144206967121894099lu,1538791465u,84,"L;x)-34d4BU9<aJE-\n\r4:[)kMj}Y4",543381790u)
+   expected: "                                                                                           0xfe10a2ca0d3dad3000000005BB81829                 L;x)-34d4BU9<aJE-4:[)kMj}Y40000000000000000000000000000000000000000000000000000000000000000000000000000543381790\n\n\r"
+   actual:   "\n"
+
+- [OUTPUT] ft_printf("%-*.*i%-19.119%" ,158,176,-448314345)
+   expected: "-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000448314345%                  "
+   actual:   "-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000448314345"
+
+- [OUTPUT] ft_printf("%-75.38s%-148.135s%00156.106i%-*.105%" ,"q;&kDMa}NfJoOp\\luHJ",NULL,1930062644,105)
+   expected: "q;&kDMa}NfJoOp\luHJ                                                        (null)                                                                                                                                                                                                0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001930062644%                                                                                                        "
+   actual:   "q;&kDMa}NfJoOp\luHJ                                                        "
+
+- [OUTPUT] ft_printf("%--143.5d%-*.127x%--120.89X%-*.193X" ,1846472017,-7,2195740708u,1658686933u,-58,3646533575u)
+   expected: "1846472017                                                                                                                                     0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000082e0582400000000000000000000000000000000000000000000000000000000000000000000000000000000062DD8DD5                               00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000D959AFC7"
+   actual:   "1846472017                                                                                                                                     0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000082e05824                               00000000000000000000000000000000000000000000000000000000000000000000000000000000062DD8DD500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000D959AFC7"
+
+- [OUTPUT] ft_printf("%--158p%---.15s%-108c" ,(void*)9474372414016659745lu,"O_r",24)
+   expected: "0x837bbb835f392121                                                                                                                                            O_r                                                                                                           \18"
+   actual:   "0x837bbb835f392121                                                                                                                                            O_r\18"
+
+- [OUTPUT] ft_printf("%-50c%-85.157%%--58.188X" ,9,274691972u)
+   expected: "                                                 %                                                                                    000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000105F7784\t"
+   actual:   "\t"
+
+- [OUTPUT] ft_printf("%64p%038.87d%23c%--182.49i%--76.110%" ,(void*)10278319775164267212lu,-1550079501,30,-862355787)
+   expected: "                                              0x8ea3ed60ee89facc-000000000000000000000000000000000000000000000000000000000000000000000000000001550079501                      -0000000000000000000000000000000000000000862355787                                                                                                                                    %                                                                           \1e"
+   actual:   "                                              0x8ea3ed60ee89facc-000000000000000000000000000000000000000000000000000000000000000000000000000001550079501                      -0000000000000000000000000000000000000000862355787                                                                                                                                    \1e"
+
+- [OUTPUT] ft_printf("%-149.*%%-114.120i%0*.24%%--*.28d" ,-63,1318471055,-125,-68,-1205906582)
+   expected: "%                                                                                                                                                    000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001318471055%                                                                                                                            -0000000000000000001205906582                                       "
+   actual:   "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001318471055-0000000000000000001205906582                                       "
+
+- [OUTPUT] ft_printf("%---34c%-107.*u" ,7,-168,2003619509u)
+   expected: "                                 2003619509                                                                                                 \07"
+   actual:   "\07"
+
+- [OUTPUT] ft_printf("%-102p%-91p%00*.32%" ,(void*)17383623580121946936lu,(void*)6825043625903153404lu,-125)
+   expected: "0xf13f098b3245db38                                                                                    0x5eb76d04628060fc                                                                         %                                                                                                                            "
+   actual:   "0x13f098b3245db38                                                                                     0x5eb76d04628060fc                                                                         "
+
+- [OUTPUT] ft_printf("%---130.58X%173.67s%-181.87u%-30c" ,1925387529u,"|0py&+BlK7]j3X\vDK",282509935u,-111)
+   expected: "0000000000000000000000000000000000000000000000000072C31509                                                                                                                                                                                                                                    |0py&+BlK7]j3XDK000000000000000000000000000000000000000000000000000000000000000000000000000000282509935                                                                                                                           \v\91"
+   actual:   "                                                                        0000000000000000000000000000000000000000000000000072C31509                                                                                                                                                            |0py&+BlK7]j3XDK                                                                                              000000000000000000000000000000000000000000000000000000000000000000000000000000282509935                             \v\91\ff\ff\ff"
+
+- [OUTPUT] ft_printf("%71c%-*.164u%-120.105u" ,58,106,3206019297u,1452705981u)
+   expected: "                                                                      :00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003206019297000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001452705981               "
+   actual:   "                                                                      :00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003206019297               000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001452705981"
+
+- [OUTPUT] ft_printf("%-132.186x%00129.46%%-191.181X%-75.123d%0033.123u" ,2222238685u,3146675666u,251185067,3453417465u)
+   expected: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008474abdd00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000%00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000BB8E75D2          000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000251185067000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003453417465"
+   actual:   "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008474abdd          00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000BB8E75D2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000251185067000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003453417465"
+
+- [OUTPUT] ft_printf("%-*c" ,-80,123)
+   expected: "{                                                                               "
+   actual:   "{"
+
+- [OUTPUT] ft_printf("%--198.101X%0145.12%%172c" ,935976394u,-118)
+   expected: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000037C9DDCA                                                                                                 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000%                                                                                                                                                                           \8a"
+   actual:   "                                                                                                 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000037C9DDCA                                                                                                                                                                           \8a"
+
+- [OUTPUT] ft_printf("%--3.115X%-*.*%%58c%-117.63u%---78p" ,3653275853u,81,-117,10,958058058u,(void*)8835148381236382049lu)
+   expected: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000D9C090CD%                                                                                                                                         000000000000000000000000000000000000000000000000000000958058058                                                      0x7a9cc0a461764961                                                            \n"
+   actual:   "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000D9C090CD                                                                                                               0000000000000000000000000000000000000000000000000000009580580580x7a9cc0a461764961                                                            \n"
+
+- [OUTPUT] ft_printf("%-69.27%%--*p" ,-94,(void*)7045295314441527752lu)
+   expected: "%                                                                    0x61c5eac2cb02e1c8                                                                            "
+   actual:   "0x61c5eac2cb02e1c8                                                                            "
+
+- [OUTPUT] ft_printf("%--110.93x%--78.123s%--30.92X%-45.57%%-*.68s" ,218095759u,"lCyN\r",1729010453u,134,"OxhROR`$;.U*;0zEm>e\r")
+   expected: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000cffe08f                 lCyN                                                                         000000000000000000000000000000000000000000000000000000000000000000000000000000000000670E9B15%                                            OxhROR`$;.U*;0zEm>e                                                                                                                  \r\r"
+   actual:   "                 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000cffe08flCyN                                                                         000000000000000000000000000000000000000000000000000000000000000000000000000000000000670E9B15OxhROR`$;.U*;0zEm>e                                                                                                                  \r\r"
+
+- [OUTPUT] ft_printf("%000169.50u%-127.85%%--195p%-51.49s%-160p" ,2209242471u,(void*)8769599610347160825lu,"1+6UGQiBr8wAmIE*{,xBrju#}s=X",(void*)15118044339110535138lu)
+   expected: "                                                                                                                       00000000000000000000000000000000000000002209242471%                                                                                                                              0x79b3e061dd2584f9                                                                                                                                                                                 1+6UGQiBr8wAmIE*{,xBrju#}s=X                       0xd1ce153a4349dfe2                                                                                                                                              "
+   actual:   "                                                                                                                       000000000000000000000000000000000000000022092424710x79b3e061dd2584f9                                                                                                                                                                                 1+6UGQiBr8wAmIE*{,xBrju#}s=X                       0xd1ce153a4349dfe2                                                                                                                                              "
+
+- [OUTPUT] ft_printf("%-82.43i%-*.82%%-*.20X" ,-1945174241,-26,94,1446072230u)
+   expected: "-0000000000000000000000000000000001945174241                                      %                         00000000000056314FA6                                                                          "
+   actual:   "-0000000000000000000000000000000001945174241                                                                                                                00000000000056314FA6"
+
+- [OUTPUT] ft_printf("%-110.159i%c%0100.177x%-188.*%" ,646185978,14,3198690061u,123)
+   expected: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006461859780000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000bea8230d%                                                                                                                                                                                           \0e"
+   actual:   "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000646185978\0e"
+
+- [OUTPUT] ft_printf("%--81.*%%019.14%%---27c%-75.150d%00136.74x" ,70,-15,-128722927,4090510000u)
+   expected: "%                                                                                000000000000000000%                          -000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000128722927                                                              000000000000000000000000000000000000000000000000000000000000000000f3d03ab0\f1"
+   actual:   "                          -000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000128722927                                                              000000000000000000000000000000000000000000000000000000000000000000f3d03ab0\f1\ff\ff\ff"
+
+- [OUTPUT] ft_printf("%52c%00040.166%%-131c%-12.99s" ,-57,123,"k\r/ULCoKi0")
+   expected: "                                                   000000000000000000000000000000000000000%{                                                                                                                                  k/ULCoKi0  \c7\r"
+   actual:   "                                                   {\c7"
+
+- [OUTPUT] ft_printf("%--140.183u%-*.35u" ,3194611513u,-160,4264407200u)
+   expected: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000319461151300000000000000000000000004264407200                                                                                                                             "
+   actual:   "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003194611513                                                                                                                             00000000000000000000000004264407200"
+
+- [OUTPUT] ft_printf("%-55.40s%--144c%-*.137i%093.12u" ,"M7>#/:*2BGG>zjU2zP'l$H(A4rY",38,53,65160444,3566926644u)
+   expected: "M7>#/:*2BGG>zjU2zP'l$H(A4rY                            &                                                                                                                                               00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000065160444                                                                                 003566926644"
+   actual:   "M7>#/:*2BGG>zjU2zP'l$H(A4rY                            &"
+
+- [OUTPUT] ft_printf("%-*c" ,162,89)
+   expected: "Y                                                                                                                                                                 "
+   actual:   "Y"
+
+- [OUTPUT] ft_printf("%57c%-76.*s%--38p%-*.159X%000193.93X" ,55,-20,"@(ECnQ^2yp,6x4F\fwA*iLS\fgt,De",(void*)15808961691193129302lu,168,1914174653u,2368364743u)
+   expected: "                                                        7@(ECnQ^2yp,6x4FwA*iLSgt,De                                                0xdb64b6e60f533956                    00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007217FCBD                                                                                                             00000000000000000000000000000000000000000000000000000000000000000000000000000000000008D2A60C7\0c\0c"
+   actual:   "                                                        7@(ECnQ^2yp,6x4FwA*iLSgt,De                                                0xdb64b6e60f533956                             00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007217FCBD                                                                                                    00000000000000000000000000000000000000000000000000000000000000000000000000000000000008D2A60C7\0c\0c"
+
+- [OUTPUT] ft_printf("%--140.*d%-169.198X%-*.93%" ,-176,2043379162,1756246551u,32)
+   expected: "2043379162                                                                                                                                  000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000068AE3217%                               "
+   actual:   "2043379162                                                                                                                                  000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000068AE3217"
+
+- [OUTPUT] ft_printf("%--81.144s%-*c%--138X" ,"nr:W1kw_#&(;C9k",195,57,2353642673u)
+   expected: "nr:W1kw_#&(;C9k                                                                  9                                                                                                                                                                                                  8C49BCB1                                                                                                                                  "
+   actual:   "nr:W1kw_#&(;C9k                                                                  9"
+
+- [OUTPUT] ft_printf("%-139.77X%-82.101x" ,4273984084u,639114854u)
+   expected: "000000000000000000000000000000000000000000000000000000000000000000000FEBFD254                                                              00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000026181e66"
+   actual:   "                                                              000000000000000000000000000000000000000000000000000000000000000000000FEBFD25400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000026181e66"
+
+- [OUTPUT] ft_printf("%-*c%-141p%-28.9u" ,-65,-4,(void*)7073624398654675005lu,113714125u)
+   expected: "                                                                0x622a8fe9b459183d                                                                                                                           113714125                   \fc"
+   actual:   "                                                                0x622a8fe9b459183d                                                                                                                                              113714125\fc\ff\ff\ff"
+
+- [OUTPUT] ft_printf("%--180.61X" ,1396814909u)
+   expected: "000000000000000000000000000000000000000000000000000005341B43D                                                                                                                       "
+   actual:   "                                                                                                                       000000000000000000000000000000000000000000000000000005341B43D"
+
+- [OUTPUT] ft_printf("%-70.21i%-*.115s%--57.196%%83.157s" ,502357737,80,"D5*;&'q|R:2T>","S}Vl41s`R:E_p>$R.\f9N")
+   expected: "000000000000502357737                                                 D5*;&'q|R:2T>                                                                   %                                                                                                                       S}Vl41s`R:E_p>$R.9N\0c"
+   actual:   "000000000000502357737                                                 D5*;&'q|R:2T>                                                                                                                                  S}Vl41s`R:E_p>$R.9N\0c"
+
+- [OUTPUT] ft_printf("%--39.115i%--166.*d%--47c%--94.116X" ,1917290799,23,749316185,98,3732464596u)
+   expected: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000191729079900000000000000749316185                                                                                                                                               b                                              000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000DE78E3D4"
+   actual:   "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000191729079900000000000000749316185                                                                                                                                               b"
+
+- [OUTPUT] ft_printf("%-175.96%%-153.x" ,822360617u)
+   expected: "%                                                                                                                                                                              31043a29                                                                                                                                                 "
+   actual:   "31043a29                                                                                                                                                 "
+
+- [OUTPUT] ft_printf("%043.165%%--35.34s%--4.*d%-189.*i" ,"TSvqw0m:$c!hhK(,R*",-100,967600936,45,1272776825)
+   expected: "000000000000000000000000000000000000000000%TSvqw0m:$c!hhK(,R*                 967600936000000000000000000000000000000000001272776825                                                                                                                                                "
+   actual:   "TSvqw0m:$c!hhK(,R*                 967600936000000000000000000000000000000000001272776825                                                                                                                                                "
+
+- [OUTPUT] ft_printf("%-166.180X%--18.47d%---111.87%%8p%0114.24X" ,1637127682u,-1931431309,(void*)3522468094256045905lu,4291674618u)
+   expected: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000061949602-00000000000000000000000000000000000001931431309%                                                                                                              0x30e25211a2c75f51                                                                                          0000000000000000FFCDC1FA"
+   actual:   "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000061949602-000000000000000000000000000000000000019314313090x30e25211a2c75f51                                                                                          0000000000000000FFCDC1FA"
+
+- [OUTPUT] ft_printf("%-55.46%%--171.99s%--56.41X%-173X" ,"7",3917830995u,3557113666u)
+   expected: "%                                                      7                                                                                                                                                                          000000000000000000000000000000000E9855B53               D4053F42                                                                                                                                                                     "
+   actual:   "7                                                                                                                                                                                         000000000000000000000000000000000E9855B53D4053F42                                                                                                                                                                     "
+
+- [OUTPUT] ft_printf("%--85.97%%---129c" ,33)
+   expected: "%                                                                                    !                                                                                                                                "
+   actual:   "!"
+
+- [OUTPUT] ft_printf("%29p%0151.162x%---53.46u%-139.26X" ,(void*)17894711340605174765lu,1565093748u,662758369u,3536629372u)
+   expected: "           0xf856c9276eecf3ed00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005d496f740000000000000000000000000000000000000662758369       000000000000000000D2CCAE7C                                                                                                                 "
+   actual:   "            0x856c9276eecf3ed"
+
+- [OUTPUT] ft_printf("%-*.144d%-36c%-96c%-c" ,196,-910445343,-65,124,87)
+   expected: "-000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000910445343                                                                                      |                                                                                               W\bf"
+   actual:   "-000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000910445343                                                                                      |\bf\ff\ff\ff"
+
+- [OUTPUT] ft_printf("%--74.144x%-166p%--78.55s%-195.140x" ,625771587u,(void*)14083163232330204447lu,"P(LiM1QG='.bUp\r",314220770u)
+   expected: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000254c84430xc371725810e2451f                                                                                                                                                    P(LiM1QG='.bUp                                                               00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000012baa0e2                                                       \r"
+   actual:   "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000254c84430xc371725810e2451f                                                                                                                                                    P(LiM1QG='.bUp                                                                                                                      00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000012baa0e2\r"
+
+- [OUTPUT] ft_printf("%-10.123X%---155.97x" ,382459494u,970578181u)
+   expected: "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000016CBDE660000000000000000000000000000000000000000000000000000000000000000000000000000000000000000039d9d905                                                          "
+   actual:   "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000016CBDE66                                                          0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000039d9d905"
+
+- [OUTPUT] ft_printf("%-188c%-84.159x%-.82i%-192.158i" ,45,2099602418u,-590423754,1933619156)
+   expected: "-                                                                                                                                                                                           00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007d2563f2-000000000000000000000000000000000000000000000000000000000000000000000000059042375400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001933619156                                  "
+   actual:   "-"
+
+- [OUTPUT] ft_printf("%-*.156x%0033.100u%0.104i%-4.150x%-90.%" ,28,4190048377u,3783020883u,-1750158056,3765069756u)
+   expected: "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f9bf10790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003783020883-000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000017501580560000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e06a67bc%                                                                                         "
+   actual:   "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f9bf10790000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003783020883-000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000017501580560000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e06a67bc"
+
+- [OUTPUT] ft_printf("%--71c%074.49X%-50.195x%-106.79i" ,-112,1537135483u,4281417478u,1103336433)
+   expected: "                                                                                               000000000000000000000000000000000000000005B9ED37B0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff313f060000000000000000000000000000000000000000000000000000000000000000000001103336433                           \90"
+   actual:   "                                                                                               000000000000000000000000000000000000000005B9ED37B0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ff313f060000000000000000000000000000000000000000000000000000000000000000000001103336433                           \90\ff\ff\ff"
+
+- [OUTPUT] ft_printf("%--150.*d%01.172i%--151.122d%--*.110x%--23.182%" ,193,-1523409169,453642614,881460015,68,2920216226u)
+   expected: "-0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001523409169000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045364261400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000881460015                             000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ae0ef6a2%                      "
+   actual:   "-0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001523409169000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000045364261400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000881460015                             000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ae0ef6a2"
+
+- [OUTPUT] ft_printf("%-66p%-90c%--*.69x%0045.*u" ,(void*)9420165689360028937lu,-29,-122,174318236u,-127,2553740548u)
+   expected: "0x82bb26c8c7a09509                                                                                                                                         00000000000000000000000000000000000000000000000000000000000000a63e29c                                                     000000000000000000000000000000000002553740548\e3"
+   actual:   "0x82bb26c8c7a09509                                                                                                                                                                                              00000000000000000000000000000000000000000000000000000000000000a63e29c000000000000000000000000000000000002553740548\e3\ff\ff\ff"
+
+- [OUTPUT] ft_printf("%0110.7u%-85.40X%---182.30s" ,1517824905u,3044934856u,".iM8/ct)(S")
+   expected: "                                                                                                    151782490500000000000000000000000000000000B57E04C8                                             .iM8/ct)(S                                                                                                                                                                            "
+   actual:   "                                                                                                    1517824905                                             00000000000000000000000000000000B57E04C8.iM8/ct)(S                                                                                                                                                                            "
+
+- [OUTPUT] ft_printf("%00142.67d%-87.120s%-21.160%%-*.98d%-105.71d" ,1277409698,"/]>n?I^K$-",-187,-569482950,1801496736)
+   expected: "                                                                           0000000000000000000000000000000000000000000000000000000001277409698/]>n?I^K$-                                                                             %                    -00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000569482950                                                                                        00000000000000000000000000000000000000000000000000000000000001801496736                                  "
+   actual:   "                                                                           0000000000000000000000000000000000000000000000000000000001277409698/]>n?I^K$-                                                                             -00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000569482950                                                                                        00000000000000000000000000000000000000000000000000000000000001801496736                                  "
+
+- [OUTPUT] ft_printf("%-58.131%")
+   expected: "%                                                         "
+   actual:   ""
+
+- [OUTPUT] ft_printf("%.p", NULL)
+   expected: "0x"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%.p", NULL)
+   expected: "0x"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%1.p", NULL)
+   expected: "0x"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%1.p", NULL)
+   expected: "0x"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%5.p", NULL)
+   expected: "   0x"
+   actual:   ""
+
+- [OUTPUT] ft_printf("%5.p", NULL)
+   expected: "   0x"
+   actual:   ""
+
+- [OUTPUT] ft_printf("-->|%-16.p|<-- ", NULL)
+   expected: "-->|0x              |<-- "
+   actual:   "-->||<-- "
+
+- [OUTPUT] ft_printf("-->|%-16.p|<-- ", NULL)
+   expected: "-->|0x              |<-- "
+   actual:   "-->||<-- "
+
+######### Test-42 ##########

@@ -45,6 +45,8 @@ int		get_size_based(long long n, int base)
 	int	size;
 
 	size = 0;
+	if (n == 0)
+		size = 1;
 	while (n)
 	{
 		size++;
@@ -70,6 +72,8 @@ char	*pf_itoa(long long n)
 	if (buf == 0)
 		return (0);
 	buf[len] = 0;
+	if (n == 0)
+		buf[0] = '0';
 	while (n)
 	{
 		buf[--len] = absol_n(n % 10) + '0';

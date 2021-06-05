@@ -12,17 +12,15 @@
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_isdigit(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }
 
-void	*ft_memset(void *ptr, int nue, size_t num)
+void	*ft_memset(void *ptr, int value, size_t num)
 {
 	char	*str;
 	size_t	i;
@@ -30,16 +28,20 @@ void	*ft_memset(void *ptr, int nue, size_t num)
 	i = 0;
 	str = ptr;
 	while (i < num)
-		str[i++] = nue;
+		str[i++] = value;
 	return (ptr);
 }
 
-int		ft_isdigit(int c)
+size_t	ft_strlen(const char *str)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
+	int	i;
+
+	i = 0;
+	if (str == 0)
 		return (0);
+	while (str[i])
+		i++;
+	return (i);
 }
 
 void	c_print(va_list ap, t_opt opts, size_t *cnt)
@@ -115,11 +117,6 @@ int		ft_printf(const char *str, ...)
 			//구조체에 각 옵션 값들 넣어줌.
 			ft_memset(&opts, 0, sizeof(t_opt));
 			get_opt(str, &opts, &i);
-			//printf("\ncnt2 : %ld\n", cnt);
-			//printf("flag.minus1 : %d\n", opts.fg.minus);
-			//printf("flag.width1 : %d\n", opts.width);
-			//printf("flag.prec1 : %d\n", opts.prec);
-			//printf("flag.type : %c\n", opts.type);
 			//가변인자 하나씩 받아서 *인 곳 바꿔주기
 			if (opts.width == -1) // = *일 떄 width에 넣어줄 값
 			{
@@ -134,17 +131,12 @@ int		ft_printf(const char *str, ...)
 			{
 				opts.prec = va_arg(ap, int);
 				if (opts.prec < 0)
-				{
-					opts.fg.minus = 1;
-					opts.prec *= -1;
-				}
+					opts.prec = 0;
+				else if (opts.prec == 0)
+					opts.prec = -3;
 			}
-			//printf("\nflag.minus2 : %d\n", opts.fg.minus);
-			//printf("flag.width2 : %d\n", opts.width);
-			//printf("flag.prec2 : %d\n", opts.prec);
 			//각 옵션의 조합 고려해서 출력
 			print_arg(ap, opts, &cnt);
-			//printf("cnt1 : %ld\n", cnt);
 		}
 		else
 		{
@@ -161,17 +153,16 @@ int main()
 {
 	char	*s = "abcde";
 
-	ft_printf("[%p]\n", s);
-	ft_printf("[%3p]\n", s);
-	ft_printf("[%20p]\n", s);
-	ft_printf("[%-20p]\n", s);
-	ft_printf("[%20.3p]\n", s);
+	ft_printf("Hello 42 school! %s", NULL);
+	// ft_printf("[%20p]\n", s);
+	// ft_printf("[%-20p]\n", s);
+	// ft_printf("[%20.3p]\n", s);
 	ft_printf("\n----------------\n\n");
-	printf("[%p]\n", s);
-	printf("[%3p]\n", s);
-	printf("[%20p]\n", s);
-	printf("[%-20p]\n", s);
-	printf("[%20.3p]\n", s);
+	printf("Hello 42 school! %s", NULL);
+	// printf("[%3p]\n", s);
+	// printf("[%20p]\n", s);
+	// printf("[%-20p]\n", s);
+	// printf("[%20.3p]\n", s);
 
 	return (0);
 }
