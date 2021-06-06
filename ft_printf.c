@@ -46,36 +46,26 @@ size_t	ft_strlen(const char *str)
 
 void	c_print(va_list ap, t_opt opts, size_t *cnt)
 {
-	wint_t	c;
-	int		i;
+	char	c;
 
-	i = 0;
-	//1. length에 맞는 변수로 가변인자값 받음.
-	if (opts.ln.l == 1)
-		c = va_arg(ap, wint_t);
+	if (opts.type == '%')
+		c = '%';
 	else
 		c = va_arg(ap, int);
 	//2. width가 0이면 그냥 문자 출력하면 됨.
-	if (opts.width == 0)
-	{
-		write (1, &c, sizeof(c));
-		cnt += sizeof(c); //sizeof(c)가 맞는지? int형으로 받았지만 char로 출력하니까?
-		return ;
-	}
+	if (opts.width == 0 || opts.type == '%')
+		cnt += print_char(c, 1);
 	//3. width가 있으면 minus옵션이 있는 경우와 없는 경우로 나뉨.
 	else if (opts.fg.minus == 1)
 	{
-		write (1, &c, sizeof(c));
-		while (i++ < opts.width - 1)
-			write (1, " ", 1);
+		cnt += print_char(c, 1);
+		cnt += print_char(' ', opts.width - 1);
 	}
 	else
 	{
-		while (i++ < opts.width - 1)
-			write (1, " ", 1);
-		write (1, &c, 1);
+		cnt += print_char(' ', opts.width - 1);
+		cnt += print_char(c, 1);
 	}
-	*cnt += opts.width;
 }
 
 void	print_arg(va_list ap, t_opt opts, size_t *cnt)
@@ -96,6 +86,8 @@ void	print_arg(va_list ap, t_opt opts, size_t *cnt)
 		s_print(ap, opts, cnt);
 	else if (opts.type == 'p')
 		p_print(ap, opts, cnt);
+	else if (opts.type == '%')
+		c_print(ap, opts, cnt);
 	//....
 }
 
@@ -153,12 +145,12 @@ int main()
 {
 	char	*s = "abcde";
 
-	ft_printf("Hello 42 school! %s", NULL);
+	ft_printf("%%\n");
 	// ft_printf("[%20p]\n", s);
 	// ft_printf("[%-20p]\n", s);
 	// ft_printf("[%20.3p]\n", s);
 	ft_printf("\n----------------\n\n");
-	printf("Hello 42 school! %s", NULL);
+	printf("%%\n");
 	// printf("[%3p]\n", s);
 	// printf("[%20p]\n", s);
 	// printf("[%-20p]\n", s);

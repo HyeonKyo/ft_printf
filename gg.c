@@ -2,7 +2,7 @@
 
 // int main()
 // {
-//     printf("[%.10s]\n", "Hello");
+//     printf("%%");
 
 //     return (0);
 // }
