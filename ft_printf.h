@@ -59,7 +59,7 @@ int					ft_isdigit(int c);
 //utils1
 int		print_char(char c, int len);
 int		pf_atoi(const char *str, t_opt *opts, size_t *i);
-int		get_size_based(long long n, int base);
+int		get_size(long long n);
 size_t	absol_n(int n);
 char	*pf_itoa(long long n);
 //utils2
@@ -83,14 +83,15 @@ char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n);
 size_t	u_print_case(t_opt opts, char *buf);
 void	u_print(va_list ap, t_opt opts, size_t *cnt);
 //x_print
+int		get_size_based(unsigned long long n, int base);
 char	*pf_itoa_hex(unsigned long long n, t_opt opts);
 char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n);
 void	x_print(va_list ap, t_opt opts, size_t *cnt);
 //s_print
 void	s_print(va_list ap, t_opt opts, size_t *cnt);
 //p_print
-char	*p_pre_task(va_list ap, t_opt *opts, unsigned long long *n, int *size);
-size_t	print_hex_addr(char *buf);
+char	*p_pre_task(va_list ap, t_opt *opts, int *size);
+size_t	print_hex_addr(char *buf, t_opt opts);
 size_t	p_print_case(int print_size, t_opt opts, char *buf);
 void	p_print(va_list ap, t_opt opts, size_t *cnt);
 //print

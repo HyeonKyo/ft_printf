@@ -1,26 +1,31 @@
 #include "ft_printf.h"
 
-char	*p_pre_task(va_list ap, t_opt *opts, unsigned long long *n, int *size)
+char	*p_pre_task(va_list ap, t_opt *opts, int *size)
 {
-	void	*buf;
+	unsigned long long	n;
+	void				*buf;
 
-	*n = (unsigned long long)va_arg(ap, void *);
+	n = va_arg(ap, unsigned long long);
 	if (opts->fg.hash || opts->fg.plus || opts->fg.space || opts->fg.zero
-	|| opts->fg.apos || opts->prec != 0)//경메 출력 조건
+	|| opts->fg.apos)//경메 출력 조건
 		return (0);
 	if (opts->width > 0)
 		*size = opts->width;
-	buf = pf_itoa_hex(*n, *opts);//pf_itoa는 기호 제외하고 숫자만 출력
+	buf = pf_itoa_hex(n, *opts);//pf_itoa는 기호 제외하고 숫자만 출력
 	if (!buf)
 		return (0);
 	return (buf);
 }
 
-size_t	print_hex_addr(char *buf)
+size_t	print_hex_addr(char *buf, t_opt opts)
 {
+	size_t	n;
+
+	n = 0;
 	write(1, "0x", 2);
-	print_str(buf, ft_strlen(buf));
-	return (2 + ft_strlen(buf));
+	if (!(opts.prec == -2 && buf[0] == '0'))
+		n = print_str(buf, ft_strlen(buf));
+	return (2 + n);
 }
 
 size_t	p_print_case(int print_size, t_opt opts, char *buf)
@@ -30,16 +35,18 @@ size_t	p_print_case(int print_size, t_opt opts, char *buf)
 
 	cnt = 0;
 	len = print_size - (ft_strlen(buf) + 2);
+	if (opts.prec == -2 && buf[0] == '0')
+		len++;
 	if (len > 0 && !opts.fg.minus)
 	{
 		cnt += print_char(' ', len);
-		cnt += print_hex_addr(buf);
+		cnt += print_hex_addr(buf, opts);
 	}
 	else
 	{
-		print_hex_addr(buf);
-		if (opts.fg.minus)
-			print_char(' ', len);
+		cnt += print_hex_addr(buf, opts);
+		if (opts.fg.minus && len > 0)
+			cnt += print_char(' ', len);
 	}
 	return (cnt);
 }
@@ -52,8 +59,10 @@ void	p_print(va_list ap, t_opt opts, size_t *cnt)
 
 	n = 0;
 	size = 0;
-	buf = p_pre_task(ap, &opts, &n, &size);
+	buf = p_pre_task(ap, &opts, &size);
 	if (buf == 0)
 		return ;
-	*cnt = p_print_case(size, opts, buf);
+	*cnt += p_print_case(size, opts, buf);
+	if (buf != 0)
+		free(buf);
 }

@@ -53,18 +53,21 @@ void	c_print(va_list ap, t_opt opts, size_t *cnt)
 	else
 		c = va_arg(ap, int);
 	//2. width가 0이면 그냥 문자 출력하면 됨.
-	if (opts.width == 0 || opts.type == '%')
-		cnt += print_char(c, 1);
+	if (opts.width == 0)
+		*cnt += print_char(c, 1);
 	//3. width가 있으면 minus옵션이 있는 경우와 없는 경우로 나뉨.
 	else if (opts.fg.minus == 1)
 	{
-		cnt += print_char(c, 1);
-		cnt += print_char(' ', opts.width - 1);
+		*cnt += print_char(c, 1);
+		*cnt += print_char(' ', opts.width - 1);
 	}
 	else
 	{
-		cnt += print_char(' ', opts.width - 1);
-		cnt += print_char(c, 1);
+		if (opts.type == '%' && opts.fg.zero)
+			*cnt += print_char('0', opts.width - 1);
+		else
+			*cnt += print_char(' ', opts.width - 1);
+		*cnt += print_char(c, 1);
 	}
 }
 
@@ -108,7 +111,8 @@ int		ft_printf(const char *str, ...)
 			i++;
 			//구조체에 각 옵션 값들 넣어줌.
 			ft_memset(&opts, 0, sizeof(t_opt));
-			get_opt(str, &opts, &i);
+			if (!get_opt(str, &opts, &i))
+				return (cnt);
 			//가변인자 하나씩 받아서 *인 곳 바꿔주기
 			if (opts.width == -1) // = *일 떄 width에 넣어줄 값
 			{
@@ -141,20 +145,11 @@ int		ft_printf(const char *str, ...)
 	return (cnt);
 }
 
-int main()
-{
-	char	*s = "abcde";
+// int main()
+// {
+// 	ft_printf("%.*o", -3, 12345);
+// 	ft_printf("\n----------------\n\n");
+// 	printf("%.*o", -3, 12345);
 
-	ft_printf("%%\n");
-	// ft_printf("[%20p]\n", s);
-	// ft_printf("[%-20p]\n", s);
-	// ft_printf("[%20.3p]\n", s);
-	ft_printf("\n----------------\n\n");
-	printf("%%\n");
-	// printf("[%3p]\n", s);
-	// printf("[%20p]\n", s);
-	// printf("[%-20p]\n", s);
-	// printf("[%20.3p]\n", s);
-
-	return (0);
-}
+// 	return (0);
+// }

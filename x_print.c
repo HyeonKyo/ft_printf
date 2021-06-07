@@ -12,6 +12,21 @@
 
 #include "ft_printf.h"
 
+int		get_size_based(unsigned long long n, int base)
+{
+	int	size;
+
+	size = 0;
+	if (n == 0)
+		size = 1;
+	while (n)
+	{
+		size++;
+		n = n / base;
+	}
+	return (size);
+}
+
 char	*pf_itoa_hex(unsigned long long n, t_opt opts)
 {
 	int		len;
@@ -48,8 +63,6 @@ char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n)
 		return (0);
 	if ((opts->fg.minus && opts->fg.zero) || opts->prec != 0)//0 flag 무시조건.
 		opts->fg.zero = 0;
-	if (opts->prec > 0)
-		opts->fg.minus = 0;
 	buf = pf_itoa_hex((unsigned long long)*n, *opts);
 	if (!buf)
 		return (0);
@@ -70,5 +83,7 @@ void	x_print(va_list ap, t_opt opts, size_t *cnt)
 		free(buf);
 		buf = 0;
 	}
-	*cnt = u_print_case(opts, buf);
+	*cnt += u_print_case(opts, buf);
+	if (buf)
+		free(buf);
 }

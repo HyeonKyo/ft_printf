@@ -27,12 +27,8 @@ int		print_sign(t_opt opts, int n)
 
 size_t	print_str(char *str, size_t len)
 {
-	size_t	cnt;
-
-	cnt = 0;
 	if (str[0] == 0 && len == 0)
-	 	write(1, str, 1);
+	 	return (0);
 	write(1, str, len);
-	cnt += len;
-	return (cnt);
+	return (len);
 }

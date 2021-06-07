@@ -59,12 +59,14 @@ size_t	d_print_case(int n, int size, t_opt opts, char *buf)//prec있는 경우 &
 	size_t	print_len;
 
 	cnt = 0;
-	if (opts.prec < 0  && n == 0)
-	{
-		free(buf);
-		buf = 0;
-	}
 	buf_len = (int)ft_strlen(buf);
+	if (opts.prec < 0  && n == 0)
+		buf_len = 0;
+	if (buf_len == 0)
+	{
+		cnt += print_char(' ', opts.width);
+		return (cnt);
+	}
 	if (size > buf_len)
 	{
 		if (opts.fg.minus)
@@ -78,11 +80,11 @@ size_t	d_print_case(int n, int size, t_opt opts, char *buf)//prec있는 경우 &
 			if (opts.fg.plus || opts.fg.space || n < 0)//부호 출력 시
 				print_len--;
 			if (!opts.fg.zero)
-				print_char(' ', print_len);
+				cnt += print_char(' ', print_len);
 			else
 			{
-				print_sign(opts, n);
-				print_char('0', print_len);
+				cnt += print_sign(opts, n);
+				cnt += print_char('0', print_len);
 			}
 		}
 		if (!opts.fg.minus)
@@ -113,5 +115,7 @@ void	d_print(va_list ap, t_opt opts, size_t *cnt)
 	buf = d_pre_task(ap, &opts, &n, &size);
 	if (buf == 0)
 		return ;
-	*cnt = d_print_case(n, size, opts, buf);
+	*cnt += d_print_case(n, size, opts, buf);
+	if (buf)
+		free(buf);
 }
