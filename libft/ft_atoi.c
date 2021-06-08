@@ -13,12 +13,10 @@
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	j;
 	int	sign;
 	int	num;
 
 	i = 0;
-	j = 0;
 	sign = 1;
 	num = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')

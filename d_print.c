@@ -6,7 +6,7 @@
 /*   By: hyeonkki <hyeonkki@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:43:05 by hyeonkki          #+#    #+#             */
-/*   Updated: 2021/06/05 15:20:54 by hyeonkki         ###   ########.fr       */
+/*   Updated: 2021/06/08 15:10:22 by hyeonkki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
 		return (0);
 	if ((opts->fg.minus && opts->fg.zero) || opts->prec != 0)//0 flag 무시조건.
 		opts->fg.zero = 0;
-	if (opts->prec == -2)
-		opts->fg.minus = 0;
+	// if (opts->prec == -2)
+	// 	opts->fg.minus = 0;
 	if (opts->prec >= opts->width)
 	{
 		*size = opts->prec;
-		if (opts->fg.plus || opts->fg.space || n < 0)
+		if (opts->fg.plus || opts->fg.space || *n < 0)
 			(*size)++;
 	}
 	else if (opts->width > opts->prec)

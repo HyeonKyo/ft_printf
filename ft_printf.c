@@ -147,9 +147,16 @@ int		ft_printf(const char *str, ...)
 
 // int main()
 // {
-// 	ft_printf("%.*o", -3, 12345);
+// 	int d = -135;
+// 	int n = -12;
+
+// 	ft_printf("[%-4.3d]\n", d);
+// 	ft_printf("[%-4.4d]\n", d);
+// 	ft_printf("[%-4.d]\n", n);
 // 	ft_printf("\n----------------\n\n");
-// 	printf("%.*o", -3, 12345);
+// 	printf("[%-4.3d]\n", d);
+// 	printf("[%-4.4d]\n", d);
+// 	printf("[%-4.d]\n", n);
 
 // 	return (0);
 // }
