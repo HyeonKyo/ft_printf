@@ -54,7 +54,6 @@ char	*pf_itoa_hex(unsigned long long n, t_opt opts)
 
 char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n)
 {
-	//length고려 코드 추가해야함.
 	char	*buf;
 
 	*n = va_arg(ap, unsigned int);
@@ -83,7 +82,7 @@ void	x_print(va_list ap, t_opt opts, size_t *cnt)
 		free(buf);
 		buf = 0;
 	}
-	*cnt += u_print_case(opts, buf);
+	*cnt += u_print_all(opts, buf);
 	if (buf)
 		free(buf);
 }

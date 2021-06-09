@@ -34,20 +34,14 @@ size_t	p_print_case(int print_size, t_opt opts, char *buf)
 	int		len;
 
 	cnt = 0;
-	len = print_size - (ft_strlen(buf) + 2);
-	if (opts.prec == -2 && buf[0] == '0')
+	len = print_size - (ft_strlen(buf) + 2);//공백 길이
+	if (opts.prec == -2 && buf[0] == '0')//0x0이 아닌 0X만 출력되는 경우로 공백 길이가 1늘어남.
 		len++;
-	if (len > 0 && !opts.fg.minus)
-	{
+	if (!opts.fg.minus)
 		cnt += print_char(' ', len);
-		cnt += print_hex_addr(buf, opts);
-	}
-	else
-	{
-		cnt += print_hex_addr(buf, opts);
-		if (opts.fg.minus && len > 0)
-			cnt += print_char(' ', len);
-	}
+	cnt += print_hex_addr(buf, opts);
+	if (opts.fg.minus)
+		cnt += print_char(' ', len);
 	return (cnt);
 }
 

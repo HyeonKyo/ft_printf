@@ -27,10 +27,7 @@ int		find_flag(const char *str, t_opt *opts, size_t *i)
 	else if (str[*i] == '#')
 		opts->fg.hash = 1;
 	else
-	{
-		opts->fg.none = 1;//flag가 없는 경우.
 		return (0);
-	}
 	if (opts->fg.minus && opts->fg.zero)//경메가 뜨는 flag조합. => type이 %이면 경메 출력 안됨. 따라서 필요 없을 듯?
 		opts->fg.zero = 0;
 	return (1);

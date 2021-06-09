@@ -17,6 +17,8 @@ int		print_char(char c, int len)
 	int	i;
 
 	i = 0;
+	if (len <= 0)
+		return (0);
 	while (i++ < len)
 		write(1, &c, 1);
 	return (len);

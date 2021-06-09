@@ -26,47 +26,46 @@ char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n)
 		return (0);
 	return (buf);
 }
-//공백, 부호, 숫자 or 부호 숫자 공백
 
-size_t	u_print_case(t_opt opts, char *buf)
+size_t	u_print_case(int zero_len, int len, char *buf, t_opt opts)
 {
 	size_t	cnt;
 	int		buf_len;
-	int		zero_len;
-	int		print_len;
-	int		len;
 
 	cnt = 0;
 	buf_len = (int)ft_strlen(buf);
-	zero_len = opts.prec - buf_len;
-	print_len = buf_len;
-	if (zero_len > 0)
-		print_len += zero_len;
-	len = opts.width - print_len;
 	if (buf == 0)
+		cnt += print_char(' ', len);
+	else if (!opts.fg.minus)
 	{
-		print_char(' ', len);
-		return (len);
-	}
-	if (len > 0 && !opts.fg.minus)
-	{
-		if (opts.fg.zero && opts.prec == 0)
+		if (opts.fg.zero)
 			cnt += print_char('0', len);
 		else
 			cnt += print_char(' ', len);
-		if (zero_len > 0)
-			cnt += print_char('0', zero_len);
+		cnt += print_char('0', zero_len);
 		cnt += print_str(buf, buf_len);
 	}
 	else
 	{
-		if (zero_len > 0)
-			cnt += print_char('0', zero_len);
+		cnt += print_char('0', zero_len);
 		cnt += print_str(buf, buf_len);
-		if (len > 0)
-			cnt += print_char(' ', len);
+		cnt += print_char(' ', len);
 	}
 	return (cnt);
+}
+
+size_t	u_print_all(t_opt opts, char *buf)
+{
+	int		buf_len;
+	int		zero_len;
+	int		len;
+
+	buf_len = (int)ft_strlen(buf);//숫자 길이
+	zero_len = opts.prec - buf_len;//prec에 의한 0출력 길이
+	len = opts.width - buf_len;//숫자or0출력 후 남은 공백, 0출력 길이
+	if (zero_len > 0)
+		len -= zero_len;
+	return (u_print_case(zero_len, len, buf, opts));
 }
 
 void	u_print(va_list ap, t_opt opts, size_t *cnt)
@@ -83,7 +82,7 @@ void	u_print(va_list ap, t_opt opts, size_t *cnt)
 		free(buf);
 		buf = 0;
 	}
-	*cnt += u_print_case(opts, buf);
+	*cnt += u_print_all(opts, buf);
 	if (buf)
 		free(buf);
 }

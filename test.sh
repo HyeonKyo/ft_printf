@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 이거를 프로젝트 폴더로 수정하세요!
-PROJ_PATH=../ft_printf
+PROJ_PATH=./
 
 # ### 안내:
 # https://github.com/PandaCoustik/Test-42
@@ -54,7 +54,7 @@ echo -ne '1\n1\n1\n1\n1\n1\n1\n' | bash run.sh >> ../test_result.txt
 cd ..
 
 
-########## 42TESTERS-PRINTF ##########
+######### 42TESTERS-PRINTF ##########
 echo -e '######### 42TESTERS-PRINTF ##########' >> test_result.txt
 git clone https://github.com/Mazoise/42TESTERS-PRINTF.git
 cd 42TESTERS-PRINTF
@@ -63,39 +63,39 @@ echo "#####42TESTS-PRINTF#####" >> ../test_result.txt
 cat diff.txt >> ../test_result.txt
 cd ..
 
-# ########## PFT ##########
-# echo -e '#########PFT##########' >> test_result.txt
-# git clone https://github.com/gavinfielder/pft.git pft
-# make re
-# cd pft
-# make re
-# ./test
-# cat -e results.txt >> ../test_result.txt
-# cd ..
+########## PFT ##########
+echo -e '#########PFT##########' >> test_result.txt
+git clone https://github.com/gavinfielder/pft.git pft
+make re
+cd pft
+make re
+./test
+cat -e results.txt >> ../test_result.txt
+cd ..
 
-########## PFT_2019 ##########
-# echo -e '#########PFT_2019##########' >> test_result.txt
-# git clone https://github.com/gavinfielder/pft.git pft_2019
-# cd pft_2019
-# rm unit_tests.c
-# rm options-config.ini
-# git clone https://github.com/cclaude42/PFT_2019.git temp
-# cp temp/unit_tests.c .
-# cp temp/options-config.ini .
-# rm -rf temp
-# make re
-# ./test
-# cat -e results.txt >> ../test_result.txt
-# cd ..
+######### PFT_2019 ##########
+echo -e '#########PFT_2019##########' >> test_result.txt
+git clone https://github.com/gavinfielder/pft.git pft_2019
+cd pft_2019
+rm unit_tests.c
+rm options-config.ini
+git clone https://github.com/cclaude42/PFT_2019.git temp
+cp temp/unit_tests.c .
+cp temp/options-config.ini .
+rm -rf temp
+make re
+./test
+cat -e results.txt >> ../test_result.txt
+cd ..
 
 
-# ######### printf_lover_v2 #########
-# (수동으로 동작 필요)
-# echo -e '######### printf_lover_v2 ##########' >> test_result.txt
-# git clone https://github.com/charMstr/printf_lover_v2.git
-# cd printf_lover_v2
-# ./printf_lover.sh re
-# cd ..
+######### printf_lover_v2 #########
+(수동으로 동작 필요)
+echo -e '######### printf_lover_v2 ##########' >> test_result.txt
+git clone https://github.com/charMstr/printf_lover_v2.git
+cd printf_lover_v2
+./printf_lover.sh re
+cd ..
 
 # ######### printf-tester #########
 echo -e '######### printf-tester ##########' >> test_result.txt
@@ -126,4 +126,5 @@ cp ../../libftprintf.a libftprintf.a
 make
 cd ../../
 
+rm -rf 42TESTERS-PRINTF ft_printf_test printf-tester printf_lover_v2 pft pft_2019 Test-42 tests451
 make fclean

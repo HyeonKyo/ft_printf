@@ -21,8 +21,6 @@ char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
 		return (0);
 	if ((opts->fg.minus && opts->fg.zero) || opts->prec != 0)//0 flag 무시조건.
 		opts->fg.zero = 0;
-	// if (opts->prec == -2)
-	// 	opts->fg.minus = 0;
 	if (opts->prec >= opts->width)
 	{
 		*size = opts->prec;
@@ -52,41 +50,45 @@ size_t	print_prec_buf(int n, t_opt opts, char *buf)
 	return (cnt);
 }
 
-size_t	d_print_case(int n, int size, t_opt opts, char *buf)//prec있는 경우 && prec > buf_len인 경우
+size_t	zero_or_space(int n, int buf_len, t_opt opts)
+{
+	size_t	print_len;
+	size_t	cnt;
+
+	print_len = 0;
+	cnt = 0;
+	if (opts.width > opts.prec)
+	{
+		print_len = opts.width - buf_len;//공백 or 0출력 길이
+		if (opts.prec > buf_len)
+			print_len = opts.width - opts.prec;
+		if (opts.fg.plus || opts.fg.space || n < 0)//부호 출력 시
+			print_len--;
+		if (!opts.fg.zero)
+			cnt += print_char(' ', print_len);
+		else
+		{
+			cnt += print_sign(opts, n);
+			cnt += print_char('0', print_len);
+		}
+	}
+	return (cnt);
+}
+
+size_t	d_print_case(int n, int size, t_opt opts, char *buf)
 {
 	size_t	cnt;
 	int		buf_len;
-	size_t	print_len;
 
 	cnt = 0;
 	buf_len = (int)ft_strlen(buf);
 	if (opts.prec < 0  && n == 0)
-		buf_len = 0;
-	if (buf_len == 0)
-	{
 		cnt += print_char(' ', opts.width);
-		return (cnt);
-	}
-	if (size > buf_len)
+	else if (size > buf_len)
 	{
 		if (opts.fg.minus)
 			cnt += print_prec_buf(n, opts, buf);
-		if (opts.width > opts.prec)
-		{
-			if (opts.prec > buf_len)
-				print_len = opts.width - opts.prec;
-			else
-				print_len = opts.width - buf_len;
-			if (opts.fg.plus || opts.fg.space || n < 0)//부호 출력 시
-				print_len--;
-			if (!opts.fg.zero)
-				cnt += print_char(' ', print_len);
-			else
-			{
-				cnt += print_sign(opts, n);
-				cnt += print_char('0', print_len);
-			}
-		}
+		cnt += zero_or_space(n, buf_len, opts);
 		if (!opts.fg.minus)
 			cnt += print_prec_buf(n, opts, buf);
 	}
