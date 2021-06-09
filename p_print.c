@@ -23,19 +23,19 @@ static	char	*p_pre_task(va_list ap, t_opt *opts, int *size)
 		return (0);
 	if (opts->width > 0)
 		*size = opts->width;
-	buf = pf_itoa_hex(n, *opts);//pf_itoa는 기호 제외하고 숫자만 출력
+	buf = pf_itoa_hex(n, *opts);
 	if (!buf)
 		return (0);
 	return (buf);
 }
 
-static size_t	print_hex_addr(char *buf, t_opt opts)
+static size_t	print_hex_addr(char *buf, t_opt opts)//0x와 문자열 출력
 {
 	size_t	n;
 
 	n = 0;
 	write(1, "0x", 2);
-	if (!(opts.prec == -2 && buf[0] == '0'))
+	if (!(opts.prec == -2 && buf[0] == '0'))//0x만 출력되는 경우임.
 		n = print_str(buf, ft_strlen(buf));
 	return (2 + n);
 }

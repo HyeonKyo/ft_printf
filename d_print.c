@@ -34,7 +34,7 @@ static char		*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
 		return (0);
 	return (buf);
 }
-//공백, 부호, 숫자 or 부호 숫자 공백
+
 static size_t	print_prec_buf(int n, t_opt opts, char *buf)
 {
 	int		buf_len;
@@ -42,7 +42,7 @@ static size_t	print_prec_buf(int n, t_opt opts, char *buf)
 
 	cnt = 0;
 	buf_len = (int)ft_strlen(buf);
-	if (!opts.fg.zero)
+	if (!opts.fg.zero)//이거 왜 있지?
 		cnt += print_sign(opts, n);
 	if (opts.prec > buf_len)
 		cnt += print_char('0', opts.prec - buf_len);
@@ -99,12 +99,6 @@ static size_t	d_print_case(int n, int size, t_opt opts, char *buf)
 	}
 	return (cnt);
 }
-//1. prec or width가 buf의 길이보다 작은 경우는 buf정상 출력(flag만 고려)
-	//2. width만 있는 경우 buf_len, sign만큼 뺀 나머지 0 or 공백 출력(flag : zero minus plus)
-	//3. prec만 있는 경우 sign제외한 n - buf_len만큼 0을 채워주면서 출력
-	//3. prec > buf_len인 경우
-	//		=> 1. prec > width인 경우 -> width무시하고 prec만큼 0붙여서 출력(flag 정상출력 됨.)
-	//		=> 2. prec < width인 경우 -> width - (sign + prec)만큼 공백, 문자는 기호 + 0 + 숫자
 
 void			d_print(va_list ap, t_opt opts, size_t *cnt)
 {

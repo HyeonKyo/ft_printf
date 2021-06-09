@@ -57,8 +57,7 @@ static char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n)
 	char	*buf;
 
 	*n = va_arg(ap, unsigned int);
-	if (opts->fg.hash || opts->fg.space || opts->fg.plus || 
-    (opts->prec == -3 && n == 0))//경메 출력 조건
+	if (opts->fg.hash || opts->fg.space || opts->fg.plus)//경메 출력 조건
 		return (0);
 	if ((opts->fg.minus && opts->fg.zero) || opts->prec != 0)//0 flag 무시조건.
 		opts->fg.zero = 0;

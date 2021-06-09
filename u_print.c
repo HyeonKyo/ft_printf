@@ -34,7 +34,7 @@ static size_t	u_print_case(int zero_len, int len, char *buf, t_opt opts)
 
 	cnt = 0;
 	buf_len = (int)ft_strlen(buf);
-	if (buf == 0)
+	if (buf == 0)//.0(.) + 0인 경우
 		cnt += print_char(' ', len);
 	else if (!opts.fg.minus)
 	{
@@ -86,6 +86,3 @@ void	u_print(va_list ap, t_opt opts, size_t *cnt)
 	if (buf)
 		free(buf);
 }
-//1.마이너스 플래그 prec(0) + 숫자 + 공백
-//2.공백 + prec(0) + 숫자
-//3. zero플래그0 + 숫자
