@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   p_print.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyeonkki <hyeonkki@student.42.kr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/09 19:07:57 by hyeonkki          #+#    #+#             */
+/*   Updated: 2021/06/09 19:07:58 by hyeonkki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-char	*p_pre_task(va_list ap, t_opt *opts, int *size)
+static	char	*p_pre_task(va_list ap, t_opt *opts, int *size)
 {
 	unsigned long long	n;
 	void				*buf;
@@ -17,7 +29,7 @@ char	*p_pre_task(va_list ap, t_opt *opts, int *size)
 	return (buf);
 }
 
-size_t	print_hex_addr(char *buf, t_opt opts)
+static size_t	print_hex_addr(char *buf, t_opt opts)
 {
 	size_t	n;
 
@@ -28,7 +40,7 @@ size_t	print_hex_addr(char *buf, t_opt opts)
 	return (2 + n);
 }
 
-size_t	p_print_case(int print_size, t_opt opts, char *buf)
+static size_t	p_print_case(int print_size, t_opt opts, char *buf)
 {
 	size_t	cnt;
 	int		len;
@@ -45,7 +57,7 @@ size_t	p_print_case(int print_size, t_opt opts, char *buf)
 	return (cnt);
 }
 
-void	p_print(va_list ap, t_opt opts, size_t *cnt)
+void			p_print(va_list ap, t_opt opts, size_t *cnt)
 {
 	unsigned long long	n;
 	int					size;

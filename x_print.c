@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		get_size_based(unsigned long long n, int base)
+static int	get_size_based(unsigned long long n, int base)
 {
 	int	size;
 
@@ -27,7 +27,7 @@ int		get_size_based(unsigned long long n, int base)
 	return (size);
 }
 
-char	*pf_itoa_hex(unsigned long long n, t_opt opts)
+char		*pf_itoa_hex(unsigned long long n, t_opt opts)
 {
 	int		len;
 	char	*buf;
@@ -52,7 +52,7 @@ char	*pf_itoa_hex(unsigned long long n, t_opt opts)
 	return (buf);
 }
 
-char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n)
+static char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n)
 {
 	char	*buf;
 
@@ -68,7 +68,7 @@ char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n)
 	return (buf);
 }
 
-void	x_print(va_list ap, t_opt opts, size_t *cnt)
+void		x_print(va_list ap, t_opt opts, size_t *cnt)
 {
 	unsigned int    n;
 	char	        *buf;

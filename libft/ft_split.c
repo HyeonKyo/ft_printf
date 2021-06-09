@@ -75,10 +75,12 @@ static	int		make_arr2(int *buf_len, char **arr, int cnt)
 
 static	char	**make_arr3(char const *s, char c)
 {
+	int		i;
 	int		cnt;
 	int		*buf_len;
 	char	**arr;
 
+	i = -1;
 	buf_len = make_arr1(s);
 	if (buf_len == 0)
 		return (0);

@@ -55,15 +55,10 @@ typedef struct	s_opt
 //utils1
 int		print_char(char c, int len);
 int		pf_atoi(const char *str, t_opt *opts, size_t *i);
-int		get_size(long long n);
-size_t	absol_n(int n);
 char	*pf_itoa(long long n);
 //utils2
 int		print_sign(t_opt opts, int n);
 size_t	print_str(char *str, size_t len);
-void	*ft_memset(void *ptr, int value, size_t num);
-size_t	ft_strlen(const char *str);
-int		ft_isdigit(int c);
 //find_opt
 int		find_flag(const char *str, t_opt *opts, size_t *i);
 void	find_width(const char *str, t_opt *opts, size_t *i);
@@ -75,30 +70,17 @@ int		get_opt(const char *str, t_opt *opts, size_t *i);
 //c_print
 void	c_print(va_list ap, t_opt opts, size_t *cnt);
 //d_print
-char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size);
-size_t	print_prec_buf(int n, t_opt opts, char *buf);
-size_t	zero_or_space(int n, int buf_len, t_opt opts);
-size_t	d_print_case(int n, int size, t_opt opts, char *buf);
 void	d_print(va_list ap, t_opt opts, size_t *cnt);
 //u_print
-char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n);
-size_t	u_print_case(int zero_len, int len, char *buf, t_opt opts);
 size_t	u_print_all(t_opt opts, char *buf);
 void	u_print(va_list ap, t_opt opts, size_t *cnt);
 //x_print
-int		get_size_based(unsigned long long n, int base);
 char	*pf_itoa_hex(unsigned long long n, t_opt opts);
-char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n);
 void	x_print(va_list ap, t_opt opts, size_t *cnt);
 //s_print
 void	s_print(va_list ap, t_opt opts, size_t *cnt);
 //p_print
-char	*p_pre_task(va_list ap, t_opt *opts, int *size);
-size_t	print_hex_addr(char *buf, t_opt opts);
-size_t	p_print_case(int print_size, t_opt opts, char *buf);
 void	p_print(va_list ap, t_opt opts, size_t *cnt);
 //ft_print.c
-void	get_star(va_list ap, t_opt *opts);
-void	print_arg(va_list ap, t_opt opts, size_t *cnt);
 int		ft_printf(const char *str, ...);
 #endif

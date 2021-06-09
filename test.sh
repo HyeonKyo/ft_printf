@@ -126,5 +126,5 @@ cp ../../libftprintf.a libftprintf.a
 make
 cd ../../
 
-rm -rf 42TESTERS-PRINTF ft_printf_test printf-tester printf_lover_v2 pft pft_2019 Test-42 tests451
+rm -rf 42TESTERS-PRINTF ft_printf_test printf-tester printf_lover_v2 pft pft_2019 tests451
 make fclean

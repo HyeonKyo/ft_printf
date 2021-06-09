@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n)
+static char		*u_pre_task(va_list ap, t_opt *opts, unsigned int *n)
 {
 	char	*buf;
 
@@ -27,7 +27,7 @@ char	*u_pre_task(va_list ap, t_opt *opts, unsigned int *n)
 	return (buf);
 }
 
-size_t	u_print_case(int zero_len, int len, char *buf, t_opt opts)
+static size_t	u_print_case(int zero_len, int len, char *buf, t_opt opts)
 {
 	size_t	cnt;
 	int		buf_len;
@@ -54,7 +54,7 @@ size_t	u_print_case(int zero_len, int len, char *buf, t_opt opts)
 	return (cnt);
 }
 
-size_t	u_print_all(t_opt opts, char *buf)
+size_t			u_print_all(t_opt opts, char *buf)
 {
 	int		buf_len;
 	int		zero_len;

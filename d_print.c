@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
+static char		*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
 {
 	char	*buf;
 
@@ -35,7 +35,7 @@ char	*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
 	return (buf);
 }
 //공백, 부호, 숫자 or 부호 숫자 공백
-size_t	print_prec_buf(int n, t_opt opts, char *buf)
+static size_t	print_prec_buf(int n, t_opt opts, char *buf)
 {
 	int		buf_len;
 	size_t	cnt;
@@ -50,7 +50,7 @@ size_t	print_prec_buf(int n, t_opt opts, char *buf)
 	return (cnt);
 }
 
-size_t	zero_or_space(int n, int buf_len, t_opt opts)
+static size_t	zero_or_space(int n, int buf_len, t_opt opts)
 {
 	size_t	print_len;
 	size_t	cnt;
@@ -75,7 +75,7 @@ size_t	zero_or_space(int n, int buf_len, t_opt opts)
 	return (cnt);
 }
 
-size_t	d_print_case(int n, int size, t_opt opts, char *buf)
+static size_t	d_print_case(int n, int size, t_opt opts, char *buf)
 {
 	size_t	cnt;
 	int		buf_len;
@@ -106,7 +106,7 @@ size_t	d_print_case(int n, int size, t_opt opts, char *buf)
 	//		=> 1. prec > width인 경우 -> width무시하고 prec만큼 0붙여서 출력(flag 정상출력 됨.)
 	//		=> 2. prec < width인 경우 -> width - (sign + prec)만큼 공백, 문자는 기호 + 0 + 숫자
 
-void	d_print(va_list ap, t_opt opts, size_t *cnt)
+void			d_print(va_list ap, t_opt opts, size_t *cnt)
 {
 	int		n;
 	int		size;

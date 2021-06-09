@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	get_star(va_list ap, t_opt *opts)
+static void	get_star(va_list ap, t_opt *opts)
 {
 	if (opts->width == -1) // = *일 떄 width에 넣어줄 값
 	{
@@ -33,7 +33,7 @@ void	get_star(va_list ap, t_opt *opts)
 	}
 }
 
-void	print_arg(va_list ap, t_opt opts, size_t *cnt)
+static void	print_arg(va_list ap, t_opt opts, size_t *cnt)
 {
 	if (opts.type == 'c' || opts.type == '%')
 		c_print(ap, opts, cnt);
@@ -49,7 +49,7 @@ void	print_arg(va_list ap, t_opt opts, size_t *cnt)
 		p_print(ap, opts, cnt);
 }
 
-int		ft_printf(const char *str, ...)
+int			ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	t_opt	opts;
