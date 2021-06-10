@@ -59,11 +59,9 @@ static size_t	p_print_case(int print_size, t_opt opts, char *buf)
 
 void			p_print(va_list ap, t_opt opts, size_t *cnt)
 {
-	unsigned long long	n;
 	int					size;
 	char				*buf;
 
-	n = 0;
 	size = 0;
 	buf = p_pre_task(ap, &opts, &size);
 	if (buf == 0)
