@@ -1,20 +1,34 @@
 #include <stdio.h>
 
-typedef union u_float
-{
-	unsigned long long	n;
-	double 				f;
-}			EX;
+// typedef union u_float
+// {
+// 	unsigned long long	n;
+// 	double 				f;
+// }			EX;
 
-int	main()
-{
-	int buf[2] = {3, 5};
-	printf("%d\n", *buf);
-	printf("%d\n", *(buf + 1));
-	printf("[%0*.*f]\n", 15, -20, 123.525);
+// size_t		power(int base, int e)
+// {
+// 	size_t	n;
 
-	return (0);
-}
+// 	n = 1;
+// 	if (e == 0)
+// 		return (1);
+// 	if (base == 0)
+// 		return (0);
+// 	while (e)
+// 	{
+// 		n *= base;
+// 		e--;	
+// 	}
+// 	return (n);
+// }
+
+// int	main()
+// {
+// 	printf("%f\n", 1 / (double)power(2, 1));
+
+// 	return (0);
+// }
 
 /*
 1. 공용체로 가변인자 값 받음.

@@ -47,6 +47,8 @@ static void	print_arg(va_list ap, t_opt opts, size_t *cnt)
 		s_print(ap, opts, cnt);
 	else if (opts.type == 'p')
 		p_print(ap, opts, cnt);
+	else if (opts.type == 'f')
+		f_print(ap, opts, cnt);
 }
 
 int			ft_printf(const char *str, ...)
@@ -82,12 +84,11 @@ int			ft_printf(const char *str, ...)
 //가변인자 하나씩 받아서 *인 곳 바꿔주기
 //각 옵션의 조합 고려해서 출력
 
-// int main()
-// {
-// 	ft_printf("[%2.9p]", 1234);
-// 	ft_printf("\n----------------\n\n");
-// 	printf("[%2.9p]", 1234);
+int main()
+{
+	ft_printf("[%20.30f]", 123.456);
+	ft_printf("\n----------------\n\n");
+	printf("[%20.30f]", 123.456);
 
-
-// 	return (0);
-// }
+	return (0);
+}

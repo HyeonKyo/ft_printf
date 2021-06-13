@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	get_size_based(unsigned long long n, int base)
+int		get_size_based(unsigned long long n, int base)
 {
 	int	size;
 

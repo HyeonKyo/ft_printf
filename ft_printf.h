@@ -52,17 +52,17 @@ typedef struct	s_opt
 	char		type;
 }				t_opt;
 
-typedef union	u_val_f
+typedef union	u_value
 {
 	size_t		n;
 	double 		f;
-}				t_val_f;
+}				t_value;
 
 typedef struct	s_real
 {
-	int	sign;
-	int	expo;
-	int	deci;
+	int		sign;
+	int		integ;
+	size_t	deci;
 }				t_real;
 
 
@@ -89,12 +89,16 @@ void	d_print(va_list ap, t_opt opts, size_t *cnt);
 size_t	u_print_all(t_opt opts, char *buf);
 void	u_print(va_list ap, t_opt opts, size_t *cnt);
 //x_print
+int		get_size_based(unsigned long long n, int base);
 char	*pf_itoa_hex(unsigned long long n, t_opt opts);
 void	x_print(va_list ap, t_opt opts, size_t *cnt);
 //s_print
 void	s_print(va_list ap, t_opt opts, size_t *cnt);
 //p_print
 void	p_print(va_list ap, t_opt opts, size_t *cnt);
+//f_print
+void	f_print(va_list ap, t_opt opts, size_t *cnt);
+
 //ft_print.c
 int		ft_printf(const char *str, ...);
 #endif

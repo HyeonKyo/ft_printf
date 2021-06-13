@@ -8,22 +8,28 @@ void	trans_to_bin(int *bits, size_t num)
 
 	i = 0;
 	j = 0;
-	while (num > 0)
+	while (num)
 	{
 		buf[i++] = num % 2;
 		num /= 2;
 	}
-	while (--i)
-		bits[j++] = buf[i];
+	buf[i++] = num % 2;
+	while (i)
+		bits[j++] = buf[--i];
 }
 
-int		bin_power(int e)
+size_t		power(int base, int e)
 {
-	n = 1;
+	size_t	n;
 
+	n = 1;
+	if (e == 0)
+		return (1);
+	if (base == 0)
+		return (0);
 	while (e)
 	{
-		n *= 2;
+		n *= base;
 		e--;	
 	}
 	return (n);
@@ -37,55 +43,136 @@ int		trans_to_dex(int *bits, int size)
 	n = 0;
 	i = 0;
 	while (size)
-		n += bits[--size] * bin_power(i++);
+		n += bits[--size] * power(2, i++);
 	return (n);
 }
 
-static int	*f_pre_tesk(t_val_f *val, va_list ap, t_opt *opts)
+static int	*f_pre_tesk(t_value *val, va_list ap, t_opt *opts)
 {
 	int	*bits;
 	//가변인자를 공용체에 받기
-	*val = va_arg(ap, double);
+	val->f = va_arg(ap, double);
 	//flag 중복 처리
 	if (opts->fg.plus && opts->fg.space)
 		return (0);
 	if (opts->fg.minus)//0 flag 무시조건.
 		opts->fg.zero = 0;
+	if (opts->prec >= 0 && opts->prec < 6)//prec의 기본값 = 6
+		opts->prec = 6;
 	//이진데이터 처리
 	bits = (int *)malloc(64 * sizeof(int));
-	trans_bin(bits, (*val).n);
+	ft_memset(bits, 0, sizeof(int *));
+	trans_to_bin(bits, val->n);
 	return (bits);
 }
 
 void	take_decimal(int *bits, t_real *num, t_opt opts)
 {
-	int	expo;
+	int		expo;
+	int		idx;
+	int		n;
+	double	sum;
+	double	tmp;
 
-	expo = trans_to_dex(bits, 11);
-	
+	expo = trans_to_dex(bits + 1, 11) - 1023;//1023은 bias상수
+	idx = expo + 12;
+	n = 1;
+	sum = 0.0;
+	tmp = 0.0;
+	while (idx < 64)
+	{
+		tmp = 1 / (double)power(2, n++);
+		if (bits[idx++])
+			sum += tmp;
+	}
+	//여기서 prec으로 뒤에 붙는 0까지 처리하려 했으나
+	//size_t범위를 넘어서는 오버플로우로 인해 에러 발생
+	num->deci = (size_t)((sum * power(10, opts.prec)) + 0.5);
 }
 
-void	div_section(int *bits, t_val_f val, t_real *num, t_opt opts)
+void	div_section(int *bits, t_value val, t_real *num, t_opt opts)
 {
 	int	i;
 
 	i = 0;
-	num->sign = bits[0];
+	num->sign = 1;
+	if (bits[0])
+		num->sign = -1;
 	if (opts.prec < 0)
 		val.f += 0.5;
 	num->integ= (int)val.f;
-	//소수 처리 하위 함수 적용
-	take_decimal(bits + 1, num, opts);
+	//소수부분 처리
+	take_decimal(bits, num, opts);
+	free(bits);
+}
+
+size_t	print_space(t_opt opts, int len)
+{
+	size_t	cnt;
+
+	cnt = 0;
+	if (len > 0)
+	{
+		if (opts.fg.zero)
+			cnt += print_char('0', len);
+		else
+			cnt += print_char(' ', len);
+	}
+	return (cnt);
+}
+
+size_t	f_print_all(t_real num, t_opt opts, char *i_buf, char *d_buf)
+{
+	size_t	cnt;
+
+	cnt = 0;
+	cnt += print_sign(opts, num.sign);
+	cnt += print_str(i_buf, ft_strlen(i_buf));
+	cnt += print_char('.', 1);
+	cnt += print_str(d_buf, ft_strlen(d_buf));
+	return (cnt);
+}
+
+
+size_t	f_print_case(t_real num, t_opt opts, char *i_buf, char *d_buf)
+{
+	int		len;
+	size_t	cnt;
+
+	cnt = 0;
+	len = opts.width - (ft_strlen(i_buf) + ft_strlen(d_buf) + 1);
+	if (opts.fg.plus || opts.fg.space || num.sign < 0)
+		len--;
+	if (opts.fg.minus)
+	{
+		cnt += f_print_all(num, opts, i_buf, d_buf);
+		cnt += print_space(opts, len);
+	}
+	else
+	{
+		cnt += print_space(opts, len);
+		cnt += f_print_all(num, opts, i_buf, d_buf);
+	}
+	return (cnt);
 }
 
 void	f_print(va_list ap, t_opt opts, size_t *cnt)
 {
-	t_val_f	val;
+	t_value	val;
 	t_real	num;
-	int		bits;
+	int		*bits;
+	char	*i_buf;
+	char	*d_buf;
 
+	ft_memset(&val, 0, sizeof(t_value));
+	ft_memset(&num, 0, sizeof(t_real));
 	bits = f_pre_tesk(&val, ap, &opts);
 	div_section(bits, val, &num, opts);
+	i_buf = pf_itoa((long long)num.integ);
+	d_buf = pf_itoa((long long)num.deci);
+	*cnt += f_print_case(num, opts, i_buf, d_buf);
+	free(i_buf);
+	free(d_buf);
 }
 
 
