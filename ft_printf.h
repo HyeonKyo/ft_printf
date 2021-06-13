@@ -52,6 +52,20 @@ typedef struct	s_opt
 	char		type;
 }				t_opt;
 
+typedef union	u_val_f
+{
+	size_t		n;
+	double 		f;
+}				t_val_f;
+
+typedef struct	s_real
+{
+	int	sign;
+	int	expo;
+	int	deci;
+}				t_real;
+
+
 //utils1
 int		print_char(char c, int len);
 int		pf_atoi(const char *str, t_opt *opts, size_t *i);
