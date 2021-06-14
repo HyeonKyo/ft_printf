@@ -49,6 +49,8 @@ static void	print_arg(va_list ap, t_opt opts, size_t *cnt)
 		p_print(ap, opts, cnt);
 	else if (opts.type == 'f')
 		f_print(ap, opts, cnt);
+	else if (opts.type == 'e')
+		e_print(ap, opts, cnt);
 }
 
 int			ft_printf(const char *str, ...)
@@ -86,9 +88,13 @@ int			ft_printf(const char *str, ...)
 
 int main()
 {
-	ft_printf("[%20.30f]", 123.456);
+	ft_printf("[%f]\n", NULL);
+	//ft_printf("[%-4.*f]\n", 14, 0.0);
+	//ft_printf("[%-4.*f]\n", 16, 2.81373100731570075);
 	ft_printf("\n----------------\n\n");
-	printf("[%20.30f]", 123.456);
+	printf("[%f]\n", NULL);
+	//printf("[%-4.*f]\n", 14, 0.0);
+	//printf("[%-4.*f]\n", 16, 2.81373100731570075);
 
 	return (0);
 }

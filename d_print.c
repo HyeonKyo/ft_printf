@@ -17,7 +17,7 @@ static char		*d_pre_task(va_list ap, t_opt *opts, int *n, int *size)
 	char	*buf;
 
 	*n = va_arg(ap, int);
-	if (opts->fg.hash || (opts->prec < 0  && *n == 0 && !opts->width))//경메 출력 조건
+	if (opts->fg.hash /*|| (opts->prec < 0  && *n == 0 && !opts->width)*/)//경메 출력 조건
 		return (0);
 	if ((opts->fg.minus && opts->fg.zero) || opts->prec != 0)//0 flag 무시조건.
 		opts->fg.zero = 0;
@@ -42,7 +42,7 @@ static size_t	print_prec_buf(int n, t_opt opts, char *buf)
 
 	cnt = 0;
 	buf_len = (int)ft_strlen(buf);
-	if (!opts.fg.zero)//이거 왜 있지?
+	if (!opts.fg.zero)
 		cnt += print_sign(opts, n);
 	if (opts.prec > buf_len)
 		cnt += print_char('0', opts.prec - buf_len);
@@ -83,7 +83,11 @@ static size_t	d_print_case(int n, int size, t_opt opts, char *buf)
 	cnt = 0;
 	buf_len = (int)ft_strlen(buf);
 	if (opts.prec < 0  && n == 0)
+	{
+		if ((cnt += print_sign(opts, n)))
+			opts.width--;
 		cnt += print_char(' ', opts.width);
+	}
 	else if (size > buf_len)
 	{
 		if (opts.fg.minus)

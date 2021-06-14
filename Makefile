@@ -12,8 +12,9 @@
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c utils1.c utils2.c d_print.c u_print.c x_print.c s_print.c \
-		p_print.c c_print.c get_opt.c find_opt.c f_print.c
+SRCS = ft_printf.c utils1.c utils2.c utils3.c d_print.c u_print.c x_print.c \
+	p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c\
+	s_print.c
 OBJS = $(SRCS:.c=.o)
 AR = ar -rcs
 NAME = libftprintf.a

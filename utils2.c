@@ -14,7 +14,7 @@
 
 int		print_sign(t_opt opts, int n)
 {
-	if (opts.fg.plus && n > 0)
+	if (opts.fg.plus && n >= 0)
 		write(1, "+", 1);
 	else if (opts.fg.space && n > 0)
 		write(1, " ", 1);

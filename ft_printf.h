@@ -57,13 +57,16 @@ typedef union	u_value
 	size_t		n;
 	double 		f;
 }				t_value;
+//실수를 공용체로 저장함.
 
 typedef struct	s_real
 {
 	int		sign;
 	int		integ;
-	size_t	deci;
+	double	deci;
+	int		point;//e_print시 사용.
 }				t_real;
+//실수의 각 부분의 정보를 따로 저장(부호, 정수, 소수부)
 
 
 //utils1
@@ -73,6 +76,10 @@ char	*pf_itoa(long long n);
 //utils2
 int		print_sign(t_opt opts, int n);
 size_t	print_str(char *str, size_t len);
+//utils3
+void	trans_to_bin(int *bits, size_t num);
+size_t		power(int base, int e);
+int		trans_to_dex(int *bits, int size);
 //find_opt
 int		find_flag(const char *str, t_opt *opts, size_t *i);
 void	find_width(const char *str, t_opt *opts, size_t *i);
@@ -96,8 +103,15 @@ void	x_print(va_list ap, t_opt opts, size_t *cnt);
 void	s_print(va_list ap, t_opt opts, size_t *cnt);
 //p_print
 void	p_print(va_list ap, t_opt opts, size_t *cnt);
-//f_print
+//f_print1
+int		*f_pre_tesk(t_value *val, va_list ap, t_opt *opts);
+void	take_decimal(int *bits, t_real *num);
+void	f_div_section(int *bits, t_value val, t_real *num, t_opt opts);
+//f_print2
+size_t	print_space(t_opt opts, int len);
 void	f_print(va_list ap, t_opt opts, size_t *cnt);
+//e_print
+void	e_print(va_list ap, t_opt opts, size_t *cnt);
 
 //ft_print.c
 int		ft_printf(const char *str, ...);

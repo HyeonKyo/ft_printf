@@ -5,13 +5,15 @@
 ------------------------------
 
 make: `libftprintf.a' is up to date.
-Ouch, compile error, maybe from here maybe not
+
+[1;32m[ OK ] - All GOOD
+[0m
 Please select: 1, 2, 3, or 4
 
 
 [ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
 
-rm -f ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
+rm -f ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft clean
 rm -f ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 rm -f ./libft/libft.a
@@ -21,7 +23,7 @@ rm -f libftprintf.a
 |                            |
 ------------------------------
 
-gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c d_print.c u_print.c x_print.c s_print.c p_print.c c_print.c get_opt.c find_opt.c  -I./
+gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c utils3.c d_print.c u_print.c x_print.c p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c s_print.c -I./
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft bonus
 make IS_BONUS=1 all
 gcc -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
@@ -67,16 +69,18 @@ gcc -Wall -Wextra -Werror   -c -o ft_lstdelone.o ft_lstdelone.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstclear.o ft_lstclear.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstiter.o ft_lstiter.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstmap.o ft_lstmap.c
-ar -rc libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+ar -rcs libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 cp ./libft/libft.a libftprintf.a
-ar -rc libftprintf.a ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
-Ouch, compile error, maybe from here maybe not
+ar -rcs libftprintf.a ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
+
+[1;32m[ OK ] - All GOOD
+[0m
 Please select: 1, 2, 3, or 4
 
 
 [ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
 
-rm -f ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
+rm -f ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft clean
 rm -f ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 rm -f ./libft/libft.a
@@ -86,7 +90,7 @@ rm -f libftprintf.a
 |                            |
 ------------------------------
 
-gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c d_print.c u_print.c x_print.c s_print.c p_print.c c_print.c get_opt.c find_opt.c  -I./
+gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c utils3.c d_print.c u_print.c x_print.c p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c s_print.c -I./
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft bonus
 make IS_BONUS=1 all
 gcc -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
@@ -132,16 +136,18 @@ gcc -Wall -Wextra -Werror   -c -o ft_lstdelone.o ft_lstdelone.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstclear.o ft_lstclear.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstiter.o ft_lstiter.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstmap.o ft_lstmap.c
-ar -rc libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+ar -rcs libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 cp ./libft/libft.a libftprintf.a
-ar -rc libftprintf.a ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
-Ouch, compile error, maybe from here maybe not
+ar -rcs libftprintf.a ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
+
+[1;32m[ OK ] - All GOOD
+[0m
 Please select: 1, 2, 3, or 4
 
 
 [ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
 
-rm -f ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
+rm -f ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft clean
 rm -f ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 rm -f ./libft/libft.a
@@ -151,7 +157,7 @@ rm -f libftprintf.a
 |                            |
 ------------------------------
 
-gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c d_print.c u_print.c x_print.c s_print.c p_print.c c_print.c get_opt.c find_opt.c  -I./
+gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c utils3.c d_print.c u_print.c x_print.c p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c s_print.c -I./
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft bonus
 make IS_BONUS=1 all
 gcc -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
@@ -197,16 +203,18 @@ gcc -Wall -Wextra -Werror   -c -o ft_lstdelone.o ft_lstdelone.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstclear.o ft_lstclear.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstiter.o ft_lstiter.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstmap.o ft_lstmap.c
-ar -rc libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+ar -rcs libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 cp ./libft/libft.a libftprintf.a
-ar -rc libftprintf.a ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
-Ouch, compile error, maybe from here maybe not
+ar -rcs libftprintf.a ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
+
+[1;32m[ OK ] - All GOOD
+[0m
 Please select: 1, 2, 3, or 4
 
 
 [ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
 
-rm -f ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
+rm -f ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft clean
 rm -f ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 rm -f ./libft/libft.a
@@ -216,7 +224,7 @@ rm -f libftprintf.a
 |                            |
 ------------------------------
 
-gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c d_print.c u_print.c x_print.c s_print.c p_print.c c_print.c get_opt.c find_opt.c  -I./
+gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c utils3.c d_print.c u_print.c x_print.c p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c s_print.c -I./
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft bonus
 make IS_BONUS=1 all
 gcc -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
@@ -262,16 +270,18 @@ gcc -Wall -Wextra -Werror   -c -o ft_lstdelone.o ft_lstdelone.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstclear.o ft_lstclear.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstiter.o ft_lstiter.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstmap.o ft_lstmap.c
-ar -rc libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+ar -rcs libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 cp ./libft/libft.a libftprintf.a
-ar -rc libftprintf.a ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
-Ouch, compile error, maybe from here maybe not
+ar -rcs libftprintf.a ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
+
+[1;32m[ OK ] - All GOOD
+[0m
 Please select: 1, 2, 3, or 4
 
 
 [ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
 
-rm -f ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
+rm -f ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft clean
 rm -f ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 rm -f ./libft/libft.a
@@ -281,7 +291,7 @@ rm -f libftprintf.a
 |                            |
 ------------------------------
 
-gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c d_print.c u_print.c x_print.c s_print.c p_print.c c_print.c get_opt.c find_opt.c  -I./
+gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c utils3.c d_print.c u_print.c x_print.c p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c s_print.c -I./
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft bonus
 make IS_BONUS=1 all
 gcc -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
@@ -327,16 +337,18 @@ gcc -Wall -Wextra -Werror   -c -o ft_lstdelone.o ft_lstdelone.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstclear.o ft_lstclear.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstiter.o ft_lstiter.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstmap.o ft_lstmap.c
-ar -rc libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+ar -rcs libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 cp ./libft/libft.a libftprintf.a
-ar -rc libftprintf.a ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
-Ouch, compile error, maybe from here maybe not
+ar -rcs libftprintf.a ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
+
+[1;32m[ OK ] - All GOOD
+[0m
 Please select: 1, 2, 3, or 4
 
 
 [ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
 
-rm -f ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
+rm -f ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft clean
 rm -f ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 rm -f ./libft/libft.a
@@ -346,7 +358,7 @@ rm -f libftprintf.a
 |                            |
 ------------------------------
 
-gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c d_print.c u_print.c x_print.c s_print.c p_print.c c_print.c get_opt.c find_opt.c  -I./
+gcc -Wall -Wextra -Werror -c ft_printf.c utils1.c utils2.c utils3.c d_print.c u_print.c x_print.c p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c s_print.c -I./
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft bonus
 make IS_BONUS=1 all
 gcc -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
@@ -392,16 +404,84 @@ gcc -Wall -Wextra -Werror   -c -o ft_lstdelone.o ft_lstdelone.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstclear.o ft_lstclear.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstiter.o ft_lstiter.c
 gcc -Wall -Wextra -Werror   -c -o ft_lstmap.o ft_lstmap.c
-ar -rc libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
+ar -rcs libft.a ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 cp ./libft/libft.a libftprintf.a
-ar -rc libftprintf.a ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
-Ouch, compile error, maybe from here maybe not
+ar -rcs libftprintf.a ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
+1 [0x7ffee310fac0]18					      |	1 [0x7ffedfd1fac0]18
+1.1 [0x7ffee310fac0]20					      |	1.1 [0x7ffedfd1fac0]20
+3 ! [0x7ffee310fac0]20					      |	3 ! [0x7ffedfd1fac0]20
+3.4 ![0x7ffee310fac0]21					      |	3.4 ![0x7ffedfd1fac0]21
+5 [0x7ffee310fac0]18					      |	5 [0x7ffedfd1fac0]18
+10 [0x7ffee310fac0                                            |	10 [0x7ffedfd1fac0                                           
+10 [0x7ffee310fac0]19					      |	10 [0x7ffedfd1fac0]19
+10 [0x7ffee310fac0]19					      |	10 [0x7ffedfd1fac0]19
+10 [0x7ffee310fac0]19					      |	10 [0x7ffedfd1fac0]19
+10 [0x7ffee310fac0]19					      |	10 [0x7ffedfd1fac0]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+1 [0x7ffee310fac4]18					      |	1 [0x7ffedfd1fac4]18
+1.1 [0x7ffee310fac4]20					      |	1.1 [0x7ffedfd1fac4]20
+3 ! [0x7ffee310fac4]20					      |	3 ! [0x7ffedfd1fac4]20
+3.4 ![0x7ffee310fac4]21					      |	3.4 ![0x7ffedfd1fac4]21
+5 [0x7ffee310fac4]18					      |	5 [0x7ffedfd1fac4]18
+10 [0x7ffee310fac4                                            |	10 [0x7ffedfd1fac4                                           
+10 [0x7ffee310fac4]19					      |	10 [0x7ffedfd1fac4]19
+10 [0x7ffee310fac4]19					      |	10 [0x7ffedfd1fac4]19
+10 [0x7ffee310fac4]19					      |	10 [0x7ffedfd1fac4]19
+10 [0x7ffee310fac4]19					      |	10 [0x7ffedfd1fac4]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+1 [0x7ffee310fac8]18					      |	1 [0x7ffedfd1fac8]18
+1.1 [0x7ffee310fac8]20					      |	1.1 [0x7ffedfd1fac8]20
+3 ! [0x7ffee310fac8]20					      |	3 ! [0x7ffedfd1fac8]20
+3.4 ![0x7ffee310fac8]21					      |	3.4 ![0x7ffedfd1fac8]21
+5 [0x7ffee310fac8]18					      |	5 [0x7ffedfd1fac8]18
+10 [0x7ffee310fac8                                            |	10 [0x7ffedfd1fac8                                           
+10 [0x7ffee310fac8]19					      |	10 [0x7ffedfd1fac8]19
+10 [0x7ffee310fac8]19					      |	10 [0x7ffedfd1fac8]19
+10 [0x7ffee310fac8]19					      |	10 [0x7ffedfd1fac8]19
+10 [0x7ffee310fac8]19					      |	10 [0x7ffedfd1fac8]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+1 [0x7ffee310facc]18					      |	1 [0x7ffedfd1facc]18
+1.1 [0x7ffee310facc]20					      |	1.1 [0x7ffedfd1facc]20
+3 ! [0x7ffee310facc]20					      |	3 ! [0x7ffedfd1facc]20
+3.4 ![0x7ffee310facc]21					      |	3.4 ![0x7ffedfd1facc]21
+5 [0x7ffee310facc]18					      |	5 [0x7ffedfd1facc]18
+10 [0x7ffee310facc                                            |	10 [0x7ffedfd1facc                                           
+10 [0x7ffee310facc]19					      |	10 [0x7ffedfd1facc]19
+10 [0x7ffee310facc]19					      |	10 [0x7ffedfd1facc]19
+10 [0x7ffee310facc]19					      |	10 [0x7ffedfd1facc]19
+10 [0x7ffee310facc]19					      |	10 [0x7ffedfd1facc]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+1 [0x7ffee310fad0]18					      |	1 [0x7ffedfd1fad0]18
+1.1 [0x7ffee310fad0]20					      |	1.1 [0x7ffedfd1fad0]20
+3 ! [0x7ffee310fad0]20					      |	3 ! [0x7ffedfd1fad0]20
+3.4 ![0x7ffee310fad0]21					      |	3.4 ![0x7ffedfd1fad0]21
+5 [0x7ffee310fad0]18					      |	5 [0x7ffedfd1fad0]18
+10 [0x7ffee310fad0                                            |	10 [0x7ffedfd1fad0                                           
+10 [0x7ffee310fad0]19					      |	10 [0x7ffedfd1fad0]19
+10 [0x7ffee310fad0]19					      |	10 [0x7ffedfd1fad0]19
+10 [0x7ffee310fad0]19					      |	10 [0x7ffedfd1fad0]19
+10 [0x7ffee310fad0]19					      |	10 [0x7ffedfd1fad0]19
+10 [                                                          |	10 [                                                         
+10 [                                                          |	10 [                                                         
+ 							      |
+ 							      |
+ 							      |
+ 							      |
+ PRINTF							      |	 FT_PRINTF
+------------------------------------------------------------------------------------------------------------------------------
+[1;32m
+[ KO ] But it's ok, it is the pointer test, you have to compare the results by yourself
+[0m
 Please select: 1, 2, 3, or 4
 
 
 [ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
 
-rm -f ft_printf.o utils1.o utils2.o d_print.o u_print.o x_print.o s_print.o p_print.o c_print.o get_opt.o find_opt.o
+rm -f ft_printf.o utils1.o utils2.o utils3.o d_print.o u_print.o x_print.o p_print.o c_print.o get_opt.o find_opt.o f_print1.o f_print2.o e_print.o s_print.o
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C ./libft clean
 rm -f ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_calloc.o ft_strdup.o ft_substr.o ft_strjoin.o ft_strtrim.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 rm -f ./libft/libft.a
@@ -469,6 +549,16 @@ Test 435 (p_ftfc_zero_prec0_undefbehav) : FAILED.$
       your output     : "0x0"$
       expected (nonprintable as hex) : "0x"$
       actual   (nonprintable as hex) : "0x0"$
+$
+Test 497 (nocrash_noarg_22_notmandatory) : FAILED.$
+    (nocrash test: automatically passes provided no unexpected failure)$
+    First line of code: {return test("%f"); }$
+    SEGFAULT$
+$
+Test 519 (nocrash_nullarg_22) : FAILED.$
+    (nocrash test: automatically passes provided no unexpected failure)$
+    First line of code: {return test("%f", NULL); }$
+    SEGFAULT$
 $
 ######### printf_lover_v2 ##########
 ######### printf-tester ##########
