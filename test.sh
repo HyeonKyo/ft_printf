@@ -45,13 +45,13 @@ cd $REAL_PATH
 make re
 echo "" > test_result.txt
 
-########## PRINTF_TESTER
-(이 테스트는 프로젝트 폴더 내 다른 불필요한 파일이 없어야 컴파일이 됨. 타 테스트 폴더/파일 다 삭제해야 함)
-git clone https://github.com/Kwevan/PRINTF_TESTER tests451
-cd tests451
-echo 'testing...'
-echo -ne '1\n1\n1\n1\n1\n1\n1\n' | bash run.sh >> ../test_result.txt
-cd ..
+# ########## PRINTF_TESTER
+# (이 테스트는 프로젝트 폴더 내 다른 불필요한 파일이 없어야 컴파일이 됨. 타 테스트 폴더/파일 다 삭제해야 함)
+# git clone https://github.com/Kwevan/PRINTF_TESTER tests451
+# cd tests451
+# echo 'testing...'
+# echo -ne '1\n1\n1\n1\n1\n1\n1\n' | bash run.sh >> ../test_result.txt
+# cd ..
 
 
 ######### 42TESTERS-PRINTF ##########
@@ -89,23 +89,23 @@ cat -e results.txt >> ../test_result.txt
 cd ..
 
 
-######### printf_lover_v2 #########
-(수동으로 동작 필요)
-echo -e '######### printf_lover_v2 ##########' >> test_result.txt
-git clone https://github.com/charMstr/printf_lover_v2.git
-cd printf_lover_v2
-./printf_lover.sh re
-cd ..
+# ######### printf_lover_v2 #########
+# (수동으로 동작 필요)
+# echo -e '######### printf_lover_v2 ##########' >> test_result.txt
+# git clone https://github.com/charMstr/printf_lover_v2.git
+# cd printf_lover_v2
+# ./printf_lover.sh re
+# cd ..
 
-# ######### printf-tester #########
-echo -e '######### printf-tester ##########' >> test_result.txt
-git clone https://github.com/AntoineBourin/printf-tester.git
-cd printf-tester
-cp ../libftprintf.a libftprintf.a
-chmod +x test.sh
-bash ./test.sh
-echo -en "\033[0m"
-cd ..
+# # ######### printf-tester #########
+# echo -e '######### printf-tester ##########' >> test_result.txt
+# git clone https://github.com/AntoineBourin/printf-tester.git
+# cd printf-tester
+# cp ../libftprintf.a libftprintf.a
+# chmod +x test.sh
+# bash ./test.sh
+# echo -en "\033[0m"
+# cd ..
 
 # ######### ft_printf_test #########
 # python3 설치 필요 (brew install python3)
@@ -118,13 +118,13 @@ cat result.log >> ../test_result.txt
 cd ..
 
 
-# ######### Test-42 #########
-echo -e '######### Test-42 ##########' >> test_result.txt
-git clone https://github.com/PandaCoustik/Test-42.git
-cd Test-42/test_printf_classic
-cp ../../libftprintf.a libftprintf.a
-make
-cd ../../
+# # ######### Test-42 #########
+# echo -e '######### Test-42 ##########' >> test_result.txt
+# git clone https://github.com/PandaCoustik/Test-42.git
+# cd Test-42/test_printf_classic
+# cp ../../libftprintf.a libftprintf.a
+# make
+# cd ../../
 
-rm -rf 42TESTERS-PRINTF ft_printf_test printf-tester printf_lover_v2 pft pft_2019 tests451
+rm -rf 42TESTERS-PRINTF ft_printf_test printf-tester printf_lover_v2 pft pft_2019
 make fclean

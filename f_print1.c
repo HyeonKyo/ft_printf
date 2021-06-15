@@ -17,8 +17,6 @@ int		*f_pre_tesk(t_value *val, va_list ap, t_opt *opts)
 	int	*bits;
 	//가변인자를 공용체에 받기
 	val->f = va_arg(ap, double);
-	printf("\n\nval f= %f\n", val->f);
-	printf("val n= %zu\n\n", val->n);
 	//flag 중복 처리
 	if (opts->fg.plus && opts->fg.space)
 		return (0);
@@ -42,7 +40,7 @@ void	take_decimal(int *bits, t_real *num)//expo < 0인 경우
 	int		dec[52];
 	double	tmp;
 
-	ft_memset(dec, 0, sizeof(int *));
+	ft_memset(dec, 0, sizeof(dec));
 	expo = trans_to_dex(bits + 1, 11) - 1023;//1023은 bias상수
 	//expo가 양수일 때와 음수일 때를 구분하여 이진 소수데이터를 dec에 저장
 	i = -1;

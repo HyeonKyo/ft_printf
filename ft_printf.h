@@ -76,6 +76,7 @@ char	*pf_itoa(long long n);
 //utils2
 int		print_sign(t_opt opts, int n);
 size_t	print_str(char *str, size_t len);
+int		check_sign(t_opt opts, int n);
 //utils3
 void	trans_to_bin(int *bits, size_t num);
 size_t		power(int base, int e);

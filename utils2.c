@@ -16,7 +16,7 @@ int		print_sign(t_opt opts, int n)
 {
 	if (opts.fg.plus && n >= 0)
 		write(1, "+", 1);
-	else if (opts.fg.space && n > 0)
+	else if (opts.fg.space && n >= 0)
 		write(1, " ", 1);
 	else if (n < 0)
 		write(1, "-", 1);
@@ -33,34 +33,41 @@ size_t	print_str(char *str, size_t len)
 	return (len);
 }
 
-int	ft_isdigit(int c)
+int		check_sign(t_opt opts, int n)
 {
-	if (c >= '0' && c <= '9')
+	if ((opts.fg.plus && n >= 0) || (opts.fg.space && n >= 0) || (n < 0))
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 
-size_t	ft_strlen(const char *str)
-{
-	int	i;
+// int	ft_isdigit(int c)
+// {
+// 	if (c >= '0' && c <= '9')
+// 		return (1);
+// 	else
+// 		return (0);
+// }
 
-	i = 0;
-	if (str == 0)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
-}
+// size_t	ft_strlen(const char *str)
+// {
+// 	int	i;
 
-void	*ft_memset(void *ptr, int value, size_t num)
-{
-	char	*str;
-	size_t	i;
+// 	i = 0;
+// 	if (str == 0)
+// 		return (0);
+// 	while (str[i])
+// 		i++;
+// 	return (i);
+// }
 
-	i = 0;
-	str = ptr;
-	while (i < num)
-		str[i++] = value;
-	return (ptr);
-}
+// void	*ft_memset(void *ptr, int value, size_t num)
+// {
+// 	char	*str;
+// 	size_t	i;
+
+// 	i = 0;
+// 	str = ptr;
+// 	while (i < num)
+// 		str[i++] = value;
+// 	return (ptr);
+// }

@@ -32,26 +32,23 @@ size_t	print_deci(t_real num, t_opt opts)
 	int		i;
 	int		n;
 	double	tmp;
-	int		pre;
+	double	pre;
 	size_t	cnt;
 
 	i = 0;
 	cnt = 0;
 	tmp = num.deci;
 	pre = 0;
-	//printf("\n\n");
 	while (i < opts.prec)
 	{
-		tmp *= 10;
-		tmp -= (double)(pre * 10);
-		//printf("tmp : %.20f\n", tmp);
+		tmp *= (double)10;
+		tmp -= (pre * 10);
 		if (i++ == opts.prec - 1)
 			tmp += 0.5;
 		n = (int)tmp;
 		cnt += print_char(n + '0', 1);
-		pre = n;
+		pre = (double)n;
 	}
-	//printf("\n\n");
 	return (cnt);
 }
 //tmp가 맨 처음 10을 곱할 때 뒤의 값이 반올림됨.

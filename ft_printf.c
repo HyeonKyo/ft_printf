@@ -82,19 +82,15 @@ int			ft_printf(const char *str, ...)
 	return (cnt);
 }
 
-//구조체에 각 옵션 값들 넣어줌.
-//가변인자 하나씩 받아서 *인 곳 바꿔주기
-//각 옵션의 조합 고려해서 출력
+// int main()
+// {
+// 	ft_printf("[%+-4.d]\n", 0);
+// 	ft_printf("[%+-4.0d]\n", 0);
+// 	ft_printf("[%-10.5i]\n", -216);
+// 	ft_printf("\n----------------\n\n");
+// 	printf("[%+-4.d]\n", 0);
+// 	printf("[%+-4.0d]\n", 0);
+// 	printf("[%-10.5i]\n", -216);
 
-int main()
-{
-	ft_printf("[%f]\n", NULL);
-	//ft_printf("[%-4.*f]\n", 14, 0.0);
-	//ft_printf("[%-4.*f]\n", 16, 2.81373100731570075);
-	ft_printf("\n----------------\n\n");
-	printf("[%f]\n", NULL);
-	//printf("[%-4.*f]\n", 14, 0.0);
-	//printf("[%-4.*f]\n", 16, 2.81373100731570075);
-
-	return (0);
-}
+// 	return (0);
+// }
