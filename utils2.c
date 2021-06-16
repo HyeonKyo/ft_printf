@@ -40,34 +40,34 @@ int		check_sign(t_opt opts, int n)
 	return (0);
 }
 
-// int	ft_isdigit(int c)
-// {
-// 	if (c >= '0' && c <= '9')
-// 		return (1);
-// 	else
-// 		return (0);
-// }
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
 
-// size_t	ft_strlen(const char *str)
-// {
-// 	int	i;
+size_t	ft_strlen(const char *str)
+{
+	int	i;
 
-// 	i = 0;
-// 	if (str == 0)
-// 		return (0);
-// 	while (str[i])
-// 		i++;
-// 	return (i);
-// }
+	i = 0;
+	if (str == 0)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
+}
 
-// void	*ft_memset(void *ptr, int value, size_t num)
-// {
-// 	char	*str;
-// 	size_t	i;
+void	*ft_memset(void *ptr, int value, size_t num)
+{
+	char	*str;
+	size_t	i;
 
-// 	i = 0;
-// 	str = ptr;
-// 	while (i < num)
-// 		str[i++] = value;
-// 	return (ptr);
-// }
+	i = 0;
+	str = ptr;
+	while (i < num)
+		str[i++] = value;
+	return (ptr);
+}

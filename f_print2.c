@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-size_t	print_space(t_opt opts, int len)
+size_t	print_space(t_opt opts, t_real num, int len)
 {
 	size_t	cnt;
 
@@ -20,49 +20,57 @@ size_t	print_space(t_opt opts, int len)
 	if (len > 0)
 	{
 		if (opts.fg.zero)
+		{
+			cnt += print_sign(opts, num.sign);
 			cnt += print_char('0', len);
+		}
 		else
 			cnt += print_char(' ', len);
 	}
 	return (cnt);
 }
 
-size_t	print_deci(t_real num, t_opt opts)
+size_t	print_deci(t_real num, int len)
 {
 	int		i;
 	int		n;
 	double	tmp;
-	double	pre;
+	int		pre;
 	size_t	cnt;
 
 	i = 0;
 	cnt = 0;
 	tmp = num.deci;
 	pre = 0;
-	while (i < opts.prec)
+	//printf("\ntmp1 : %f\n", tmp);
+	//if (len < 16)
+	tmp += 0.5 / (double)power(10, len - 1);//opts.prec = len
+	while (i < len)
 	{
-		tmp *= (double)10;
-		tmp -= (pre * 10);
-		if (i++ == opts.prec - 1)
-			tmp += 0.5;
+		if (i++)
+			tmp *= 10;
+		tmp -= (double)(pre * 10);
+		//if (i++ == len - 2 && len < 16)
+		//	tmp += 0.5;
 		n = (int)tmp;
 		cnt += print_char(n + '0', 1);
-		pre = (double)n;
+		pre = n;
 	}
 	return (cnt);
 }
 //tmp가 맨 처음 10을 곱할 때 뒤의 값이 반올림됨.
 
-size_t	f_print_all(t_real num, t_opt opts, char *i_buf)
+size_t	f_print_all(t_real num, t_opt opts, char *i_buf, int len)
 {
 	size_t	cnt;
 
 	cnt = 0;
-	cnt += print_sign(opts, num.sign);
+	if (!(opts.fg.zero && len > 0))
+		cnt += print_sign(opts, num.sign);
 	cnt += print_str(i_buf, ft_strlen(i_buf));
 	if (opts.prec > 0)
 		cnt += print_char('.', 1);
-	cnt += print_deci(num, opts);
+	cnt += print_deci(num, opts.prec);
 	return (cnt);
 }
 
@@ -81,13 +89,13 @@ size_t	f_print_case(t_real num, t_opt opts, char *i_buf)
 		len--;
 	if (opts.fg.minus)
 	{
-		cnt += f_print_all(num, opts, i_buf);
-		cnt += print_space(opts, len);
+		cnt += f_print_all(num, opts, i_buf, len);
+		cnt += print_space(opts, num, len);
 	}
 	else
 	{
-		cnt += print_space(opts, len);
-		cnt += f_print_all(num, opts, i_buf);
+		cnt += print_space(opts, num, len);
+		cnt += f_print_all(num, opts, i_buf, len);
 	}
 	return (cnt);
 }

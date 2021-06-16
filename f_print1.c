@@ -44,6 +44,8 @@ void	take_decimal(int *bits, t_real *num)//expo < 0인 경우
 	expo = trans_to_dex(bits + 1, 11) - 1023;//1023은 bias상수
 	//expo가 양수일 때와 음수일 때를 구분하여 이진 소수데이터를 dec에 저장
 	i = -1;
+	if (expo == -1023)
+		return ;
 	if (expo >= 0)
 		while (++i < 52 - expo)
 			dec[i] = bits[12 + expo + i];
@@ -59,7 +61,7 @@ void	take_decimal(int *bits, t_real *num)//expo < 0인 경우
 	i = 0;
 	while (i < 52)
 	{
-		tmp = 1 / (double)power(2, n++);
+		tmp = (1 / (double)power(2, n++)) * 10;
 		if (dec[i++])
 			num->deci += tmp;
 	}

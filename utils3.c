@@ -34,7 +34,7 @@ size_t		power(int base, int e)//거듭제곱 함수
 	size_t	n;
 
 	n = 1;
-	if (e == 0)
+	if (e <= 0)
 		return (1);
 	if (base == 0)
 		return (0);

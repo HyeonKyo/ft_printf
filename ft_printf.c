@@ -82,15 +82,15 @@ int			ft_printf(const char *str, ...)
 	return (cnt);
 }
 
-// int main()
-// {
-// 	ft_printf("[%+-4.d]\n", 0);
-// 	ft_printf("[%+-4.0d]\n", 0);
-// 	ft_printf("[%-10.5i]\n", -216);
-// 	ft_printf("\n----------------\n\n");
-// 	printf("[%+-4.d]\n", 0);
-// 	printf("[%+-4.0d]\n", 0);
-// 	printf("[%-10.5i]\n", -216);
+int main()
+{
+	ft_printf("[%+-4.4f]\n", 2.25098);
+	ft_printf("[%+-4.*e]\n", 16, 1.8001800180018002);
+	ft_printf("[%-4.*f]\n", 16, 1.1254924029262803);
+	ft_printf("\n----------------\n\n");
+	printf("[%+-4.4f]\n", 2.25098);
+	printf("[%+-4.*e]\n", 16, 1.8001800180018002);
+	printf("[%-4.*f]\n", 16, 1.1254924029262803);
 
-// 	return (0);
-// }
+	return (0);
+}

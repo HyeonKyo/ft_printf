@@ -13,13 +13,13 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = ft_printf.c utils1.c utils2.c utils3.c d_print.c u_print.c x_print.c \
-	p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c\
+	p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c \
 	s_print.c
 OBJS = $(SRCS:.c=.o)
-AR = ar -rcs
+AR = ar -rc
 NAME = libftprintf.a
 LIB_DIR = ./libft
-RM = rm -f
+RM = rm -rf
 
 all		:	$(NAME)
 
@@ -29,14 +29,13 @@ $(NAME)	:	$(OBJS)
 			$(AR) $@ $^
 
 .c.o	:
-			$(CC) $(CFLAGS) -c $(SRCS) -I./
+			$(CC) $(CFLAGS) -c $(SRCS)
 
 clean	:
 			$(RM) $(OBJS)
-			$(MAKE) -C $(LIB_DIR) clean
+			$(MAKE) -C $(LIB_DIR) fclean
 
 fclean	:	clean
-			$(RM) $(LIB_DIR)/libft.a
 			$(RM) $(NAME)
 
 re		:	fclean all

@@ -1,4 +1,3 @@
-
 #include "ft_printf.h"
 
 static char		*d_pre_task(va_list ap, t_opt *opts, int *n)

@@ -109,7 +109,8 @@ int		*f_pre_tesk(t_value *val, va_list ap, t_opt *opts);
 void	take_decimal(int *bits, t_real *num);
 void	f_div_section(int *bits, t_value val, t_real *num, t_opt opts);
 //f_print2
-size_t	print_space(t_opt opts, int len);
+size_t	print_space(t_opt opts, t_real num, int len);
+size_t	print_deci(t_real num, int len);
 void	f_print(va_list ap, t_opt opts, size_t *cnt);
 //e_print
 void	e_print(va_list ap, t_opt opts, size_t *cnt);

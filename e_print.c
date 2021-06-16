@@ -25,6 +25,8 @@ void	e_div_section(int *bits, t_value val, t_real *num, t_opt opts)
 	if (bits[0])
 		num->sign = -1;
 	num->integ= (int)val.f;
+	if (opts.prec < 0)
+		num->integ= (int)(val.f + 0.5);
 	find_point(num);
 	if (opts.prec < 0)
 	{
@@ -37,8 +39,6 @@ void	e_div_section(int *bits, t_value val, t_real *num, t_opt opts)
 	//소수부분 처리
 	take_decimal(bits, num);
 	free(bits);
-	// printf("\nnum.point : %d\n", num->point);
-	// printf("num.integ : %d\n", num->integ);
 }
 
 size_t	print_expo(t_real num)
@@ -57,41 +57,47 @@ size_t	print_expo(t_real num)
 	return (cnt);
 }
 
-size_t	e_print_all(t_real num, t_opt opts, char *i_buf, char *d_buf)
+size_t	e_print_all(t_real num, t_opt opts, char *i_buf, int de_len)
 {
 	size_t	cnt;
+	int		i_len;
 
 	cnt = 0;
+	i_len = ft_strlen(i_buf + 1);
 	cnt += print_sign(opts, num.sign);
 	cnt += print_char(i_buf[0], 1);
 	if (opts.prec >= 0)
 	{
 		cnt += print_char('.', 1);
-		cnt += print_str(i_buf + 1, ft_strlen(i_buf));
-		cnt += print_str(d_buf, ft_strlen(d_buf));
+		cnt += print_str(i_buf + 1, i_len);
+		cnt += print_deci(num, de_len);
 	}
 	cnt += print_expo(num);
 	return (cnt);
 }
 
-size_t	e_print_case(t_real num, t_opt opts, char *i_buf, char *d_buf)
+size_t	e_print_case(t_real num, t_opt opts, char *i_buf)
 {
+	int		de_len;
+	int 	i_len;
 	int		len;
 	size_t	cnt;
 
 	cnt = 0;
-	len = opts.width - (ft_strlen(i_buf) + ft_strlen(d_buf) + 5);
-	if (opts.fg.plus || opts.fg.space || num.sign < 0)
-		len--;
+	i_len = ft_strlen(i_buf);
+	de_len = opts.prec - (i_len - 1);
+	if (de_len < 0)
+		de_len = -1;//소수점 개수 하나를 오히려 빼주는 -1
+	len = opts.width - (i_len + de_len + 5 + check_sign(opts, num.sign));//5 = (e+00, 소수점)
 	if (opts.fg.minus)
 	{
-		cnt += e_print_all(num, opts, i_buf, d_buf);
-		cnt += print_space(opts, len);
+		cnt += e_print_all(num, opts, i_buf, de_len);
+		cnt += print_space(opts, num, len);
 	}
 	else
 	{
-		cnt += print_space(opts, len);
-		cnt += e_print_all(num, opts, i_buf, d_buf);
+		cnt += print_space(opts, num, len);
+		cnt += e_print_all(num, opts, i_buf, de_len);
 	}
 	return (cnt);
 }
@@ -102,15 +108,12 @@ void	e_print(va_list ap, t_opt opts, size_t *cnt)
 	t_real	num;
 	int		*bits;
 	char	*i_buf;
-	char	*d_buf;
 
 	ft_memset(&val, 0, sizeof(t_value));
 	ft_memset(&num, 0, sizeof(t_real));
 	bits = f_pre_tesk(&val, ap, &opts);
 	e_div_section(bits, val, &num, opts);
 	i_buf = pf_itoa((long long)num.integ);
-	d_buf = pf_itoa((long long)(num.deci * power(10, opts.prec - num.point)) + 0.5);
-	*cnt += e_print_case(num, opts, i_buf, d_buf);
+	*cnt += e_print_case(num, opts, i_buf);
 	free(i_buf);
-	free(d_buf);
 }
