@@ -29,6 +29,8 @@ size_t	print_str(char *str, size_t len)
 {
 	if (str[0] == 0 && len == 0)
 	 	return (0);
+	if (len > ft_strlen(str))
+		len = ft_strlen(str);
 	write(1, str, len);
 	return (len);
 }

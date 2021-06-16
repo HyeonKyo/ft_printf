@@ -30,31 +30,52 @@ size_t	print_space(t_opt opts, t_real num, int len)
 	return (cnt);
 }
 
-size_t	print_deci(t_real num, int len)
+void	round_num(t_real *num, int len)
 {
-	int		i;
-	int		n;
-	double	tmp;
-	int		pre;
+	int	n;
+
+	if (len < 0)
+		return ;
+	if ((n = pf_get_size(num->deci.high)) > len + 1)
+		num->deci.high += power(10, n - len - 1) * 0.5;
+	else
+	{
+		len -= n - 1;
+		if ((n = pf_get_size(num->deci.mid)) > len)
+			num->deci.mid += power(10, n - len) * 0.5;
+		else
+		{
+			len -= n;
+			if ((n = pf_get_size(num->deci.mid)) > len)
+				num->deci.low += power(10, n - len) * 0.5;
+		}
+	}
+}
+
+size_t	print_deci(t_real num, int len)//len = precision
+{
+	char	*high_buf;
+	char	*mid_buf;
+	char	*low_buf;
+	int		print_len;
 	size_t	cnt;
 
-	i = 0;
 	cnt = 0;
-	tmp = num.deci;
-	pre = 0;
-	//printf("\ntmp1 : %f\n", tmp);
-	//if (len < 16)
-	tmp += 0.5 / (double)power(10, len - 1);//opts.prec = len
-	while (i < len)
+	round_num(&num, len);
+	high_buf = pf_itoa((num.deci.high));
+	mid_buf = pf_itoa((num.deci.mid));
+	low_buf = pf_itoa((num.deci.low));
+	print_len = len;
+	cnt = print_str(high_buf + 1, len);
+	if (cnt < len)
 	{
-		if (i++)
-			tmp *= 10;
-		tmp -= (double)(pre * 10);
-		//if (i++ == len - 2 && len < 16)
-		//	tmp += 0.5;
-		n = (int)tmp;
-		cnt += print_char(n + '0', 1);
-		pre = n;
+		print_len = len - cnt;
+		cnt += print_str(mid_buf, print_len);
+	}
+	if (cnt < len)
+	{
+		print_len = len - cnt;
+		cnt += print_str(low_buf, print_len);
 	}
 	return (cnt);
 }

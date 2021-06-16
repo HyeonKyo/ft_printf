@@ -31,14 +31,52 @@ int		*f_pre_tesk(t_value *val, va_list ap, t_opt *opts)
 	trans_to_bin(bits, val->n);
 	return (bits);
 }
+/*
+save_deci의 방식
+18자리를 가지는 long long변수 3개를 구조체로 묶고,
+low부터 차근차근 5 ^ n을 더해가며 18자리를 넘는 수는 다음 구조체로 넘기는 구조
+ => 문제점 : n이 커지면 low에 저장하는 숫자가 18자리를 넘어서 오버플로우로 오차 발생.
+*/
+void	save_deci(t_real *num, int *dec)
+{
+	int		i;
+	size_t	tmp;
+	size_t	ex;
+	size_t	n;
 
-void	take_decimal(int *bits, t_real *num)//expo < 0인 경우
+	i = 0;
+	num->deci.low = 1;
+	while (i < 52)
+	{
+        num->deci.low = num->deci.low * 10;
+		if (dec[i++])
+    		num->deci.low += power(5, i);
+		if ((tmp = pf_get_size(num->deci.low)) >= 18)
+		{
+			num->deci.mid *= 10;
+			ex = power(10, tmp - 1);
+			n = num->deci.low / ex;
+			num->deci.mid += n;
+			num->deci.low -= n * ex;
+			num->deci.mid *= power(10,  17 - pf_get_size(num->deci.low));
+		}
+		if ((tmp = pf_get_size(num->deci.mid)) >= 18)
+		{
+			num->deci.high *= 10;
+			ex = power(10, tmp - 1);
+			n = num->deci.mid / ex;
+			num->deci.high += n;
+			num->deci.mid -= n * ex;
+			num->deci.high *= power(10, 17 - pf_get_size(num->deci.mid));
+		}
+	}
+}
+
+void	take_deci(int *bits, t_real *num)//expo < 0인 경우
 {
 	int		expo;
 	int		i;
-	int		n;
 	int		dec[52];
-	double	tmp;
 
 	ft_memset(dec, 0, sizeof(dec));
 	expo = trans_to_dex(bits + 1, 11) - 1023;//1023은 bias상수
@@ -56,15 +94,7 @@ void	take_decimal(int *bits, t_real *num)//expo < 0인 경우
 		while (++i < 52 - expo)
 			dec[expo + i] = bits[12 + i];
 	}
-	num->deci = 0.0;
-	n = 1;
-	i = 0;
-	while (i < 52)
-	{
-		tmp = (1 / (double)power(2, n++)) * 10;
-		if (dec[i++])
-			num->deci += tmp;
-	}
+	save_deci(num, dec);
 }
 
 void	f_div_section(int *bits, t_value val, t_real *num, t_opt opts)
@@ -79,7 +109,7 @@ void	f_div_section(int *bits, t_value val, t_real *num, t_opt opts)
 		val.f += 0.5;
 	num->integ= (int)val.f;
 	//소수부분 처리
-	take_decimal(bits, num);
+	take_deci(bits, num);
 	free(bits);
 }
 

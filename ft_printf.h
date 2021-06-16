@@ -59,11 +59,18 @@ typedef union	u_value
 }				t_value;
 //실수를 공용체로 저장함.
 
+typedef struct	s_bi
+{
+	long long	high;
+    long long	mid;
+	long long	low;
+}				t_bi;
+
 typedef struct	s_real
 {
 	int		sign;
 	int		integ;
-	double	deci;
+	t_bi	deci;
 	int		point;//e_print시 사용.
 }				t_real;
 //실수의 각 부분의 정보를 따로 저장(부호, 정수, 소수부)
@@ -71,6 +78,7 @@ typedef struct	s_real
 
 //utils1
 int		print_char(char c, int len);
+int		pf_get_size(long long n);
 int		pf_atoi(const char *str, t_opt *opts, size_t *i);
 char	*pf_itoa(long long n);
 //utils2
@@ -106,7 +114,7 @@ void	s_print(va_list ap, t_opt opts, size_t *cnt);
 void	p_print(va_list ap, t_opt opts, size_t *cnt);
 //f_print1
 int		*f_pre_tesk(t_value *val, va_list ap, t_opt *opts);
-void	take_decimal(int *bits, t_real *num);
+void	take_deci(int *bits, t_real *num);
 void	f_div_section(int *bits, t_value val, t_real *num, t_opt opts);
 //f_print2
 size_t	print_space(t_opt opts, t_real num, int len);

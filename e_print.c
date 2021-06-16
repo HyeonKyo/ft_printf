@@ -37,7 +37,7 @@ void	e_div_section(int *bits, t_value val, t_real *num, t_opt opts)
 			num->integ += power(10, num->point);
 	}
 	//소수부분 처리
-	take_decimal(bits, num);
+	take_deci(bits, num);
 	free(bits);
 }
 

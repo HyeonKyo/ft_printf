@@ -42,7 +42,7 @@ int				pf_atoi(const char *str, t_opt *opts, size_t *i)
 	//1. 유효성 검사할 부분이 필요함.
 }
 
-static int		pf_get_size(long long n)
+int		pf_get_size(long long n)
 {
 	int	size;
 
