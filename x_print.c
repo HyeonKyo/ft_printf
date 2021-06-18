@@ -93,7 +93,9 @@ static size_t	print_hex(t_opt opts, int *flag)
 	if (opts.fg.hash)
 	{
 		*flag = 0;
-		return (print_str("0x", 2));
+		if (opts.type == 'x')
+			return (print_str("0x", 2));
+		return (print_str("0X", 2));
 	}
 	return (0);
 }
@@ -103,8 +105,6 @@ static size_t	zero_print(int len, t_opt opts, int *flag)
 	size_t	cnt;
 
 	cnt = 0;
-	if (len < 0)
-		return (0);
 	if (*flag)
 		cnt = print_hex(opts, flag);
 	cnt += print_char('0', len);
@@ -118,11 +118,13 @@ size_t	x_print_case(int zero_len, int len, char *buf, t_opt opts)
 	int		flag;
 
 	cnt = 0;
+	if (buf[0] == '0' && opts.prec < 0)
+		return (print_char(' ', len));
 	flag = 1;
+	if (buf[0] == '0')
+		flag = 0;
 	buf_len = (int)ft_strlen(buf);
-	if (buf == 0)
-		cnt += print_char(' ', len);
-	else if (!opts.fg.minus)
+	if (!opts.fg.minus)
 	{
 		if (opts.fg.zero)
 			cnt += zero_print(len, opts, &flag);
@@ -151,8 +153,10 @@ size_t			x_print_all(t_opt opts, char *buf)
 	len = opts.width - buf_len;//숫자or0출력 후 남은 공백, 0출력 길이
 	if (zero_len > 0)
 		len -= zero_len;
-	if (opts.fg.hash)
+	if (opts.fg.hash && buf[0] != '0')
 		len -= 2;
+	if (opts.prec < 0 && buf[0] == '0')
+		len++;
 	return (x_print_case(zero_len, len, buf, opts));
 }
 
@@ -165,11 +169,6 @@ void		x_print(va_list ap, t_opt opts, size_t *cnt)
 	buf = x_pre_task(ap, &opts, &n);
 	if (buf == 0)
 		return ;
-	if (opts.prec < 0  && n == 0)
-	{
-		free(buf);
-		buf = 0;
-	}
 	*cnt += x_print_all(opts, buf);
 	if (buf)
 		free(buf);

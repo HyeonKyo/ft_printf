@@ -88,23 +88,18 @@ int main()
 {
 	setbuf(stdout, NULL);
 	setlocale(LC_ALL, "en_US.UTF-8");
-	wchar_t	*s = 0;
-	char	*s2 = 0;
-	unsigned long long x = 1234;
+	int n = 0;
+	int cnt = 0;
+	unsigned int x = 4294967161;
 	
-	
-	ft_printf("[%.0x]\n", 0);
-	ft_printf("[%hx]\n", x);
-	ft_printf("[%hhx]\n", x);
-	ft_printf("[%#10.6lx]\n", (unsigned long)x);
-	ft_printf("[%#040llx]\n", x);
-	ft_printf("\n----------------\n\n");
-	printf("[%#10.0x]\n", 0);
-	printf("[%hx]\n", x);
-	printf("[%hhx]\n", x);
-	printf("[%#10.6lx]\n", (unsigned long)x);
-	printf("[%#040llx]\n", x);
+	cnt = ft_printf("[asdasd%nsds]\n", n);
+	printf("%d\n", cnt);
+	printf("%d\n", n);
 
+	ft_printf("\n----------------\n\n");
+	cnt = printf("[asdasd%nsds]\n", n);
+	printf("%d\n", cnt);	
+	ft_printf("%d\n", n);
 
 	return (0);
 }

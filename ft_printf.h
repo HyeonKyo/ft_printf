@@ -92,8 +92,8 @@ int		find_type(char c, t_opt *opts);
 //get_opt
 int		get_opt(const char *str, t_opt *opts, size_t *i);
 //c_print
-int		c_case_cnt(int c);
-size_t	c_case_print(int c);
+int		c_case_cnt(int c, t_opt opts);
+size_t	c_case_print(int c, t_opt opts);
 void	c_print(va_list ap, t_opt opts, size_t *cnt);
 //d_print
 void	d_print(va_list ap, t_opt opts, size_t *cnt);

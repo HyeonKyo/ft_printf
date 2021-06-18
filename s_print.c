@@ -19,21 +19,19 @@ wchar_t	*get_arg_s(va_list ap, t_opt opts)
 	return ((wchar_t *)va_arg(ap, char *));
 }
 
-int		pf_wstrlen(wchar_t *str)
+int		pf_wstrlen(wchar_t *str, t_opt opts)
 {
-	int	i;
 	int	cnt;
 
-	i = 0;
 	cnt = 0;
 	if (str == 0)
 		return (0);
-	while (str[i])
-		cnt += 1 * c_case_cnt(str[i++]);
+	while (str[cnt])
+		cnt += 1 * c_case_cnt(str[cnt], opts);
 	return (cnt);
 }
 
-size_t	print_wstr(va_list ap, int len)
+size_t	print_wstr(va_list ap, t_opt opts, int len)
 {
 	int		i;
 	size_t	cnt;
@@ -44,11 +42,44 @@ size_t	print_wstr(va_list ap, int len)
 		str = L"(null)";
 	i = 0;
 	cnt = 0;
-	if (str[0] == 0 && len == 0 && len < c_case_cnt(str[i]))
+	if (str[0] == 0 && len == 0 && len < c_case_cnt(str[i], opts))
 		return (0);
-	while (str[i] && cnt < len)
-		cnt += c_case_print(str[i++]);
+	while (str[i] && (int)cnt < len)
+		cnt += c_case_print(str[i++], opts);
 	return (cnt);
+}
+
+int		get_print_len(va_list ap, t_opt opts)
+{
+	wchar_t	*s1;
+	char	*s2;
+	int		print_len;
+
+	if (opts.ln.l)
+	{
+		s1 = va_arg(ap, wchar_t *);
+		if (s1 == 0)
+			s1 = L"(null)";
+		if (opts.prec > 0 && opts.prec < pf_wstrlen(s1, opts))
+			print_len = opts.prec;
+		else if (opts.prec < c_case_cnt(s1[0], opts))
+			print_len = 0;
+		else
+			print_len = pf_wstrlen(s1, opts);
+	}
+	else
+	{
+		s2 = va_arg(ap, char *);
+		if (s2 == 0)
+			s2 = "(null)";
+		if (opts.prec > 0 && opts.prec < (int)ft_strlen(s2))
+			print_len = opts.prec;
+		else if (opts.prec < 0)
+			print_len = 0;
+		else
+			print_len = ft_strlen(s2);
+	}
+	return (print_len);
 }
 
 size_t	s_print_all(va_list ap, int len, t_opt opts)
@@ -58,7 +89,7 @@ size_t	s_print_all(va_list ap, int len, t_opt opts)
 
 	cnt = 0;
 	if (opts.ln.l)
-		cnt += print_wstr(ap, len);
+		cnt += print_wstr(ap, opts, len);
 	else
 	{
 		str = va_arg(ap, char *);
@@ -71,21 +102,13 @@ size_t	s_print_all(va_list ap, int len, t_opt opts)
 
 void	s_print(va_list ap, t_opt opts, size_t *cnt)
 {
-	wchar_t	*s;
 	va_list	tmp;
-    int		print_len;
+    int		print_len;//출력할 문자열 길이 = print_len
 	int		space_len;
 
 	va_copy(tmp, ap);
-	s = get_arg_s(tmp, opts);
-	if (s == 0)
-		s = L"(null)";
-	if (opts.prec < c_case_cnt(s[0]))//출력할 문자열 길이 = print_len
-		print_len = 0;
-	else if (opts.prec > 0 && opts.prec < pf_wstrlen(s))
-		print_len = opts.prec;
-	else
-		print_len = pf_wstrlen(s);
+	print_len = get_print_len(tmp, opts);
+	//printf("\npr_len : %d\n", print_len);
 	space_len = opts.width - print_len;//공백 출력 길이
 	if (!opts.fg.minus)
 	{

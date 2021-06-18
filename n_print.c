@@ -18,6 +18,7 @@ void	n_print(va_list ap, t_opt opts, size_t *cnt)
 	long long	*n;
 
 	n = get_arg_n(ap, opts);
+	if (n == 0)
+		return ;
 	*n = *cnt;
-	return ;
 }
