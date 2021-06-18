@@ -12,16 +12,46 @@
 
 #include "ft_printf.h"
 
-static char		*u_pre_task(va_list ap, t_opt *opts, unsigned int *n)
+unsigned long long	get_arg_u(va_list ap, t_opt *opts)
+{
+	if (opts->ln.l)
+		return ((unsigned long long)va_arg(ap, unsigned long));
+	if (opts->ln.ll)
+		return ((unsigned long long)va_arg(ap, unsigned long long));
+	return ((unsigned long long)va_arg(ap, unsigned int));
+}
+
+char			*pf_uitoa_case(unsigned long long n, t_opt *opts)
+{
+	unsigned char	u1;
+	unsigned short	u2;
+	char			*buf;
+
+	if (opts->ln.hh)
+	{
+		u1 = (unsigned char)n;
+		buf = pf_uitoa(u1);
+	}
+	else if (opts->ln.h)
+	{
+		u2 = (unsigned short)n;
+		buf = pf_uitoa(u2);
+	}
+	else
+		buf = pf_uitoa(n);
+	return (buf);
+}
+
+static char		*u_pre_task(va_list ap, t_opt *opts, unsigned long long *n)
 {
 	char	*buf;
 
-	*n = va_arg(ap, unsigned int);
+	*n = get_arg_u(ap, opts);
 	if (opts->fg.hash || opts->fg.space || opts->fg.plus)//경메 출력 조건
 		return (0);
 	if ((opts->fg.minus && opts->fg.zero) || opts->prec != 0)//0 flag 무시조건.
 		opts->fg.zero = 0;
-	buf = pf_itoa((long long)*n);//pf_itoa는 기호 제외하고 숫자만 출력
+	buf = pf_uitoa_case(*n, opts);
 	if (!buf)
 		return (0);
 	return (buf);
@@ -70,8 +100,8 @@ size_t			u_print_all(t_opt opts, char *buf)
 
 void	u_print(va_list ap, t_opt opts, size_t *cnt)
 {
-	unsigned int    n;
-	char	        *buf;
+	unsigned long long	n;
+	char				*buf;
 
 	n = 0;
 	buf = u_pre_task(ap, &opts, &n);

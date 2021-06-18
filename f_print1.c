@@ -61,7 +61,7 @@ void	take_decimal(int *bits, t_real *num)//expo < 0인 경우
 	i = 0;
 	while (i < 52)
 	{
-		tmp = (1 / (double)power(2, n++)) * 10;
+		tmp = (1 / (double)power(2, n++)) / 100;
 		if (dec[i++])
 			num->deci += tmp;
 	}

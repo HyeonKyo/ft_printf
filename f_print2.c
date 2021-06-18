@@ -42,19 +42,20 @@ size_t	print_deci(t_real num, int len)
 	cnt = 0;
 	tmp = num.deci;
 	pre = 0;
-	//printf("\ntmp1 : %f\n", tmp);
+	//printf("\nlen : %d\n", len);
 	//if (len < 16)
-	tmp += 0.5 / (double)power(10, len - 1);//opts.prec = len
+	tmp += 0.5 / (double)power(10, len + 2);//opts.prec = len
+	tmp *= 100;
 	while (i < len)
 	{
-		if (i++)
-			tmp *= 10;
+		tmp *= 10;
 		tmp -= (double)(pre * 10);
 		//if (i++ == len - 2 && len < 16)
 		//	tmp += 0.5;
 		n = (int)tmp;
 		cnt += print_char(n + '0', 1);
 		pre = n;
+		i++;
 	}
 	return (cnt);
 }

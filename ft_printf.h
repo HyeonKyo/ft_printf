@@ -13,10 +13,11 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 #include <stdio.h>
+#include <locale.h>
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <wctype.h>
+# include <wchar.h>
 # include "./libft/libft.h"
 
 typedef struct	s_flag
@@ -73,13 +74,14 @@ typedef struct	s_real
 int		print_char(char c, int len);
 int		pf_atoi(const char *str, t_opt *opts, size_t *i);
 char	*pf_itoa(long long n);
+char	*pf_uitoa(unsigned long long n);
 //utils2
-int		print_sign(t_opt opts, int n);
+int		print_sign(t_opt opts, long long n);
 size_t	print_str(char *str, size_t len);
-int		check_sign(t_opt opts, int n);
+int		check_sign(t_opt opts, long long n);
 //utils3
 void	trans_to_bin(int *bits, size_t num);
-size_t		power(int base, int e);
+size_t	power(int base, int e);
 int		trans_to_dex(int *bits, int size);
 //find_opt
 int		find_flag(const char *str, t_opt *opts, size_t *i);
@@ -90,10 +92,13 @@ int		find_type(char c, t_opt *opts);
 //get_opt
 int		get_opt(const char *str, t_opt *opts, size_t *i);
 //c_print
+int		c_case_cnt(int c);
+size_t	c_case_print(int c);
 void	c_print(va_list ap, t_opt opts, size_t *cnt);
 //d_print
 void	d_print(va_list ap, t_opt opts, size_t *cnt);
 //u_print
+unsigned long long	get_arg_u(va_list ap, t_opt *opts);
 size_t	u_print_all(t_opt opts, char *buf);
 void	u_print(va_list ap, t_opt opts, size_t *cnt);
 //x_print
@@ -114,7 +119,8 @@ size_t	print_deci(t_real num, int len);
 void	f_print(va_list ap, t_opt opts, size_t *cnt);
 //e_print
 void	e_print(va_list ap, t_opt opts, size_t *cnt);
-
+//n_print
+void	n_print(va_list ap, t_opt opts, size_t *cnt);
 //ft_print.c
 int		ft_printf(const char *str, ...);
 #endif

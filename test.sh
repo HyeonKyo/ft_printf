@@ -63,49 +63,49 @@ echo "" > test_result.txt
 # cat diff.txt >> ../test_result.txt
 # cd ..
 
-# # ########## PFT ##########
-# echo -e '#########PFT##########' >> test_result.txt
-# git clone https://github.com/gavinfielder/pft.git pft
-# make re
-# cd pft
-# make re
-# ./test
-# cat -e results.txt >> ../test_result.txt
-# cd ..
-
-# # ########## PFT_2019 ##########
-# echo -e '#########PFT_2019##########' >> test_result.txt
-# git clone https://github.com/gavinfielder/pft.git pft_2019
-# cd pft_2019
-# rm unit_tests.c
-# rm options-config.ini
-# git clone https://github.com/cclaude42/PFT_2019.git temp
-# cp temp/unit_tests.c .
-# cp temp/options-config.ini .
-# rm -rf temp
-# make re
-# ./test
-# cat -e results.txt >> ../test_result.txt
-# cd ..
-
-
-# ######### printf_lover_v2 #########
-# (수동으로 동작 필요)
-echo -e '######### printf_lover_v2 ##########' >> test_result.txt
-git clone https://github.com/charMstr/printf_lover_v2.git
-cd printf_lover_v2
-./printf_lover.sh re
+# ########## PFT ##########
+echo -e '#########PFT##########' >> test_result.txt
+git clone https://github.com/gavinfielder/pft.git pft
+make re
+cd pft
+make re
+./test
+cat -e results.txt >> ../test_result.txt
 cd ..
 
-# ######### printf-tester #########
-echo -e '######### printf-tester ##########' >> test_result.txt
-git clone https://github.com/AntoineBourin/printf-tester.git
-cd printf-tester
-cp ../libftprintf.a libftprintf.a
-chmod +x test.sh
-bash ./test.sh
-echo -en "\033[0m"
+# ########## PFT_2019 ##########
+echo -e '#########PFT_2019##########' >> test_result.txt
+git clone https://github.com/gavinfielder/pft.git pft_2019
+cd pft_2019
+rm unit_tests.c
+rm options-config.ini
+git clone https://github.com/cclaude42/PFT_2019.git temp
+cp temp/unit_tests.c .
+cp temp/options-config.ini .
+rm -rf temp
+make re
+./test
+cat -e results.txt >> ../test_result.txt
 cd ..
+
+
+# # ######### printf_lover_v2 #########
+# # (수동으로 동작 필요)
+# echo -e '######### printf_lover_v2 ##########' >> test_result.txt
+# git clone https://github.com/charMstr/printf_lover_v2.git
+# cd printf_lover_v2
+# ./printf_lover.sh re
+# cd ..
+
+# # ######### printf-tester #########
+# echo -e '######### printf-tester ##########' >> test_result.txt
+# git clone https://github.com/AntoineBourin/printf-tester.git
+# cd printf-tester
+# cp ../libftprintf.a libftprintf.a
+# chmod +x test.sh
+# bash ./test.sh
+# echo -en "\033[0m"
+# cd ..
 
 # # ######### ft_printf_test #########
 # # python3 설치 필요 (brew install python3)
@@ -126,5 +126,5 @@ cd ..
 # make
 # cd ../../
 
-rm -rf 42TESTERS-PRINTF ft_printf_test printf-tester printf_lover_v2 pft pft_2019
+#rm -rf 42TESTERS-PRINTF ft_printf_test printf-tester printf_lover_v2 pft pft_2019
 make fclean

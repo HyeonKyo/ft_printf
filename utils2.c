@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		print_sign(t_opt opts, int n)
+int		print_sign(t_opt opts, long long n)
 {
 	if (opts.fg.plus && n >= 0)
 		write(1, "+", 1);
@@ -33,7 +33,7 @@ size_t	print_str(char *str, size_t len)
 	return (len);
 }
 
-int		check_sign(t_opt opts, int n)
+int		check_sign(t_opt opts, long long n)
 {
 	if ((opts.fg.plus && n >= 0) || (opts.fg.space && n >= 0) || (n < 0))
 		return (1);

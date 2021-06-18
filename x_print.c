@@ -52,25 +52,114 @@ char		*pf_itoa_hex(unsigned long long n, t_opt opts)
 	return (buf);
 }
 
-static char	*x_pre_task(va_list ap, t_opt *opts, unsigned int *n)
+char			*pf_itoa_hexcase(unsigned long long n, t_opt opts)
+{
+	unsigned char	x1;
+	unsigned short	x2;
+	char			*buf;
+
+	if (opts.ln.hh)
+	{
+		x1 = (unsigned char)n;
+		buf = pf_itoa_hex(x1, opts);
+	}
+	else if (opts.ln.h)
+	{
+		x2 = (unsigned short)n;
+		buf = pf_itoa_hex(x2, opts);
+	}
+	else
+		buf = pf_itoa_hex(n, opts);
+	return (buf);
+}
+
+static char	*x_pre_task(va_list ap, t_opt *opts, unsigned long long *n)
 {
 	char	*buf;
 
-	*n = va_arg(ap, unsigned int);
-	if (opts->fg.hash || opts->fg.space || opts->fg.plus)//경메 출력 조건
+	*n = get_arg_u(ap, opts);
+	if (opts->fg.space || opts->fg.plus)//경메 출력 조건
 		return (0);
 	if ((opts->fg.minus && opts->fg.zero) || opts->prec != 0)//0 flag 무시조건.
 		opts->fg.zero = 0;
-	buf = pf_itoa_hex((unsigned long long)*n, *opts);
+	buf = pf_itoa_hexcase(*n, *opts);
 	if (!buf)
 		return (0);
 	return (buf);
 }
 
+static size_t	print_hex(t_opt opts, int *flag)
+{
+	if (opts.fg.hash)
+	{
+		*flag = 0;
+		return (print_str("0x", 2));
+	}
+	return (0);
+}
+
+static size_t	zero_print(int len, t_opt opts, int *flag)
+{
+	size_t	cnt;
+
+	cnt = 0;
+	if (len < 0)
+		return (0);
+	if (*flag)
+		cnt = print_hex(opts, flag);
+	cnt += print_char('0', len);
+	return (cnt);
+}
+
+size_t	x_print_case(int zero_len, int len, char *buf, t_opt opts)
+{
+	size_t	cnt;
+	int		buf_len;
+	int		flag;
+
+	cnt = 0;
+	flag = 1;
+	buf_len = (int)ft_strlen(buf);
+	if (buf == 0)
+		cnt += print_char(' ', len);
+	else if (!opts.fg.minus)
+	{
+		if (opts.fg.zero)
+			cnt += zero_print(len, opts, &flag);
+		else
+			cnt += print_char(' ', len);
+		cnt += zero_print(zero_len, opts, &flag);
+		cnt += print_str(buf, buf_len);
+	}
+	else
+	{
+		cnt += zero_print(zero_len, opts, &flag);
+		cnt += print_str(buf, buf_len);
+		cnt += print_char(' ', len);
+	}
+	return (cnt);
+}
+
+size_t			x_print_all(t_opt opts, char *buf)
+{
+	int		buf_len;
+	int		zero_len;
+	int		len;
+
+	buf_len = (int)ft_strlen(buf);//숫자 길이
+	zero_len = opts.prec - buf_len;//prec에 의한 0출력 길이
+	len = opts.width - buf_len;//숫자or0출력 후 남은 공백, 0출력 길이
+	if (zero_len > 0)
+		len -= zero_len;
+	if (opts.fg.hash)
+		len -= 2;
+	return (x_print_case(zero_len, len, buf, opts));
+}
+
 void		x_print(va_list ap, t_opt opts, size_t *cnt)
 {
-	unsigned int    n;
-	char	        *buf;
+	unsigned long long	n;
+	char				*buf;
 
 	n = 0;
 	buf = x_pre_task(ap, &opts, &n);
@@ -81,7 +170,7 @@ void		x_print(va_list ap, t_opt opts, size_t *cnt)
 		free(buf);
 		buf = 0;
 	}
-	*cnt += u_print_all(opts, buf);
+	*cnt += x_print_all(opts, buf);
 	if (buf)
 		free(buf);
 }

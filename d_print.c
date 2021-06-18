@@ -1,21 +1,53 @@
 #include "ft_printf.h"
 
-static char		*d_pre_task(va_list ap, t_opt *opts, int *n)
+long long	get_arg_d(va_list ap, t_opt *opts)
+{
+	if (opts->ln.l)
+		return ((long long)va_arg(ap, long));
+	if (opts->ln.ll)
+		return ((long long)va_arg(ap, long long));
+	return ((long long)va_arg(ap, int));
+}
+
+char			*pf_itoa_case(long long *n, t_opt *opts)
+{
+	char	d1;
+	short	d2;
+	char	*buf;
+
+	if (opts->ln.hh)
+	{
+		d1 = (char)*n;
+		buf = pf_itoa(d1);
+		*n = (long long)d1;
+	}
+	else if (opts->ln.h)
+	{
+		d2 = (short)*n;
+		buf = pf_itoa(d2);
+		*n = (long long)d2;
+	}
+	else
+		buf = pf_itoa(*n);
+	return (buf);
+}
+
+static char		*d_pre_task(va_list ap, t_opt *opts, long long *n)
 {
 	char	*buf;
 
-	*n = va_arg(ap, int);
+	*n = get_arg_d(ap, opts);
 	if (opts->fg.hash)//경메 출력 조건
 		return (0);
 	if ((opts->fg.minus && opts->fg.zero) || opts->prec != 0)//0 flag 무시조건.
 		opts->fg.zero = 0;
-	buf = pf_itoa(*n);//pf_itoa는 기호 제외하고 숫자만 출력
+	buf = pf_itoa_case(n, opts);//pf_itoa는 기호 제외하고 숫자만 출력
 	if (!buf)
 		return (0);
 	return (buf);
 }
 
-static size_t	zero_or_space(int n, int space_len, t_opt opts, int *flag)
+static size_t	zero_or_space(long long n, int space_len, t_opt opts, int *flag)
 {
 	size_t	cnt;
 
@@ -38,7 +70,7 @@ static size_t	zero_or_space(int n, int space_len, t_opt opts, int *flag)
 	return (cnt);
 }
 
-static size_t	print_digit(int n, t_opt opts, char *buf, int flag)
+static size_t	print_digit(long long n, t_opt opts, char *buf, int flag)
 {
 	size_t	cnt;
 	int		buf_len;
@@ -58,7 +90,7 @@ static size_t	print_digit(int n, t_opt opts, char *buf, int flag)
 }
 
 
-static size_t	d_print_all(int n, t_opt opts, char *buf)
+static size_t	d_print_all(long long n, t_opt opts, char *buf)
 {
 	size_t	cnt;
 	int		buf_len;
@@ -85,8 +117,8 @@ static size_t	d_print_all(int n, t_opt opts, char *buf)
 
 void			d_print(va_list ap, t_opt opts, size_t *cnt)
 {
-	int		n;
-	char	*buf;
+	long long	n;
+	char		*buf;
 
 	n = 0;
 	buf = d_pre_task(ap, &opts, &n);

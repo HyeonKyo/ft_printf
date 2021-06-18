@@ -83,3 +83,24 @@ char			*pf_itoa(long long n)
 	}
 	return (buf);
 }
+
+char			*pf_uitoa(unsigned long long n)
+{
+	
+	int		len;
+	char	*buf;
+
+	len = get_size_based(n, 10);
+	buf = (char *)malloc((len + 1) * sizeof(char));
+	if (buf == 0)
+		return (0);
+	buf[len] = 0;
+	if (n == 0)
+		buf[0] = '0';
+	while (n)
+	{
+		buf[--len] = n % 10 + '0';
+		n = n / 10;
+	}
+	return (buf);
+}

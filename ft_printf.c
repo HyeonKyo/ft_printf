@@ -51,6 +51,8 @@ static void	print_arg(va_list ap, t_opt opts, size_t *cnt)
 		f_print(ap, opts, cnt);
 	else if (opts.type == 'e')
 		e_print(ap, opts, cnt);
+	else if (opts.type == 'n')
+		n_print(ap, opts, cnt);
 }
 
 int			ft_printf(const char *str, ...)
@@ -84,13 +86,25 @@ int			ft_printf(const char *str, ...)
 
 int main()
 {
-	ft_printf("[%+-4.4f]\n", 2.25098);
-	ft_printf("[%+-4.*e]\n", 16, 1.8001800180018002);
-	ft_printf("[%-4.*f]\n", 16, 1.1254924029262803);
+	setbuf(stdout, NULL);
+	setlocale(LC_ALL, "en_US.UTF-8");
+	wchar_t	*s = 0;
+	char	*s2 = 0;
+	unsigned long long x = 1234;
+	
+	
+	ft_printf("[%.0x]\n", 0);
+	ft_printf("[%hx]\n", x);
+	ft_printf("[%hhx]\n", x);
+	ft_printf("[%#10.6lx]\n", (unsigned long)x);
+	ft_printf("[%#040llx]\n", x);
 	ft_printf("\n----------------\n\n");
-	printf("[%+-4.4f]\n", 2.25098);
-	printf("[%+-4.*e]\n", 16, 1.8001800180018002);
-	printf("[%-4.*f]\n", 16, 1.1254924029262803);
+	printf("[%#10.0x]\n", 0);
+	printf("[%hx]\n", x);
+	printf("[%hhx]\n", x);
+	printf("[%#10.6lx]\n", (unsigned long)x);
+	printf("[%#040llx]\n", x);
+
 
 	return (0);
 }

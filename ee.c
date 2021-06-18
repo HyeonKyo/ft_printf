@@ -1,16 +1,21 @@
-#include <stdio.h>
+#include "ft_printf.h"
 
 // int	main()
 // {
-// 	printf("[%020.10d]\n", 10);
+// 	setbuf(stdout, NULL);
+// 	setlocale(LC_ALL, "en_US.UTF-8");
+// 	wchar_t	*s = L"abcde";
+// 	printf("[%ls]\n", s);
+// 	printf("[%ls]\n", s);
+// 	printf("[%ls]\n", s);
+// 	printf("[%ls]\n", s);
 
 // 	return (0);
 // }
-
 /*
 1. 공용체로 가변인자 값 받음.
 	union / double과 size_t를 가지고 있음.
-	1.5. flag등 사전 처리.
+	 flag등 사전 처리.
 		=> 오류 상황
 			1. + ' ' 동시에 쓰일 때
 			2. - 0 동시에 쓰일 때
