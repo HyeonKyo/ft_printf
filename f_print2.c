@@ -40,18 +40,13 @@ size_t	print_deci(t_real num, int len)
 
 	i = 0;
 	cnt = 0;
-	tmp = num.deci;
+	tmp = num.deci - (double)num.integ;
 	pre = 0;
-	//printf("\nlen : %d\n", len);
-	//if (len < 16)
-	tmp += 0.5 / (double)power(10, len + 2);//opts.prec = len
-	tmp *= 100;
+	//출력 부분
 	while (i < len)
 	{
 		tmp *= 10;
 		tmp -= (double)(pre * 10);
-		//if (i++ == len - 2 && len < 16)
-		//	tmp += 0.5;
 		n = (int)tmp;
 		cnt += print_char(n + '0', 1);
 		pre = n;
@@ -82,11 +77,11 @@ size_t	f_print_case(t_real num, t_opt opts, char *i_buf)
 	size_t	cnt;
 
 	cnt = 0;
-	dec_len = opts.prec + 1;
+	dec_len = opts.prec + 1;//1은 소수점
 	if (dec_len < 0)
 		dec_len = 0;
-	len = opts.width - (ft_strlen(i_buf) + dec_len);
-	if (opts.fg.plus || opts.fg.space || num.sign < 0)
+	len = opts.width - (ft_strlen(i_buf) + dec_len);//공백길이
+	if (opts.fg.plus || opts.fg.space || num.sign < 0)//공백 - 부호
 		len--;
 	if (opts.fg.minus)
 	{

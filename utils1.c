@@ -57,7 +57,7 @@ static int		pf_get_size(long long n)
 	return (size);
 }
 
-static size_t	pf_absol_n(int n)
+int		pf_absol_n(int n)
 {
 	if (n < 0)
 		return (-n);

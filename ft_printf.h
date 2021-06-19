@@ -72,6 +72,7 @@ typedef struct	s_real
 
 //utils1
 int		print_char(char c, int len);
+int		pf_absol_n(int n);
 int		pf_atoi(const char *str, t_opt *opts, size_t *i);
 char	*pf_itoa(long long n);
 char	*pf_uitoa(unsigned long long n);

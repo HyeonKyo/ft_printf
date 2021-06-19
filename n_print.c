@@ -1,24 +1,64 @@
 #include "ft_printf.h"
 
-long long	*get_arg_n(va_list ap, t_opt opts)
+void	arg_hhn(va_list ap, size_t cnt)
 {
-	if (opts.ln.hh)
-		return ((long long *)va_arg(ap, char *));
-	if (opts.ln.h)
-		return ((long long *)va_arg(ap, short *));
-	if (opts.ln.l)
-		return ((long long *)va_arg(ap, long *));
-	if (opts.ln.ll)
-		return (va_arg(ap, long long *));
-	return ((long long *)va_arg(ap, int *));
+	char	*s;
+
+	s = va_arg(ap, char *);
+	if (s == 0)
+		return ;
+	*s = cnt;
+}
+
+void	arg_hn(va_list ap, size_t cnt)
+{
+	short	*s;
+
+	s = va_arg(ap, short *);
+	if (s == 0)
+		return ;
+	*s = cnt;
+}
+
+void	arg_ln(va_list ap, size_t cnt)
+{
+	long	*s;
+
+	s = va_arg(ap, long *);
+	if (s == 0)
+		return ;
+	*s = cnt;
+}
+
+void	arg_lln(va_list ap, size_t cnt)
+{
+	long long	*s;
+
+	s = va_arg(ap, long long *);
+	if (s == 0)
+		return ;
+	*s = cnt;
+}
+
+void	arg_n(va_list ap, size_t cnt)
+{
+	int	*s;
+
+	s = va_arg(ap, int *);
+	if (s == 0)
+		return ;
+	*s = cnt;
 }
 
 void	n_print(va_list ap, t_opt opts, size_t *cnt)
 {
-	long long	*n;
-
-	n = get_arg_n(ap, opts);
-	if (n == 0)
-		return ;
-	*n = *cnt;
+	if (opts.ln.hh)
+		arg_hhn(ap, *cnt);
+	if (opts.ln.h)
+		arg_hn(ap, *cnt);
+	if (opts.ln.l)
+		arg_ln(ap, *cnt);
+	if (opts.ln.ll)
+		arg_lln(ap, *cnt);
+	arg_n(ap, *cnt);
 }

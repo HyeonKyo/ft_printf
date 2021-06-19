@@ -27,7 +27,7 @@ int		*f_pre_tesk(t_value *val, va_list ap, t_opt *opts)
 	//이진데이터 처리
 	if (!(bits = (int *)malloc(64 * sizeof(int))))
 		return (0);
-	ft_memset(bits, 0, sizeof(int *));
+	ft_memset(bits, 0, sizeof(bits));
 	trans_to_bin(bits, val->n);
 	return (bits);
 }
@@ -36,15 +36,15 @@ void	take_decimal(int *bits, t_real *num)//expo < 0인 경우
 {
 	int		expo;
 	int		i;
-	int		n;
-	int		dec[52];
+	int		dec[52];//가수부 저장 배열
 	double	tmp;
 
 	ft_memset(dec, 0, sizeof(dec));
 	expo = trans_to_dex(bits + 1, 11) - 1023;//1023은 bias상수
 	//expo가 양수일 때와 음수일 때를 구분하여 이진 소수데이터를 dec에 저장
 	i = -1;
-	if (expo == -1023)
+	//가수부 비트만 따로 저장.
+	if (expo == -1023)//지수부가 0인 경우 => 그대로 0.0으로 냅둠
 		return ;
 	if (expo >= 0)
 		while (++i < 52 - expo)
@@ -57,29 +57,73 @@ void	take_decimal(int *bits, t_real *num)//expo < 0인 경우
 			dec[expo + i] = bits[12 + i];
 	}
 	num->deci = 0.0;
-	n = 1;
 	i = 0;
+	//가수부 비트 => 십진수로 계산
 	while (i < 52)
 	{
-		tmp = (1 / (double)power(2, n++)) / 100;
+		tmp = (1.0 / (double)power(2, i + 1));
 		if (dec[i++])
 			num->deci += tmp;
 	}
+	num->deci += (double)num->integ;
+}
+
+double	round_deci(double num, int len)
+{
+	size_t	cpr;
+	size_t	i_cpr;
+	size_t	i_num;
+	double	d_num;
+	double	tmp;
+
+	d_num = num * (double)power(10, len);
+	i_num = (size_t)d_num;
+	tmp = 0.5 - (0.1 / (double)power(10, 15 - len));
+	cpr = (size_t)(tmp * power(10, 15 - len + 1));
+	i_cpr = ((d_num - i_num) * (double)power(10, 15 - len + 1));
+	if (i_cpr == cpr && i_num % 2 == 0)
+		return (num);
+	cpr = 5 * power(10, 15 - len);
+	if (i_cpr == cpr && i_num % 2 == 0)
+		return (num);
+	d_num += 0.5 + (0.1 / (double)power(10, 15 - len));
+	return (d_num / (double)(power(10, len)));
+	/*
+	1. 실수의 소수점 부분을 받음
+	2. 소수점의 반올림 위치만큼 정수로 만들어줌.
+	3. 만약 소수부가 15 - 반올림만큼 == 4 99999이거나 0.5인 경우 => 정수부가 짝수이면 버림
+		else => 0.5 더해줌.
+			=>4.99999구하는 방법
+				1. 5.0에 0.1 / 10^(15 - len)만큼을 빼주고 10^(15 - len + 1)만큼 곱해줌 => 499999
+				2. 5.0에 10^(15 - len + 1)만큼 곱해줌 => 5000000
+				3. num의 반올림 다음 숫자가 위의 숫자들과 같은지 확인?
+					=> 반올림 숫자까지 정수로 만들어 놓은 상태에서
+					1. 정수부분 빼줌
+					2. 10^(15 - len + 1)만큼 곱해줌
+					3. 정수형에 저장
+
+	*/
 }
 
 void	f_div_section(int *bits, t_value val, t_real *num, t_opt opts)
 {
-	int	i;
+	int	tmp;
 
-	i = 0;
+	tmp = 0;
 	num->sign = 1;
 	if (bits[0])
 		num->sign = -1;
-	if (opts.prec < 0)
-		val.f += 0.5;
-	num->integ= (int)val.f;
+	num->integ = pf_absol_n((int)(val.f));
+	/* 반올림
+	만약 val.f의 소수부가 정확히 0.5인 경우(식별 방법은?)
+		=> val.f의 정수부가 짝수면 버림, 홀수면 올림. 
+	----소수부에서의 반올림-----
+	반올림 할 구역의 값이 정확히 0.5인 경우
+	*/
 	//소수부분 처리
 	take_decimal(bits, num);
+	num->deci = round_deci(num->deci, opts.prec);
+	num->integ = pf_absol_n((int)(num->deci));
 	free(bits);
 }
 

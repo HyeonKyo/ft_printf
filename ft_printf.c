@@ -88,18 +88,32 @@ int main()
 {
 	setbuf(stdout, NULL);
 	setlocale(LC_ALL, "en_US.UTF-8");
-	int n = 0;
+	int *n = (void *)0;
 	int cnt = 0;
 	unsigned int x = 4294967161;
 	
-	cnt = ft_printf("[asdasd%nsds]\n", n);
-	printf("%d\n", cnt);
-	printf("%d\n", n);
 
+	cnt = ft_printf("[%.1f]\n", -3.85);
+	printf("%d\n", cnt);
+	cnt = ft_printf("[%f]\n", -99.999999);
+	printf("%d\n", cnt);
+	cnt = ft_printf("[%f]\n", -985.765426499);
+	printf("%d\n", cnt);
+	// cnt = ft_printf("[%f]\n", 0.0894255);
+	// printf("%d\n", cnt);
+	// cnt = ft_printf("[%f]\n", 0.0894255);
+	// printf("%d\n", cnt);
 	ft_printf("\n----------------\n\n");
-	cnt = printf("[asdasd%nsds]\n", n);
-	printf("%d\n", cnt);	
-	ft_printf("%d\n", n);
+	cnt = printf("[%.1f]\n", -3.85);
+	printf("%d\n", cnt);
+	cnt = printf("[%f]\n", -99.999999);
+	printf("%d\n", cnt);
+	cnt = printf("[%f]\n", -985.765426499);
+	printf("%d\n", cnt);
+	// cnt = printf("[%f]\n", 0.0894255);
+	// printf("%d\n", cnt);
+	// cnt = printf("[%f]\n", 0.0894255);
+	// printf("%d\n", cnt);
 
 	return (0);
 }

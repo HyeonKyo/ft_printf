@@ -1,14 +1,16 @@
-#include "ft_printf.h"
+// #include "ft_printf.h"
 
 // int	main()
 // {
-// 	setbuf(stdout, NULL);
-// 	setlocale(LC_ALL, "en_US.UTF-8");
-// 	wchar_t	*s = L"abcde";
-// 	printf("[%ls]\n", s);
-// 	printf("[%ls]\n", s);
-// 	printf("[%ls]\n", s);
-// 	printf("[%ls]\n", s);
+// 	double n;
+// 	double tmp;
+// 	int		l;
+
+// 	n = 3.141592653589793238462643383279502884197169399375105820974944592307816;
+// 	tmp = 3.141592653589793238462643383279502884197169399375105820974944592307816 / 10000000;
+// 	printf("[%#.200f]\n", n);
+// 	printf("[%#.200f]\n", tmp);
+// 	printf("\n\n----------------------------------\n\n");
 
 // 	return (0);
 // }
