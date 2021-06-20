@@ -21,8 +21,8 @@ SRCS_NAME = ft_printf.c utils1.c utils2.c utils3.c find_opt.c get_opt.c\
 	c_print1.c c_print2.c s_print1.c s_print2.c
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 
-OBJS_NAME = $(SRCS:.c=.o)
-OBJS = $(addprefix $(SRCS_DIR)/, $(OBJS_NAME))
+OBJS = $(SRCS:.c=.o)
+#OBJS = $(addprefix $(SRCS_DIR)/, $(OBJS_NAME))
 
 INC = -I$(LIB_DIR) -I./include
 
