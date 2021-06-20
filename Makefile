@@ -12,13 +12,26 @@
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_printf.c utils1.c utils2.c utils3.c d_print.c u_print.c x_print.c \
-	p_print.c c_print.c get_opt.c find_opt.c f_print1.c f_print2.c e_print.c \
-	s_print.c n_print.c
-OBJS = $(SRCS:.c=.o)
-AR = ar -rc
-NAME = libftprintf.a
+
 LIB_DIR = ./libft
+
+SRCS_DIR = ./src
+SRCS_NAME = ft_printf.c utils1.c utils2.c utils3.c find_opt.c get_opt.c\
+	d_print1.c d_print2.c u_print1.c u_print2.c x_print1.c x_print2.c p_print.c\
+	c_print1.c c_print2.c s_print1.c s_print2.c
+SRCS = $(addprefix $(SRC_DIR)/, $(SRC_NAME))
+
+OBJS_NAME = $(SRCS:.c=.o)
+OBJS = $(addprefix $(SRCS_DIR)/, $(OBJS_NAME))
+
+INC = -I$(LIB_DIR) -I./include
+
+BNS_DIR = ./bonus
+BNS_NAME = n_print1.c n_print2.c
+
+NAME = libftprintf.a
+
+AR = ar -rc
 RM = rm -rf
 
 all		:	$(NAME)
@@ -29,7 +42,7 @@ $(NAME)	:	$(OBJS)
 			$(AR) $@ $^
 
 .c.o	:
-			$(CC) $(CFLAGS) -c $(SRCS)
+			$(CC) $(CFLAGS) -c $(SRCS) $(INC)
 
 clean	:
 			$(RM) $(OBJS)

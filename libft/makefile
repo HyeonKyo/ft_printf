@@ -21,7 +21,7 @@ SRCS_B = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.
 		ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
-AR = ar -rcs
+AR = ar -rc
 NAME = libft.a
 RM = rm -f
 
