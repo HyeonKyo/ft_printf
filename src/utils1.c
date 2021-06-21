@@ -24,18 +24,11 @@ int			print_char(char c, int len)
 	return (len);
 }
 
-int			pf_atoi(const char *str, t_opt *opts, size_t *i)
+int			pf_atoi(const char *str, size_t *i)
 {
 	unsigned long long	num;
 
 	num = 0;
-	// if (str[*i] == '-')//width or prec가 음수일 때 처리하는 방식이 똑같음.
-	// {
-	// 	opts->width = 0;//prec이 음수일 경우 기존width를 무시함.
-	// 	opts->fg.minus = 1;
-	// 	opts->fg.none = 0;//만약 none이면 0으로 만들어줌.
-	// 	i++;
-	// }
 	while (ft_isdigit(str[*i]))
 		num = num * 10 + (str[(*i)++] - '0');
 	return ((int)num);

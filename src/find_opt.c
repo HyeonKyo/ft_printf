@@ -41,7 +41,7 @@ void	find_width(const char *str, t_opt *opts, size_t *i)
 		(*i)++;
 	}
 	else
-		opts->width = pf_atoi(str, opts, i);
+		opts->width = pf_atoi(str, i);
 }
 
 void	find_prec(const char *str, t_opt *opts, size_t *i)
@@ -52,10 +52,10 @@ void	find_prec(const char *str, t_opt *opts, size_t *i)
 		(*i)++;
 	}
 	else if (str[*i] == '-')
-		opts->width = pf_atoi(str, opts, i);
+		opts->width = pf_atoi(str, i);
 	else if (ft_isdigit(str[*i]))
 	{
-		opts->prec = pf_atoi(str, opts, i);
+		opts->prec = pf_atoi(str, i);
 		if (opts->prec == 0)
 			opts->prec = -3;
 	}

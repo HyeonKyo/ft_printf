@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <wchar.h>
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct	s_flag
 {
@@ -72,7 +72,7 @@ typedef unsigned long long	t_ull;
 */
 int				print_char(char c, int len);
 int				pf_absol_n(int n);
-int				pf_atoi(const char *str, t_opt *opts, size_t *i);
+int				pf_atoi(const char *str, size_t *i);
 char			*pf_itoa(long long n);
 /*
 ** utils2
